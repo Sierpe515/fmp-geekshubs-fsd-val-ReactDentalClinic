@@ -4,6 +4,10 @@ body {
     background-repeat: repeat-x;
 }
 
+.homeContainer {
+    height: 100%;
+}
+
 .home1Container {
     margin-top: 3em;
     height: 22em;
@@ -30,6 +34,10 @@ body {
     display: none;
 }
 
+.z2 {
+    display: none;
+}
+
 
 @media (min-width: 576px){}
 
@@ -43,11 +51,24 @@ body {
         height: 20em;
         right: -1em;
     }
+
+    .z2 {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        height: 20em;
+        left: -1em;
+        top: 10em;
+    }
 }
 
 @media (min-width: 1200px){
     .z1 {
         right: 7em;
+    }
+
+    .z2 {
+        left: 7em;
     }
 }
 
@@ -55,16 +76,28 @@ body {
     .z1 {
         right: 17em;
     }
+
+    .z2 {
+        left: 15em;
+    }
 }
 
 @media (min-width: 1700px){
     .z1 {
         right: 20em;
     }
+
+    .z2 {
+        left: 22em;
+    }
 }
 
 @media (min-width: 1850px){
     .z1 {
         right: 24em;
+    }
+
+    .z2 {
+        left: 24em;
     }
 }

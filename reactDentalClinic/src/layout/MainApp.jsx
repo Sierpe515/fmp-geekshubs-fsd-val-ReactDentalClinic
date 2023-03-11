@@ -12,7 +12,6 @@ export const MainApp = () => {
   return (
     <>
     <NavBar/>
-    <Footer/>
 
     <Routes>
         <Route path='/' element={<Home/>}/>
