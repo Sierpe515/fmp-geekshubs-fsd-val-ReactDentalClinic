@@ -1,0 +1,70 @@
+body {
+    background-image: url('../image/bg6.png');
+    background-size: cover;
+    background-repeat: repeat-x;
+}
+
+.home1Container {
+    margin-top: 3em;
+    height: 22em;
+    background-image: url('../image/futurama-spaceship.gif');
+    background-size: cover;
+    padding: 1em;
+    border: 1px solid blue;
+    border-radius: 10px;
+}
+
+.logRegContainer {
+    background-color: rgba(173, 173, 173, 0.589);
+    padding: 1em;
+    border: 1px solid blue;
+    border-radius: 10px;
+    position: relative;
+}
+
+.logRegButton {
+    margin-top: 1em;
+}
+
+.z1 {
+    display: none;
+}
+
+
+@media (min-width: 576px){}
+
+@media (min-width: 768px){}
+
+@media (min-width: 992px){
+    .z1 {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        height: 20em;
+        right: -1em;
+    }
+}
+
+@media (min-width: 1200px){
+    .z1 {
+        right: 7em;
+    }
+}
+
+@media (min-width: 1400px){
+    .z1 {
+        right: 17em;
+    }
+}
+
+@media (min-width: 1700px){
+    .z1 {
+        right: 20em;
+    }
+}
+
+@media (min-width: 1850px){
+    .z1 {
+        right: 24em;
+    }
+}
