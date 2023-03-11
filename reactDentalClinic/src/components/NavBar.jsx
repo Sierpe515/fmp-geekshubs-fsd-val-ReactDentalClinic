@@ -30,14 +30,14 @@ export const NavBar = () => {
           >
             <Nav.Link as={Link} to='/'>Home</Nav.Link>
             <Nav.Link as={Link} to='/newAppointment'>Book Appointment</Nav.Link>
-            <NavDropdown title="Link" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
+            <NavDropdown title="Services" id="navbarScrollingDropdown">
+              <NavDropdown.Item href="#action3"><Link as={Link} to='/doctors'>Doctors</Link></NavDropdown.Item>
+              <NavDropdown.Item href="#action4"><Link as={Link} to='/tratments'>
+                Treatments</Link>
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action5">
-                Something else here
+                About Us
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
