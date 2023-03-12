@@ -19,7 +19,7 @@ export const NavBar = () => {
           className="d-inline-block align-top logo1"
           alt="peLogo"
         />
-        <Navbar.Brand href="#">
+        <Navbar.Brand href="#" className='navTitle'>
             Planet Express Dental Clinic</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">

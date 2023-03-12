@@ -38,8 +38,54 @@ body {
     display: none;
 }
 
-.treatments {
+.z3 {
+    display: none;
+}
+
+.hourGrid {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+}
+
+.hourContainer {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: 14em;
+    height: 2.5em;
+    background-color: rgba(173, 173, 173, 0.589);
+    border-radius: 10px;
+    border: 1px solid blue;
+    margin: 0.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.hourContainer:hover {
+    background-color: rgba(29, 118, 252, 0.589);
+}
+
+.doctorContainer {
+    width: 10em;
+    height: 10em;
+    background-color: rgba(173, 173, 173, 0.589);
+    border-radius: 50%;
+}
+
+.doctorContainer:hover {
+    background-color: rgba(29, 118, 252, 0.589);
+}
+
+.doctorIcon {
+    width: 9em;
+}
+
+.doctorIcon2 {
+    width: 13em;
+}
+
+.rowSpace {
     gap: 2em;
+    margin: 1em;
 }
 
 .treatmentContainer {
@@ -53,7 +99,7 @@ body {
     background-color: rgba(29, 118, 252, 0.589);
 }
 
-.treatmenticon {
+.treatmentIcon {
     height: 5em;
 }
 
@@ -79,6 +125,15 @@ body {
         left: -1em;
         top: 10em;
     }
+
+    .z3 {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        height: 20em;
+        top: 25em;
+        right: -1em;
+    }
 }
 
 @media (min-width: 1200px){
@@ -88,6 +143,10 @@ body {
 
     .z2 {
         left: 7em;
+    }
+
+    .z3 {
+        right: 7em;
     }
 }
 
@@ -99,6 +158,10 @@ body {
     .z2 {
         left: 15em;
     }
+
+    .z3 {
+        right: 10em;
+    }
 }
 
 @media (min-width: 1700px){
@@ -109,6 +172,10 @@ body {
     .z2 {
         left: 22em;
     }
+
+    .z3 {
+        right: 16em;
+    }
 }
 
 @media (min-width: 1850px){
@@ -118,5 +185,9 @@ body {
 
     .z2 {
         left: 24em;
+    }
+
+    .z3 {
+        right: 18em;
     }
 }
