@@ -38,6 +38,25 @@ body {
     display: none;
 }
 
+.treatments {
+    gap: 2em;
+}
+
+.treatmentContainer {
+    width: 6em;
+    height: 6em;
+    background-color: rgba(173, 173, 173, 0.589);
+    border-radius: 15px;
+}
+
+.treatmentContainer:hover {
+    background-color: rgba(29, 118, 252, 0.589);
+}
+
+.treatmenticon {
+    height: 5em;
+}
+
 
 @media (min-width: 576px){}
 
