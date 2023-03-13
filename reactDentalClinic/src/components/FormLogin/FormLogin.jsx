@@ -1,45 +1,113 @@
 import React, { useState } from 'react';
+import { FormText } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 export const FormLogin = () => {
 
-  let user = {
+  const [credentials, setCredentials] = useState({
     email: "",
     password: ""
+  });
+
+  const [credentialsError, setCredentialsError] = useState({
+    emailError: "",
+    passwordError: "",
+  });
+
+  const newCredentials = (e)=>{
+    setCredentials((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value
+    }));
 }
 
-  const [valor, setValor] = useState(user);
-  const {email, password} = valor;
+const lowerCaseLetters = /[a-z]/g;
+const upperCaseLetters = /[A-Z]/g;
+const numbers = /[0-9]/g;
 
-  const newValue = ({target})=>{
-    console.log(valor);
-    const {name, value}=target
-    setValor({
-        ...valor,
-        [name]:value
-        }
-    )
-}
+const credentialsValidate = (e) => {
+  switch (e.target.name) {
+    case "email":
+
+      if (!credentials.email.match('@')) {
+        setCredentialsError((prevState) => ({
+              ...prevState,
+              emailError : "Enter a valid email",
+            }))
+      } else {
+        setCredentialsError((prevState) => ({
+              ...prevState,
+              emailError : "",
+            }))
+      }
+
+      break;
+
+    case "password":
+
+      if (credentials.password.length < 8) {
+        setCredentialsError((prevState) => ({
+          ...prevState,
+          passwordError : "The password must have at least eight characters",
+        }));
+      } else if (!credentials.password.match(lowerCaseLetters)) {
+        setCredentialsError((prevState) => ({
+          ...prevState,
+          passwordError : "The password must have at least one lowercase letter",
+        }));
+      } else if (!credentials.password.match(upperCaseLetters)) {
+        setCredentialsError((prevState) => ({
+          ...prevState,
+          passwordError : "The password must have at least one uppercase letter",
+        }));
+      } else if (!credentials.password.match(numbers)) {
+        setCredentialsError((prevState) => ({
+          ...prevState,
+          passwordError : "The password must have at least one number",
+        }));
+      }
+      else {
+          setCredentialsError((prevState) => ({
+              ...prevState,
+              passwordError : "",
+            }));
+      }
+
+      break;
+
+    default:
+      console.log("uff....");
+  }
+};
 
 const checkValue = (event)=>{
   event.preventDefault();
-  console.log(valor)
+  console.log(credentials)
 }
 
   return (
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" name="email" placeholder="Enter email" value={email} onChange={newValue} />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
+        <Form.Control 
+          type="email" 
+          name="email" 
+          placeholder="Enter email" 
+          onChange={(e) => newCredentials(e)}
+          onBlur={(e) => credentialsValidate(e)} />
+        <Form.Text>{credentialsError.emailError}</Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" name="password" placeholder="Password" value={password} onChange={newValue} />
+        <Form.Control 
+          type="password" 
+          name="password" 
+          placeholder="Password" 
+          onChange={(e) => newCredentials(e)} 
+          onBlur={(e) => credentialsValidate(e)} />
+        <Form.Text>{credentialsError.passwordError}</Form.Text>
       </Form.Group>
       
       <div className="d-grid gap-2">
