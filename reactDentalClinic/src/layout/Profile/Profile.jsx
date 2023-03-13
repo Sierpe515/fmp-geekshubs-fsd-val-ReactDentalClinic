@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { ButtonViewAppointment } from '../../components/ButtonViewAppointments';
+import { ButtonNav } from '../../components/ButtonNav';
 
 export const Profile = () => {
   return (
@@ -14,7 +14,7 @@ export const Profile = () => {
                 </Col>
             </Row>
             <Row className="d-flex justify-content-center">
-                <ButtonViewAppointment/>
+                <ButtonNav route={"View Appointment"} destiny={"/appointments"}/>
             </Row>
         </Container>
   )
