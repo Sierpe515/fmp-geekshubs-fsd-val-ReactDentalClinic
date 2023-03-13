@@ -1,10 +1,10 @@
 
-.logo1 {
-    margin-right: 0.5em;
+.NavBar{
+    height: 6vh;
 }
 
-.footer {
-    bottom: 0;
+.logo1 {
+    margin-right: 0.5em;
 }
 
 @media (max-width: 386px){

@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { ButtonViewAppointment } from '../components/ButtonViewAppointments';
+import { ButtonViewAppointment } from '../../components/ButtonViewAppointments';
 
 export const Profile = () => {
   return (

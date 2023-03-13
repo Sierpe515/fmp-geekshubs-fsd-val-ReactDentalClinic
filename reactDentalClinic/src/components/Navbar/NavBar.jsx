@@ -4,13 +4,13 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Logo1 from '../image/logo1.png'
-import './Components.css'
+import Logo1 from '../../image/logo1.png'
+import './NavBar.css'
 
 
 export const NavBar = () => {
   return (
-    <Navbar bg="primary" variant='dark' expand="lg">
+    <Navbar className='NavBar' bg="primary" variant='dark' expand="lg">
       <Container fluid>
         <img
           src={ Logo1 }

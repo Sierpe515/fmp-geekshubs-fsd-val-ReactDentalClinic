@@ -1,0 +1,40 @@
+/* Z2 IMAGE */
+
+.z2 {
+    display: none;
+}
+
+@media (min-width: 992px){
+    .z2 {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        height: 20em;
+        left: -1em;
+        top: 10em;
+    }
+}
+
+@media (min-width: 1200px){
+    .z2 {
+        left: 7em;
+    }
+}
+
+@media (min-width: 1400px){
+    .z2 {
+        left: 15em;
+    }
+}
+
+@media (min-width: 1700px){
+    .z2 {
+        left: 22em;
+    }
+}
+
+@media (min-width: 1850px){
+    .z2 {
+        left: 24em;
+    }
+}

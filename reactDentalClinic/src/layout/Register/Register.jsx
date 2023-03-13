@@ -1,8 +1,9 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { FormRegister } from '../components/FormRegister';
-import Z2 from '../image/z2.png'
+import { FormRegister } from '../../components/FormRegister/FormRegister';
+import Z2 from '../../image/z2.png'
+import './Register.css'
 // import { Footer } from '../components/Footer';
 
 

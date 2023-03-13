@@ -5,17 +5,18 @@ import Col from 'react-bootstrap/Col';
 import React, { useState, useRef } from 'react';
 import Overlay from 'react-bootstrap/Overlay';
 import Tooltip from 'react-bootstrap/Tooltip';
-import doc1 from '../image/doc1.png';
-import doc2 from '../image/doc2.png';
-import doc3 from '../image/doc3.png';
-import doc4 from '../image/doc4.png';
-import doc5 from '../image/doc5.png';
-import implant from '../image/implant.png';
-import bruxism from '../image/bruxism.png';
-import orthod from '../image/orthod.png';
-import whitening from '../image/whitening.png';
-import period from '../image/period.png';
-import other from '../image/other.png'
+import doc1 from '../../image/doc1.png';
+import doc2 from '../../image/doc2.png';
+import doc3 from '../../image/doc3.png';
+import doc4 from '../../image/doc4.png';
+import doc5 from '../../image/doc5.png';
+import implant from '../../image/implant.png';
+import bruxism from '../../image/bruxism.png';
+import orthod from '../../image/orthod.png';
+import whitening from '../../image/whitening.png';
+import period from '../../image/period.png';
+import other from '../../image/other.png'
+import './NewAppointment.css'
 
 export const NewAppointment = () => {
     const [show, setShow] = useState(false);

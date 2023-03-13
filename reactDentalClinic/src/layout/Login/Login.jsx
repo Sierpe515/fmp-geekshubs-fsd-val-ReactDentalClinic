@@ -1,8 +1,9 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { FormLogin } from '../components/FormLogin';
-import Z1 from '../image/z1.png'
+import { FormLogin } from '../../components/FormLogin/FormLogin';
+import Z1 from '../../image/z1.png'
+import './Login.css'
 // import { Footer } from '../components/Footer';
 
 export const Login = () => {

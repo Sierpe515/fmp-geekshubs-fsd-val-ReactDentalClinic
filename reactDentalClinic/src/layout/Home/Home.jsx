@@ -1,9 +1,10 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { ButtonNewAppointment } from '../components/ButtonNewAppointment';
-import Z3 from '../image/z3.png'
+import { ButtonNewAppointment } from '../../components/ButtonNewAppointment';
+import Z3 from '../../image/z3.png'
 // import { Footer } from '../components/Footer';
+import './Home.css'
 
 export const Home = () => {
   return (

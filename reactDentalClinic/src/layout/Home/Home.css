@@ -1,0 +1,48 @@
+.home1Container {
+    margin-top: 3em;
+    height: 22em;
+    background-image: url('../../image/futurama-spaceship.gif');
+    background-size: cover;
+    padding: 1em;
+    border: 1px solid blue;
+    border-radius: 10px;
+}
+
+.z3 {
+    display: none;
+}
+
+@media (min-width: 992px){
+    .z3 {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        height: 20em;
+        top: 25em;
+        right: -1em;
+    }
+}
+
+@media (min-width: 1200px){
+    .z3 {
+        right: 7em;
+    }
+}
+
+@media (min-width: 1400px){
+    .z3 {
+        right: 10em;
+    }
+}
+
+@media (min-width: 1700px){
+    .z3 {
+        right: 16em;
+    }
+}
+
+@media (min-width: 1850px){
+    .z3 {
+        right: 18em;
+    }
+}
