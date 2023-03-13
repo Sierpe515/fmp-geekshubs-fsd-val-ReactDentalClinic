@@ -32,12 +32,12 @@ export const NavBar = () => {
             <Nav.Link as={Link} to='/newAppointment'>Book Appointment</Nav.Link>
             <NavDropdown title="Services" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3"><Link as={Link} to='/doctors'>Doctors</Link></NavDropdown.Item>
-              <NavDropdown.Item href="#action4"><Link as={Link} to='/tratments'>
+              <NavDropdown.Item href="#action4"><Link as={Link} to='/treatments'>
                 Treatments</Link>
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                About Us
+              <NavDropdown.Item href="#action5"><Link as={Link} to='/aboutUs'>
+                About Us</Link>
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

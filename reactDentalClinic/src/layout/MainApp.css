@@ -2,6 +2,10 @@ body {
     background-image: url('../image/bg6.png');
     background-size: cover;
     background-repeat: repeat-x;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
 }
 
 .homeContainer {
