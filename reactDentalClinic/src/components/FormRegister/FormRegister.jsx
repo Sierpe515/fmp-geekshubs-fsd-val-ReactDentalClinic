@@ -6,14 +6,12 @@ import Button from 'react-bootstrap/Button';
 
 export const FormRegister = () => {
 
-  let user = {
+  const [valor, setValor] = useState({
     name: "",
     surname: "",
     email: "",
     password: ""
-  }
-
-  const [valor, setValor] = useState(user);
+  });
   const {name, surname, email, password} = valor;
 
   const newValue = ({target})=>{
