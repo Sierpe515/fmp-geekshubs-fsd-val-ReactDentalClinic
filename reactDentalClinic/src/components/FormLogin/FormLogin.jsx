@@ -25,12 +25,13 @@ export const FormLogin = () => {
 const lowerCaseLetters = /[a-z]/g;
 const upperCaseLetters = /[A-Z]/g;
 const numbers = /[0-9]/g;
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 const credentialsValidate = (e) => {
   switch (e.target.name) {
     case "email":
 
-      if (!credentials.email.match('@')) {
+      if (!credentials.email.match(emailRegex)) {
         setCredentialsError((prevState) => ({
               ...prevState,
               emailError : "Enter a valid email",

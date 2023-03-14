@@ -9,7 +9,7 @@
     grid-template-columns: repeat(3, auto);
     width: 14em;
     height: 2.5em;
-    background-color: rgba(173, 173, 173, 0.589);
+    background-color: rgba(239, 239, 239, 0.589);
     border-radius: 10px;
     border: 1px solid blue;
     margin: 0.5em;
@@ -24,7 +24,7 @@
 .doctorContainer {
     width: 10em;
     height: 10em;
-    background-color: rgba(173, 173, 173, 0.589);
+    background-color: rgba(239, 239, 239, 0.589);
     border-radius: 50%;
 }
 
@@ -48,7 +48,7 @@
 .treatmentContainer {
     width: 6em;
     height: 6em;
-    background-color: rgba(173, 173, 173, 0.589);
+    background-color: rgba(239, 239, 239, 0.589);
     border-radius: 15px;
 }
 

@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { ButtonNav } from '../../components/ButtonNav';
+import { ButtonNav } from '../../components/ButtonNav/ButtonNav';
 import Z3 from '../../image/z3.png'
 import './Home.css'
 
