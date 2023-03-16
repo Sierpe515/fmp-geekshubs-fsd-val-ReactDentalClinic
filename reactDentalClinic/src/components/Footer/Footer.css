@@ -1,4 +1,50 @@
 .footer {
-    background-color: gray;
+    background-color: rgba(4, 104, 253, 0.336);
     height: 10vh;
+}
+
+.footerBox1 {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoGif {
+    border-radius: 5px;
+    border: 1px solid rgb(253, 55, 55);
+    height: 4em;
+}
+
+.clinicName {
+    color: white;
+    /* text-shadow: -1px -1px 1px gray, 1px 1px 1px gray; */
+    font-size: x-large;
+    margin-left: 1em;
+}
+
+.footerBox2 {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.footerBox3 {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icons {
+    color: white;
+    margin-right: 2em;
+}
+
+.icons:hover {
+    transform: scale(1.1);
+    color: rgba(4, 104, 253, 0.336);
+    cursor: pointer;
 }

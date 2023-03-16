@@ -8,6 +8,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    color: white;
+}
+
+.logButton:hover {
+    transition: 1s;
+    background-color: darkred;
 }
 
 .z1 {
