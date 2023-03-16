@@ -1,3 +1,15 @@
+
+.logButton {
+    background-color: rgb(253, 55, 55);
+    margin-top: 1.5em;
+    height: 2.5em;
+    border-radius: 5px;
+    border: 1px solid darkred;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .z1 {
     display: none;
 }

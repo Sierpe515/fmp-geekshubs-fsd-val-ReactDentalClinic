@@ -3,7 +3,7 @@
 
     height: 2em;
     width: 100%;
-    background-color: lightgrey;
+    background-color: lightgray;
     border: 1px solid white;
     border-radius: 0.2em;
     color: white;
@@ -18,8 +18,8 @@
 .registerSendAct {
 
     cursor: pointer;
-    background-color: red;
-    
+    background-color: rgb(253, 55, 55);
+    border: 1px solid darkred;
 }
 
 .errorMessage {

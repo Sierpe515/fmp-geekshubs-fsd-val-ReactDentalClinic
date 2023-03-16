@@ -1,14 +1,26 @@
-import React from 'react';
+import React, {useEffect} from "react";
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Dropdown from 'react-bootstrap/Dropdown';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import ButtonGroup from 'react-bootstrap/DropdownButton';
 import Logo1 from '../../image/logo1.png'
 import './NavBar.css'
+import { useSelector } from "react-redux";
+import { userData } from '../../layout/userSlice';
 
 
 export const NavBar = () => {
+
+  const dataCredentialsRdx = useSelector(userData);
+
+  useEffect(()=>{
+    console.log(dataCredentialsRdx);
+  })
+
   return (
     <Navbar className='NavBar' bg="primary" variant='dark' expand="lg" fixed="top">
       <Container fluid>
@@ -31,19 +43,36 @@ export const NavBar = () => {
             <Nav.Link as={Link} to='/'>Home</Nav.Link>
             <Nav.Link as={Link} to='/newAppointment'>Book Appointment</Nav.Link>
             <NavDropdown title="Services" id="navbarScrollingDropdown">
-              <NavDropdown.Item ><Link as={Link} to='/doctors'>Doctors</Link></NavDropdown.Item>
-              <NavDropdown.Item ><Link as={Link} to='/treatments'>
+              <NavDropdown.Item eventKey="1"><Link as={Link} to='/doctors'>Doctors</Link></NavDropdown.Item>
+              <NavDropdown.Item eventKey="2"><Link as={Link} to='/treatments'>
                 Treatments</Link>
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item ><Link as={Link} to='/aboutUs'>
+              <NavDropdown.Item eventKey="3"><Link as={Link} to='/aboutUs'>
                 About Us</Link>
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>
+            {dataCredentialsRdx.credentials.token ? (
+              
+              <DropdownButton
+                align="end"
+                title="User"
+                id="dropdown-menu-align-end"
+              >
+                <Dropdown.Item eventKey="4"><Link as={Link} to='/profile'>Profile</Link></Dropdown.Item>
+                <Dropdown.Item eventKey="5"><Link as={Link} to='/appointments'>Appointments</Link></Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item eventKey="6">Log Out</Dropdown.Item>
+              </DropdownButton>
+              
+            ) : (
+              <>
             <Nav.Link as={Link} to='/register'>Register</Nav.Link>
             <Nav.Link as={Link} to='/login'>Login</Nav.Link>
+            </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -6,8 +6,15 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Z1 from "../../image/z1.png";
 import "./Login.css";
+import { logMe } from "../../services/apiCalls";
+import { useDispatch } from "react-redux";
+import { login } from "../userSlice";
+import { useJwt } from "react-jwt";
 
 export const Login = () => {
+
+  const dispatch = useDispatch();
+
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -31,63 +38,91 @@ export const Login = () => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const credentialsValidate = (e) => {
-    switch (e.target.name) {
-      case "email":
-        if (!credentials.email.match(emailRegex)) {
-          setCredentialsError((prevState) => ({
-            ...prevState,
-            emailError: "Enter a valid email",
-          }));
-        } else {
-          setCredentialsError((prevState) => ({
-            ...prevState,
-            emailError: "",
-          }));
-        }
+    // switch (e.target.name) {
+    //   case "email":
+    //     if (!credentials.email.match(emailRegex)) {
+    //       setCredentialsError((prevState) => ({
+    //         ...prevState,
+    //         emailError: "Enter a valid email",
+    //       }));
+    //     } else {
+    //       setCredentialsError((prevState) => ({
+    //         ...prevState,
+    //         emailError: "",
+    //       }));
+    //     }
 
-        break;
+    //     break;
 
-      case "password":
-        if (credentials.password.length < 8) {
-          setCredentialsError((prevState) => ({
-            ...prevState,
-            passwordError: "The password must have at least eight characters",
-          }));
-        } else if (!credentials.password.match(lowerCaseLetters)) {
-          setCredentialsError((prevState) => ({
-            ...prevState,
-            passwordError:
-              "The password must have at least one lowercase letter",
-          }));
-        } else if (!credentials.password.match(upperCaseLetters)) {
-          setCredentialsError((prevState) => ({
-            ...prevState,
-            passwordError:
-              "The password must have at least one uppercase letter",
-          }));
-        } else if (!credentials.password.match(numbers)) {
-          setCredentialsError((prevState) => ({
-            ...prevState,
-            passwordError: "The password must have at least one number",
-          }));
-        } else {
-          setCredentialsError((prevState) => ({
-            ...prevState,
-            passwordError: "",
-          }));
-        }
+    //   case "password":
+    //     if (credentials.password.length < 8) {
+    //       setCredentialsError((prevState) => ({
+    //         ...prevState,
+    //         passwordError: "The password must have at least eight characters",
+    //       }));
+    //     } else if (!credentials.password.match(lowerCaseLetters)) {
+    //       setCredentialsError((prevState) => ({
+    //         ...prevState,
+    //         passwordError:
+    //           "The password must have at least one lowercase letter",
+    //       }));
+    //     } else if (!credentials.password.match(upperCaseLetters)) {
+    //       setCredentialsError((prevState) => ({
+    //         ...prevState,
+    //         passwordError:
+    //           "The password must have at least one uppercase letter",
+    //       }));
+    //     } else if (!credentials.password.match(numbers)) {
+    //       setCredentialsError((prevState) => ({
+    //         ...prevState,
+    //         passwordError: "The password must have at least one number",
+    //       }));
+    //     } else {
+    //       setCredentialsError((prevState) => ({
+    //         ...prevState,
+    //         passwordError: "",
+    //       }));
+    //     }
 
-        break;
+    //     break;
 
-      default:
-        console.log("Something has gone wrong");
-    }
+    //   default:
+    //     console.log("Something has gone wrong");
+    // }
   };
 
-  const checkValue = (event) => {
-    event.preventDefault();
-    console.log(credentials);
-  };
+  // const checkValue = (event) => {
+  //   event.preventDefault();
+  //   console.log(credentials);
+  // };
+
+  const logIn = () => {
+
+    logMe(credentials)
+        .then(
+            respuesta => {
+
+              //HACER CONSOLE.LOG PARA VER QUÉ DEVUELVE MI BACKEND
+
+              // let decodificado = decodeToken(respuesta.data)
+              // (respuesta.data) si mi repuesta devuelve eso
+
+                let datosBackend = {
+                    token: respuesta.data.token,
+                // EN NUESTRO CASO SERÍA: token: respuesta.data (se guarda el token codificado
+                // para usarlo en otras llamadas del fronted)
+                    usuario: respuesta.data.data.user
+                // EN NUESTRO CASO SERÍA: usuario: decodificado (se guarda el token decodificad
+                // para poder acceder a sus elementos, como user o role)
+                }
+
+                console.log(datosBackend);
+                dispatch(login({credentials: datosBackend}));
+            }
+        )
+        .catch(error => console.log(error))
+
+  }
 
   return (
     <Container
@@ -124,16 +159,17 @@ export const Login = () => {
                 <Form.Text>{credentialsError.passwordError}</Form.Text>
               </Form.Group>
 
-              <div className="d-grid gap-2">
+              {/* <div className="d-grid gap-2">
                 <Button
                   variant="primary"
                   type="submit"
                   className="logRegButton"
-                  onClick={checkValue}
+                  onClick={()=> logIn()}
                 >
                   Submit
                 </Button>
-              </div>
+              </div> */}
+              <div className="logButton" onClick={()=> logIn()}>Submit</div>
             </Form>
           </div>
         </Col>
