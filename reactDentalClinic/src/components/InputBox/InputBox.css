@@ -2,6 +2,7 @@
 
 .inputErrorDesign {
     border: 0.2em solid red;
+    background-color: lightpink;
 }
 
 .boxColor {
