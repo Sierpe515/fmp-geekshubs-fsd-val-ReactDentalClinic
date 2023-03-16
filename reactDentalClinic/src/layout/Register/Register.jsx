@@ -94,6 +94,32 @@ export const Register = () => {
       [e.target.name + "Validation"]: checked.validated,
     }));
 
+    // setDataUserError((prevState) => ({
+    //   ...prevState,
+    //   [e.target.name + "Error"]: error,
+    // }));
+  };
+
+  const checkError2 = (e) => {
+
+
+    let error = "";
+
+    let checked = validate(
+      e.target.name,
+      e.target.value,
+      e.target.required
+    );
+
+    error = checked.message;
+
+    // setDataUserValidation((prevState) => ({
+    //   ...prevState,
+    //   [e.target.name + "Validation"]: checked.validated,
+    // }));
+
+    // console.log("dataUserError",dataUserError)
+
     setDataUserError((prevState) => ({
       ...prevState,
       [e.target.name + "Error"]: error,
@@ -123,7 +149,7 @@ export const Register = () => {
                     placeholder={"Enter your name"}
                     required={true}
                     changeFunction={(e) => {newDataUser(e); checkError(e)}}
-                    // blurFunction={(e) => {checkError2(e)}}
+                    blurFunction={(e) => {checkError2(e)}}
                   />
                   <Form.Text className="errorMessage">{dataUserError.nameError}</Form.Text>
                 </Form.Group>
@@ -143,6 +169,7 @@ export const Register = () => {
                     placeholder={"Enter your surname"}
                     required={true}
                     changeFunction={(e) => {newDataUser(e); checkError(e)}}
+                    blurFunction={(e) => {checkError2(e)}}
                   />
                   <Form.Text className="errorMessage">{dataUserError.surnameError}</Form.Text>
                 </Form.Group>
@@ -162,6 +189,7 @@ export const Register = () => {
                     placeholder={"Enter email"}
                     required={true}
                     changeFunction={(e) => {newDataUser(e); checkError(e)}}
+                    blurFunction={(e) => {checkError2(e)}}
                   />
                   <Form.Text className="errorMessage">{dataUserError.emailError}</Form.Text>
                 </Form.Group>
@@ -181,6 +209,7 @@ export const Register = () => {
                     placeholder={"Enter password"}
                     required={true}
                     changeFunction={(e) => {newDataUser(e); checkError(e)}}
+                    blurFunction={(e) => {checkError2(e)}}
                   />
                   <Form.Text className="errorMessage">{dataUserError.passwordError}</Form.Text>
                 </Form.Group>
