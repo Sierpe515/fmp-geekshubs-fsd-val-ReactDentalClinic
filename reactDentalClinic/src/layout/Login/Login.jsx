@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
+import React, { useState, useEffect } from "react";
+// import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -7,13 +7,16 @@ import Col from "react-bootstrap/Col";
 import Z1 from "../../image/z1.png";
 import "./Login.css";
 import { logMe } from "../../services/apiCalls";
-import { useDispatch } from "react-redux";
-import { login } from "../userSlice";
-import { useJwt } from "react-jwt";
+import { useDispatch, useSelector } from "react-redux";
+import { login, userData } from "../userSlice";
+import { decodeToken, useJwt } from "react-jwt";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const credentialsRdx = useSelector(userData);
 
   const [credentials, setCredentials] = useState({
     email: "",
@@ -24,6 +27,14 @@ export const Login = () => {
     emailError: "",
     passwordError: "",
   });
+
+  const [welcome, setWelcome] = useState("");
+
+  useEffect(() => {
+    if (credentialsRdx.credentials.token) {
+      navigate("/");
+    }
+  }, []);
 
   const newCredentials = (e) => {
     setCredentials((prevState) => ({
@@ -103,21 +114,29 @@ export const Login = () => {
             respuesta => {
 
               //HACER CONSOLE.LOG PARA VER QUÉ DEVUELVE MI BACKEND
-
-              // let decodificado = decodeToken(respuesta.data)
+              console.log(respuesta
+                );
+              let decodificado = decodeToken(respuesta.data.token)
               // (respuesta.data) si mi repuesta devuelve eso
+              console.log(decodificado);
 
                 let datosBackend = {
                     token: respuesta.data.token,
                 // EN NUESTRO CASO SERÍA: token: respuesta.data (se guarda el token codificado
                 // para usarlo en otras llamadas del fronted)
-                    usuario: respuesta.data.data.user
+                    // usuario: respuesta.data.data.user
                 // EN NUESTRO CASO SERÍA: usuario: decodificado (se guarda el token decodificad
                 // para poder acceder a sus elementos, como user o role)
                 }
 
                 console.log(datosBackend);
                 dispatch(login({credentials: datosBackend}));
+
+                // setWelcome(`Bienvenid@ de nuevo ${datosBackend.usuario.name}`);
+
+                setTimeout(() => {
+                  navigate("/");
+                }, 3000);
             }
         )
         .catch(error => console.log(error))
@@ -135,6 +154,10 @@ export const Login = () => {
           <div className="logRegContainer">
             <h1 className="text-center">Login</h1>
             <Form>
+              {welcome !== "" ? (
+                <div>{welcome}</div>
+              ) : (
+                <>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
@@ -170,6 +193,8 @@ export const Login = () => {
                 </Button>
               </div> */}
               <div className="logButton" onClick={()=> logIn()}>Submit</div>
+              </>
+              )}
             </Form>
           </div>
         </Col>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { Home } from '../Home/Home';
 import { Login } from '../Login/Login';
 import { NewAppointment } from '../NewAppointment/NewAppointment';
@@ -11,11 +11,14 @@ import { Treatments } from '../Treatment/Treatments';
 import { AboutUs } from '../../layout/AboutUs/AboutUs';
 import { Contact } from '../Contact/Contact';
 import './Body.css'
+import { UsersList } from '../UsersList/UsersList';
+import { UserDetail } from '../userDetail/UserDetail';
 
 export const Body = () => {
     return (
       <>
         <Routes>
+        <Route path='*' element={<Navigate to='/'/>}/>
         <Route path='/' element={<Home/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
@@ -26,6 +29,8 @@ export const Body = () => {
         <Route path='/treatments' element={<Treatments/>}/>
         <Route path='/aboutUs' element={<AboutUs/>}/>
         <Route path='/contact' element={<Contact/>}/>
+        <Route path='/usersList' element={<UsersList/>}/>
+        <Route path='/userDetail' element={<UserDetail/>}/>
     </Routes>
       </>
     );
