@@ -46,12 +46,12 @@ export const NavBar = () => {
               <NavDropdown.Item eventKey="2"><Link as={Link} to='/treatments'>
                 Treatments</Link>
               </NavDropdown.Item>
+              <NavDropdown.Item eventKey="7"><Link as={Link} to='/usersList'>
+                Users List</Link>
+              </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item eventKey="3"><Link as={Link} to='/aboutUs'>
                 About Us</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item eventKey="7"><Link as={Link} to='/usersList'>
-                Users List</Link>
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

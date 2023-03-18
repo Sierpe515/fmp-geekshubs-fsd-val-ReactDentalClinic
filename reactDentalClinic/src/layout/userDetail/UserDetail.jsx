@@ -20,7 +20,7 @@ export const UserDetail = () => {
         <Container fluid className="homeContainer d-flex flex-column justify-content-between">
             <Row className="d-flex justify-content-center">
                 <Col xxl={4} xl={5} sm={7} className="my-3">
-                    <div className='logRegContainer'>
+                    <div className='logRegContainer d-flex justify-content-center text-center'>
                         {detailRedux?.choosenObject?.name}
                     </div>
                 </Col>

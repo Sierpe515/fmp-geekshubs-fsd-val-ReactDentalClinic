@@ -20,7 +20,7 @@ export const UsersList = () => {
       bringUsers(ReduxCredentials.credentials.token)
         .then((result) => {
           console.log(result);
-          setUsers(result.data.user.nameq);
+          setUsers(result.data.user);
         })
         .catch((error) => console.log(error));
     }
@@ -41,7 +41,7 @@ export const UsersList = () => {
     >
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
-          <div className="logRegContainer">
+          <div className="logRegContainer d-flex justify-content-center text-center">
             {users.length > 0 ? (
               <div>
                 {users.map((persona) => {
@@ -53,7 +53,7 @@ export const UsersList = () => {
                 })}
               </div>
             ) : (
-              <div>ESTAN VINIENDO</div>
+              <div>LOADING</div>
             )}
           </div>
         </Col>

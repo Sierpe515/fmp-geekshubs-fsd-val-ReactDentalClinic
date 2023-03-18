@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -102,37 +101,24 @@ export const Login = () => {
     // }
   };
 
-  // const checkValue = (event) => {
-  //   event.preventDefault();
-  //   console.log(credentials);
-  // };
-
   const logIn = () => {
 
     logMe(credentials)
         .then(
             respuesta => {
-
-              //HACER CONSOLE.LOG PARA VER QUÉ DEVUELVE MI BACKEND
-              console.log(respuesta
-                );
               let decodificado = decodeToken(respuesta.data.token)
-              // (respuesta.data) si mi repuesta devuelve eso
+
               console.log(decodificado);
 
-                let datosBackend = {
-                    token: respuesta.data.token,
-                // EN NUESTRO CASO SERÍA: token: respuesta.data (se guarda el token codificado
-                // para usarlo en otras llamadas del fronted)
-                    // usuario: respuesta.data.data.user
-                // EN NUESTRO CASO SERÍA: usuario: decodificado (se guarda el token decodificad
-                // para poder acceder a sus elementos, como user o role)
-                }
+              let dateBackend = {
+                token: respuesta.data.token,
+                userName: decodificado.nameUser
+              }
 
-                console.log(datosBackend);
-                dispatch(login({credentials: datosBackend}));
+              console.log("dateBackend: ",dateBackend);
+              dispatch(login({credentials: dateBackend}));
 
-                // setWelcome(`Bienvenid@ de nuevo ${datosBackend.usuario.name}`);
+                setWelcome(`Welcome again ${dateBackend.userName}`);
 
                 setTimeout(() => {
                   navigate("/");
@@ -155,7 +141,7 @@ export const Login = () => {
             <h1 className="text-center">Login</h1>
             <Form>
               {welcome !== "" ? (
-                <div>{welcome}</div>
+                <div className="d-flex justify-content-center text-center">{welcome}</div>
               ) : (
                 <>
               <Form.Group className="mb-3" controlId="formBasicEmail">
