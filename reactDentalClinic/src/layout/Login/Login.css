@@ -17,6 +17,10 @@
     background-color: darkred;
 }
 
+.errorMessage {
+    color: rgb(177, 2, 2);
+}
+
 .z1 {
     display: none;
 }

@@ -8,6 +8,7 @@ import { userData } from "../userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { addChoosen } from '../detailSlice';
 import { useNavigate } from 'react-router-dom';
+import './UserList.css'
 
 export const UsersList = () => {
   const [users, setUsers] = useState([]);
@@ -46,7 +47,7 @@ export const UsersList = () => {
               <div>
                 {users.map((persona) => {
                   return (
-                    <div onClick={() => selected(persona)} key={persona.id}>
+                    <div className="userBox" onClick={() => selected(persona)} key={persona.id}>
                       {persona.name}
                     </div>
                   );

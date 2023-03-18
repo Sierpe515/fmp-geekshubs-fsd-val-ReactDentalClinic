@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Z2 from "../../image/z2.png";
 import "./Register.css";
+import { RegisterMe } from "../../services/apiCalls";
 import { ButtonSubmit } from "../../components/ButtonSubmit/ButtonSubmit";
 
 
@@ -75,10 +76,7 @@ export const Register = () => {
 
 
   const checkError = (e) => {
-
-
     let error = "";
-
     let checked = validate(
       e.target.name,
       e.target.value,
@@ -93,18 +91,10 @@ export const Register = () => {
       ...prevState,
       [e.target.name + "Validation"]: checked.validated,
     }));
-
-    // setDataUserError((prevState) => ({
-    //   ...prevState,
-    //   [e.target.name + "Error"]: error,
-    // }));
   };
 
   const checkError2 = (e) => {
-
-
     let error = "";
-
     let checked = validate(
       e.target.name,
       e.target.value,
@@ -113,18 +103,16 @@ export const Register = () => {
 
     error = checked.message;
 
-    // setDataUserValidation((prevState) => ({
-    //   ...prevState,
-    //   [e.target.name + "Validation"]: checked.validated,
-    // }));
-
-    // console.log("dataUserError",dataUserError)
-
     setDataUserError((prevState) => ({
       ...prevState,
       [e.target.name + "Error"]: error,
     }));
   };
+
+  const Register = () => {
+    RegisterMe(dataUser)
+      .then(console.log("usuario registrado")).catch(error => console.log(error))
+  }
 
   
   return (
@@ -214,32 +202,12 @@ export const Register = () => {
                   <Form.Text className="errorMessage">{dataUserError.passwordError}</Form.Text>
                 </Form.Group>
               </Row>
-
-              {/* <div className="d-grid gap-2">
-                <Button
-                  variant="primary"
-                  type="submit"
-                  // className="logRegButton"
-                  className={
-                    registerAct ? "registerSendDeac registerSendAct" : "registerSendDeac"
-                  }
-                  onClick={
-                    registerAct
-                      ? () => {
-                        checkValue();
-                        }
-                      : () => {}
-                  }
-                >
-                  Submit
-                </Button>
-              </div> */}
               <ButtonSubmit
                 className={registerAct ? "registerSendDeac registerSendAct" : "registerSendDeac"}
                 onClick={
                   registerAct
                     ? () => {
-                      checkValue();
+                      Register()
                       }
                     : () => {}
                 }

@@ -5,11 +5,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Z1 from "../../image/z1.png";
 import "./Login.css";
+import "../../components/InputBox/InputBox.css"
 import { logMe } from "../../services/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../userSlice";
 import { decodeToken, useJwt } from "react-jwt";
 import { useNavigate } from "react-router-dom";
+import { validate } from "../../helpers/useful";
 
 export const Login = () => {
 
@@ -25,9 +27,12 @@ export const Login = () => {
   const [credentialsError, setCredentialsError] = useState({
     emailError: "",
     passwordError: "",
+    messageButton: ""
   });
 
   const [welcome, setWelcome] = useState("");
+
+  const [btnMessage, setBtnMessage] = useState("")
 
   useEffect(() => {
     if (credentialsRdx.credentials.token) {
@@ -42,63 +47,20 @@ export const Login = () => {
     }));
   };
 
-  const lowerCaseLetters = /[a-z]/g;
-  const upperCaseLetters = /[A-Z]/g;
-  const numbers = /[0-9]/g;
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const checkError2 = (e) => {
+    let error = "";
+    let checked = validate(
+      e.target.name,
+      e.target.value,
+      e.target.required
+    );
 
-  const credentialsValidate = (e) => {
-    // switch (e.target.name) {
-    //   case "email":
-    //     if (!credentials.email.match(emailRegex)) {
-    //       setCredentialsError((prevState) => ({
-    //         ...prevState,
-    //         emailError: "Enter a valid email",
-    //       }));
-    //     } else {
-    //       setCredentialsError((prevState) => ({
-    //         ...prevState,
-    //         emailError: "",
-    //       }));
-    //     }
+    error = checked.message;
 
-    //     break;
-
-    //   case "password":
-    //     if (credentials.password.length < 8) {
-    //       setCredentialsError((prevState) => ({
-    //         ...prevState,
-    //         passwordError: "The password must have at least eight characters",
-    //       }));
-    //     } else if (!credentials.password.match(lowerCaseLetters)) {
-    //       setCredentialsError((prevState) => ({
-    //         ...prevState,
-    //         passwordError:
-    //           "The password must have at least one lowercase letter",
-    //       }));
-    //     } else if (!credentials.password.match(upperCaseLetters)) {
-    //       setCredentialsError((prevState) => ({
-    //         ...prevState,
-    //         passwordError:
-    //           "The password must have at least one uppercase letter",
-    //       }));
-    //     } else if (!credentials.password.match(numbers)) {
-    //       setCredentialsError((prevState) => ({
-    //         ...prevState,
-    //         passwordError: "The password must have at least one number",
-    //       }));
-    //     } else {
-    //       setCredentialsError((prevState) => ({
-    //         ...prevState,
-    //         passwordError: "",
-    //       }));
-    //     }
-
-    //     break;
-
-    //   default:
-    //     console.log("Something has gone wrong");
-    // }
+    setCredentialsError((prevState) => ({
+      ...prevState,
+      [e.target.name + "Error"]: error,
+    }));
   };
 
   const logIn = () => {
@@ -112,20 +74,26 @@ export const Login = () => {
 
               let dateBackend = {
                 token: respuesta.data.token,
-                userName: decodificado.nameUser
+                userName: decodificado.nameUser,
+                userRole: decodificado.roleId
               }
 
-              console.log("dateBackend: ",dateBackend);
+              console.log("dateBackend: ",dateBackend.userRole);
               dispatch(login({credentials: dateBackend}));
 
                 setWelcome(`Welcome again ${dateBackend.userName}`);
+
+                console.log(welcome);
 
                 setTimeout(() => {
                   navigate("/");
                 }, 3000);
             }
         )
-        .catch(error => console.log(error))
+        .catch(error => {
+          console.log(error)
+          setBtnMessage("Email or password invalid")
+        })
 
   }
 
@@ -147,38 +115,37 @@ export const Login = () => {
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
+                  className={
+                    btnMessage === ""
+                      ? "inputBasicDesign"
+                      : "inputBasicDesign inputErrorDesign"
+                  }
                   type="email"
                   name="email"
                   placeholder="Enter email"
                   onChange={(e) => newCredentials(e)}
-                  onBlur={(e) => credentialsValidate(e)}
+                  onBlur={(e) => checkError2(e)}
                 />
-                <Form.Text>{credentialsError.emailError}</Form.Text>
+                <Form.Text className="errorMessage">{credentialsError.emailError}</Form.Text>
               </Form.Group>
-
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
+                  className={
+                    btnMessage === ""
+                      ? "inputBasicDesign"
+                      : "inputBasicDesign inputErrorDesign"
+                  }
                   type="password"
                   name="password"
                   placeholder="Password"
                   onChange={(e) => newCredentials(e)}
-                  onBlur={(e) => credentialsValidate(e)}
+                  onBlur={(e) => checkError2(e)}
                 />
-                <Form.Text>{credentialsError.passwordError}</Form.Text>
+                <Form.Text className="errorMessage">{credentialsError.passwordError}</Form.Text>
               </Form.Group>
-
-              {/* <div className="d-grid gap-2">
-                <Button
-                  variant="primary"
-                  type="submit"
-                  className="logRegButton"
-                  onClick={()=> logIn()}
-                >
-                  Submit
-                </Button>
-              </div> */}
-              <div className="logButton" onClick={()=> logIn()}>Submit</div>
+              <Form.Text className="errorMessage">{btnMessage}</Form.Text>
+              <div className="logButton" name="button" onClick={()=> logIn()}>Submit</div>
               </>
               )}
             </Form>
