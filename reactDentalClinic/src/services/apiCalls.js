@@ -26,3 +26,33 @@ export const bringUsers = async (token) => {
 
     return await axios.get(`${root}/getProfilesAdm`, config);
 }
+
+export const bringAppointments = async (token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  return await axios.get(`${root}/getAppAdm`, config);
+}
+
+export const getUserProfile = async (token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  return await axios.get(`${root}/profile`, config);
+}
+
+export const updateProfile = async (token, body) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  return await axios.put(`${root}/updateProfile`, config, body);
+}

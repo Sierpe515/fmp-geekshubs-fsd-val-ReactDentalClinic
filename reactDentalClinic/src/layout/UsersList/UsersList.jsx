@@ -20,7 +20,7 @@ export const UsersList = () => {
     if (users.length === 0) {
       bringUsers(ReduxCredentials.credentials.token)
         .then((result) => {
-          console.log(result);
+          console.log(result.data.user);
           setUsers(result.data.user);
         })
         .catch((error) => console.log(error));

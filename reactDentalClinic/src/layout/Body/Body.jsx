@@ -5,6 +5,7 @@ import { Login } from '../Login/Login';
 import { NewAppointment } from '../NewAppointment/NewAppointment';
 import { Register } from '../Register/Register';
 import { Profile } from '../Profile/Profile';
+import { ProfileUpdate } from '../ProfileUpdate/ProfileUpdate';
 import { Appointments } from '../Appointments/Appointments';
 import { Doctors } from '../Doctors/Doctors';
 import { Treatments } from '../Treatment/Treatments';
@@ -13,6 +14,7 @@ import { Contact } from '../Contact/Contact';
 import './Body.css'
 import { UsersList } from '../UsersList/UsersList';
 import { UserDetail } from '../userDetail/UserDetail';
+import { AppointmentDetail } from '../appointmentDetail/AppointmentDetail';
 
 export const Body = () => {
     return (
@@ -24,7 +26,9 @@ export const Body = () => {
         <Route path='/login' element={<Login/>}/>
         <Route path='/newAppointment' element={<NewAppointment/>}/>
         <Route path='/profile' element={<Profile/>}/>
+        <Route path='/updateProfile' element={<ProfileUpdate/>}/>
         <Route path='/appointments' element={<Appointments/>}/>
+        <Route path='/appointmentDetail' element={<AppointmentDetail/>}/>
         <Route path='/doctors' element={<Doctors/>}/>
         <Route path='/treatments' element={<Treatments/>}/>
         <Route path='/aboutUs' element={<AboutUs/>}/>

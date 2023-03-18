@@ -17,8 +17,13 @@ export const userSlice = createSlice({
           ...state,
           ...action.payload
         }
-      }
-      
+      },
+      profile: (state, action) => {
+        return {
+          ...state,
+          ...action.payload
+        }
+      }, 
     }
     
 });

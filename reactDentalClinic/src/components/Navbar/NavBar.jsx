@@ -57,6 +57,9 @@ export const NavBar = () => {
                   <NavDropdown.Item eventKey="7"><Link as={Link} to='/usersList'>
                     Users List</Link>
                   </NavDropdown.Item>
+                  <NavDropdown.Item eventKey="9"><Link as={Link} to='/appointments'>
+                    Appointments</Link>
+                  </NavDropdown.Item>
                 </NavDropdown>
               ):('')
             ) : ("")}
