@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { ButtonNav } from '../../components/ButtonNav/ButtonNav';
-import { bringAppointments } from "../../services/apiCalls";
+import { bringAppointments, bringAppointmentsDoctor } from "../../services/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { addAppointment } from '../appointmentSlice';
 import { useNavigate } from 'react-router-dom';
@@ -16,10 +16,17 @@ export const Appointments = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (appointments.length === 0) {
+        if (ReduxCredentials.credentials.userRole.includes('admin') && appointments.length === 0) {
           bringAppointments(ReduxCredentials.credentials.token)
             .then((result) => {
-              console.log(result.data.userAppointment);
+              console.log("admin",result.data.userAppointment);
+              setAppointments(result.data.userAppointment);
+            })
+            .catch((error) => console.log(error));
+        } else if (ReduxCredentials.credentials.userRole.includes('doctor') && appointments.length === 0) {
+          bringAppointmentsDoctor(ReduxCredentials.credentials.token)
+            .then((result) => {
+              console.log("doctor",result.data.userAppointment);
               setAppointments(result.data.userAppointment);
             })
             .catch((error) => console.log(error));
@@ -29,9 +36,15 @@ export const Appointments = () => {
     const selected = (cita) => {
         dispatch(addAppointment({ choosenAppointment: cita }))
     
+        if (ReduxCredentials.credentials.userRole.includes('admin')){
             setTimeout(()=>{
                 navigate("/appointmentDetail");
             },500)
+          } else if (ReduxCredentials.credentials.userRole.includes('doctor')){
+            setTimeout(()=>{
+              navigate("/appointmentDetailDoctor");
+          },500)
+          }
     };
 
     return (

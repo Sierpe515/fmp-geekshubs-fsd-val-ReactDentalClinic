@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { ButtonNav } from '../../components/ButtonNav/ButtonNav';
-import { bringUsers } from "../../services/apiCalls";
+import { bringUsers, bringUsersByDoctor } from "../../services/apiCalls";
 import { userData } from "../userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { addChoosen } from '../detailSlice';
@@ -17,22 +17,34 @@ export const UsersList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (users.length === 0) {
+    if (ReduxCredentials.credentials.userRole.includes('admin') && users.length === 0) {
       bringUsers(ReduxCredentials.credentials.token)
         .then((result) => {
-          console.log(result.data.user);
+          console.log(ReduxCredentials.credentials);
           setUsers(result.data.user);
         })
         .catch((error) => console.log(error));
-    }
-  }, [users]);
+    } else if (ReduxCredentials.credentials.userRole.includes('doctor') && users.length === 0) {
+      bringUsersByDoctor(ReduxCredentials.credentials.token)
+        .then((result) => {
+          console.log(ReduxCredentials.credentials);
+          setUsers(result.data.user);
+        })
+        .catch((error) => console.log(error));
+    }}, [users]);
 
   const selected = (persona) => {
     dispatch(addChoosen({ choosenObject: persona }))
 
+    if (ReduxCredentials.credentials.userRole.includes('admin')){
         setTimeout(()=>{
             navigate("/userDetail");
         },500)
+      } else if (ReduxCredentials.credentials.userRole.includes('doctor')){
+        setTimeout(()=>{
+          navigate("/userDetailDoctor");
+      },500)
+      }
   };
 
   return (

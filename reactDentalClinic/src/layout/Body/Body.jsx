@@ -15,6 +15,8 @@ import './Body.css'
 import { UsersList } from '../UsersList/UsersList';
 import { UserDetail } from '../userDetail/UserDetail';
 import { AppointmentDetail } from '../appointmentDetail/AppointmentDetail';
+import { UserDetailDoctor } from '../userDetail/userDetailDoctor';
+import { AppointmentDetailDoctor } from '../appointmentDetail/AppointmentDetailDoctor';
 
 export const Body = () => {
     return (
@@ -29,12 +31,14 @@ export const Body = () => {
         <Route path='/updateProfile' element={<ProfileUpdate/>}/>
         <Route path='/appointments' element={<Appointments/>}/>
         <Route path='/appointmentDetail' element={<AppointmentDetail/>}/>
+        <Route path='/appointmentDetailDoctor' element={<AppointmentDetailDoctor/>}/>
         <Route path='/doctors' element={<Doctors/>}/>
         <Route path='/treatments' element={<Treatments/>}/>
         <Route path='/aboutUs' element={<AboutUs/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/usersList' element={<UsersList/>}/>
         <Route path='/userDetail' element={<UserDetail/>}/>
+        <Route path='/userDetailDoctor' element={<UserDetailDoctor/>}/>
     </Routes>
       </>
     );
