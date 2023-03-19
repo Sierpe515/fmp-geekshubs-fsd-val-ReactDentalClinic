@@ -85,7 +85,7 @@ export const NavBar = () => {
                 id="dropdown-menu-align-end"
               >
                 <Dropdown.Item eventKey="4"><Link as={Link} to='/profile'>Profile</Link></Dropdown.Item>
-                <Dropdown.Item eventKey="5"><Link as={Link} to='/appointments'>Appointments</Link></Dropdown.Item>
+                <Dropdown.Item eventKey="5"><Link as={Link} to='/appointmentsUser'>Appointments</Link></Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item eventKey="6">Log Out</Dropdown.Item>
               </DropdownButton>

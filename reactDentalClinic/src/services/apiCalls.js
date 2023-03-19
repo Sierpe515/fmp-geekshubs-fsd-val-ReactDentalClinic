@@ -47,6 +47,16 @@ export const bringAppointments = async (token) => {
   return await axios.get(`${root}/getAppAdm`, config);
 }
 
+export const bringAppointmentsUser = async (token) => {
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  return await axios.get(`${root}/getApp`, config);
+}
+
 export const bringAppointmentsDoctor = async (token) => {
   let config = {
     headers: { 
@@ -81,4 +91,9 @@ export const updateProfile = async (body) => {
   //Token is undefined
 
   return await axios.put(`${root}/updateProfile`, config, body);
+}
+
+export const getAllDoctors = async () => {
+
+  return await axios.get(`${root}/getDoctors`);
 }

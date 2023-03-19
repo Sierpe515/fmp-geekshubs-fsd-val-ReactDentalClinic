@@ -12,11 +12,17 @@ export const appointmentSlice = createSlice({
           ...action.payload
         }
       },
+      addAppointmentUser: (state, action) => {
+        return {
+          ...state,
+          ...action.payload
+        }
+      },
     }
     
 });
 
-export const { addAppointment } = appointmentSlice.actions;
+export const { addAppointment, addAppointmentUser } = appointmentSlice.actions;
 
 export const appointmentDetailData = (state) => state.appointment;
 

@@ -17,6 +17,8 @@ import { UserDetail } from '../userDetail/UserDetail';
 import { AppointmentDetail } from '../appointmentDetail/AppointmentDetail';
 import { UserDetailDoctor } from '../userDetail/userDetailDoctor';
 import { AppointmentDetailDoctor } from '../appointmentDetail/AppointmentDetailDoctor';
+import { AppointmentDetailUser } from '../appointmentDetail/AppointmentDetailUser';
+import { AppointmentsUser } from '../Appointments/AppointmentsUser';
 
 export const Body = () => {
     return (
@@ -30,7 +32,9 @@ export const Body = () => {
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/updateProfile' element={<ProfileUpdate/>}/>
         <Route path='/appointments' element={<Appointments/>}/>
+        <Route path='/appointmentsUser' element={<AppointmentsUser/>}/>
         <Route path='/appointmentDetail' element={<AppointmentDetail/>}/>
+        <Route path='/appointmentDetailUser' element={<AppointmentDetailUser/>}/>
         <Route path='/appointmentDetailDoctor' element={<AppointmentDetailDoctor/>}/>
         <Route path='/doctors' element={<Doctors/>}/>
         <Route path='/treatments' element={<Treatments/>}/>
