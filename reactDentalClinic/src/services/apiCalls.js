@@ -54,5 +54,8 @@ export const updateProfile = async (token, body) => {
     }
   };
 
+  console.log(body);
+  //Token is undefined
+
   return await axios.put(`${root}/updateProfile`, config, body);
 }

@@ -8,6 +8,7 @@ import { userData } from "../userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { addChoosen } from '../detailSlice';
 import { useNavigate } from 'react-router-dom';
+// import { profile } from "console";
 
 export const Profile = () => {
 
@@ -45,13 +46,13 @@ export const Profile = () => {
         }
     }, [users]);
 
-    const selected = (persona) => {
-        dispatch(addChoosen({ choosenObject: persona }))
+    // const selected = (persona) => {
+    //     dispatch(profile({ credentials: persona }))
 
-            setTimeout(()=>{
-                navigate("/userDetail");
-            },500)
-    };
+    //         setTimeout(()=>{
+    //             navigate("/userDetail");
+    //         },500)
+    // };
 
   return (
     <Container
