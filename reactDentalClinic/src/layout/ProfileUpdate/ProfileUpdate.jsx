@@ -9,11 +9,16 @@ import Form from "react-bootstrap/Form";
 import "../Register/Register.css";
 import { updateProfile } from "../../services/apiCalls";
 import { ButtonSubmit } from "../../components/ButtonSubmit/ButtonSubmit";
+import { useSelector } from "react-redux";
+import { userData } from '../../layout/userSlice';
 
 
 // HOOKS
 
 export const ProfileUpdate = () => {
+
+  const dataCredentialsRdx = useSelector(userData);
+
   const [dataUserUpdate, setDataUserUpdate] = useState({
     name: "",
     surname: "",
@@ -22,7 +27,7 @@ export const ProfileUpdate = () => {
     // direction: "",
     email: "",
     // phone: "",
-    password: ""
+    password: "",
   });
 
   const [dataUserUpdateValidation, setDataUserUpdateValidation] = useState({
@@ -51,6 +56,11 @@ export const ProfileUpdate = () => {
   };
 
   //USEEFFECT
+
+
+  useEffect(()=>{
+    console.log(dataCredentialsRdx.credentials.token);
+  })
 
   useEffect(() => {
  
@@ -114,7 +124,8 @@ export const ProfileUpdate = () => {
   };
 
   const UpdateUser = () => {
-    updateProfile(dataUserUpdate)
+    updateProfile(dataUserUpdate, dataCredentialsRdx.credentials.token)
+    //El segundo argumento no lo envía
       .then(console.log("usuario actualizado")).catch(error => console.log(error))
   }
 

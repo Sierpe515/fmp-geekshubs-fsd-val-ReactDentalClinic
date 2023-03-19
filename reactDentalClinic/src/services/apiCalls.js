@@ -47,14 +47,17 @@ export const getUserProfile = async (token) => {
   return await axios.get(`${root}/profile`, config);
 }
 
-export const updateProfile = async (token, body) => {
+export const updateProfile = async (body) => {
+
+  let token = body.token
+
   let config = {
     headers: { 
       'Authorization': 'Bearer '+ token,  
     }
   };
 
-  console.log(body);
+  console.log(token);
   //Token is undefined
 
   return await axios.put(`${root}/updateProfile`, config, body);
