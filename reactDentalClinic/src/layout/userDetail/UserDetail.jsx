@@ -8,12 +8,14 @@ import { detailData } from '../detailSlice';
 import './UserDetail.css'
 import { deleteUserByAdmin } from "../../services/apiCalls";
 import { userData } from "../userSlice";
+import { useNavigate } from "react-router-dom";
  
 export const UserDetail = () => {
 
     //conexion a RDX en modo lectura
     const detailRedux = useSelector(detailData);
     const credentialsRdx = useSelector(userData);
+    const navigate = useNavigate();
 
     let params = (detailRedux.choosenObject.id);
     let token = (credentialsRdx.credentials.token);
@@ -30,6 +32,10 @@ export const UserDetail = () => {
             userDeleteByAdmin => {
                 console.log(token)
                 console.log(params)
+
+                setTimeout(() => {
+                    navigate("/usersList");
+                  }, 3000);
             }
         )
         .catch(error => {
