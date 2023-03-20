@@ -16,15 +16,18 @@ import orthod from '../../image/orthod.png';
 import whitening from '../../image/whitening.png';
 import period from '../../image/period.png';
 import other from '../../image/other.png'
+import Calendar from 'react-calendar';
 import './NewAppointment.css'
 
 export const NewAppointment = () => {
+    const [day, setDay] = useState(new Date());
+    const locale = 'fr-CA'; 
     const [show, setShow] = useState(false);
     const target = useRef(null);
-
     const [hour, setHour] = useState({});
     const [doctor, setDoctor] = useState({});
     const [treatment, setTreatment] = useState({});
+
 
     const chooseHour = (hora) => {
         console.log(hora)
@@ -38,7 +41,19 @@ export const NewAppointment = () => {
 
     const chooseTreatment = (tratamiento) => {
         console.log(tratamiento);
-        setDoctor(tratamiento)
+        setTreatment(tratamiento)
+    }
+
+    const bookAppointment = () => {
+        let dataAppointment = [
+            hour, doctor, treatment
+        ]
+        console.log(dataAppointment);
+    }
+
+    const chooseDay = (dia) => {
+        console.log(dia)
+        setDay(dia)
     }
 
   return (
@@ -54,6 +69,20 @@ export const NewAppointment = () => {
                 <Col xxl={4} xl={5} sm={7} className="my-3">
                     <div className='logRegContainer'>
                         <h1 className='text-center'>Calendar</h1>
+                        <Calendar 
+                            className="calendar" 
+                            onChange={chooseDay} 
+                            value={day}
+                            formatLongDate={
+                                (date) => new Intl.DateTimeFormat(
+                                  locale, 
+                                  {
+                                    year: "numeric", 
+                                    month: "2-digit", 
+                                    day: "2-digit"
+                                  }).format(date)
+                                }
+                        />
                     </div>
                 </Col>
             </Row>
@@ -104,6 +133,9 @@ export const NewAppointment = () => {
                 <div onClick={()=> chooseTreatment('Whitening')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ whitening } alt="" /></div>
                 <div onClick={()=> chooseTreatment('Periodontics')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ period } alt="" /></div>
                 <div onClick={()=> chooseTreatment('Others')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ other } alt="" /></div>
+            </Row>
+            <Row className='justify-content-center'>
+            <div className="appointmentButton" name="button" onClick={()=> bookAppointment()}>Book Appointment</div>
             </Row>
         </Container>
   )

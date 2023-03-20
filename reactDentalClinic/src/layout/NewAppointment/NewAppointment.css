@@ -59,3 +59,30 @@
 .treatmentIcon {
     height: 5em;
 }
+
+.appointmentButton {
+    background-color: rgb(253, 55, 55);
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    height: 2.5em;
+    width: 12em;
+    border-radius: 5px;
+    border: 1px solid darkred;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+}
+
+.appointmentButton:hover {
+    transition: 1s;
+    background-color: darkred;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
