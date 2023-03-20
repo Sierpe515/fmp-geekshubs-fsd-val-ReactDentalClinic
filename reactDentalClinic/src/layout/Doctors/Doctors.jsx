@@ -17,7 +17,7 @@ export const Doctors = () => {
                 })
                 .catch((error) => console.log(error));
         }
-    });
+    }),[doctors];
 
   return (
     <Container fluid className="homeContainer d-flex flex-column justify-content-between">
