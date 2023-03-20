@@ -8,17 +8,27 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Logo1 from '../../image/logo1.png'
 import './NavBar.css'
-import { useSelector } from "react-redux";
-import { userData } from '../../layout/userSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { userData, logout } from '../../layout/userSlice';
+import { useNavigate } from "react-router-dom";
+
 
 
 export const NavBar = () => {
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const dataCredentialsRdx = useSelector(userData);
 
   useEffect(()=>{
     console.log(dataCredentialsRdx);
   })
+
+  const logOut = () => {
+    // dispatch(logout(dataCredentialsRdx = ""));
+    localStorage.clear();
+    window.location.href = '/';
+  }
 
   return (
     <Navbar className='NavBar' bg="primary" variant='dark' expand="lg" fixed="top">
@@ -87,7 +97,7 @@ export const NavBar = () => {
                 <Dropdown.Item eventKey="4"><Link as={Link} to='/profile'>Profile</Link></Dropdown.Item>
                 <Dropdown.Item eventKey="5"><Link as={Link} to='/appointmentsUser'>Appointments</Link></Dropdown.Item>
                 <Dropdown.Divider />
-                <Dropdown.Item eventKey="6">Log Out</Dropdown.Item>
+                <Dropdown.Item eventKey="6" onClick={() => {logOut()}}>Log Out</Dropdown.Item>
               </DropdownButton>
               
             ) : (

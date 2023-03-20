@@ -95,3 +95,17 @@ export const getAllDoctors = async () => {
 
   return await axios.get(`${root}/getDoctors`);
 }
+
+export const deleteUserByAdmin = async (params, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  console.log(params);
+  console.log(token);
+
+  return await axios.delete(`${root}/deleteUser/${params}`, config);
+}
