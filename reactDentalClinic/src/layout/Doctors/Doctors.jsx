@@ -27,6 +27,7 @@ export const Doctors = () => {
                         <h1 className='text-center'>Doctors</h1>
                         
                         {/* <div>{doctors.map()}</div> */}
+
                     </div>
                 </Col>
             </Row>

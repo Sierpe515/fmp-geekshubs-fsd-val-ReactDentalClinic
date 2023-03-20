@@ -66,7 +66,7 @@ export const AppointmentDetail = () => {
                             {detailRedux?.choosenAppointment?.Employee.schedule}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            {detailRedux?.choosenAppointment?.Employee.specialty_id}
+                            {detailRedux?.choosenAppointment?.Employee?.Specialty.type}
                         </div>
                     </Row>
                 </Col>

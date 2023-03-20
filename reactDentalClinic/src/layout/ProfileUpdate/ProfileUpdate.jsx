@@ -19,6 +19,8 @@ export const ProfileUpdate = () => {
 
   const dataCredentialsRdx = useSelector(userData);
 
+  let token = dataCredentialsRdx.credentials.token;
+
   const [dataUserUpdate, setDataUserUpdate] = useState({
     name: "",
     surname: "",
@@ -124,7 +126,7 @@ export const ProfileUpdate = () => {
   };
 
   const UpdateUser = () => {
-    updateProfile(dataUserUpdate, dataCredentialsRdx.credentials.token)
+    updateProfile(dataUserUpdate, token)
     //El segundo argumento no lo envía
       .then(console.log("usuario actualizado")).catch(error => console.log(error))
   }

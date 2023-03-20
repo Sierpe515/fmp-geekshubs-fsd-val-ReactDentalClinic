@@ -77,9 +77,7 @@ export const getUserProfile = async (token) => {
   return await axios.get(`${root}/profile`, config);
 }
 
-export const updateProfile = async (body) => {
-
-  let token = body.token
+export const updateProfile = async (dataUserUpdate, token) => {
 
   let config = {
     headers: { 
@@ -90,7 +88,7 @@ export const updateProfile = async (body) => {
   console.log(token);
   //Token is undefined
 
-  return await axios.put(`${root}/updateProfile`, config, body);
+  return await axios.put(`${root}/updateProfile`, dataUserUpdate, config);
 }
 
 export const getAllDoctors = async () => {

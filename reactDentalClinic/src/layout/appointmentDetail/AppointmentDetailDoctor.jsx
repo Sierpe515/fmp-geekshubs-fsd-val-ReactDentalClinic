@@ -51,7 +51,7 @@ export const AppointmentDetailDoctor = () => {
                     <Row>
                         <h3>Doctor info</h3>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            {detailRedux?.choosenAppointment?.Employee.User.name}
+                            {detailRedux?.choosenAppointment?.Employee?.User?.name}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
                             {detailRedux?.choosenAppointment?.Employee.User.surname}
@@ -66,7 +66,7 @@ export const AppointmentDetailDoctor = () => {
                             {detailRedux?.choosenAppointment?.Employee.schedule}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            {detailRedux?.choosenAppointment?.Employee.specialty_id}
+                            {detailRedux?.choosenAppointment?.Employee?.Specialty?.type}
                         </div>
                     </Row>
                 </Col>
