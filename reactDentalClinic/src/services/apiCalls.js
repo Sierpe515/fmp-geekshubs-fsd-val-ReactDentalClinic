@@ -95,6 +95,11 @@ export const getAllDoctors = async () => {
   return await axios.get(`${root}/getDoctors`);
 }
 
+export const getAllTreatments = async () => {
+
+  return await axios.get(`${root}/getTreatments`);
+}
+
 export const deleteUserByAdmin = async (params, token) => {
 
   let config = {
@@ -120,3 +125,31 @@ export const createAppointment = async (dataAppointment, token) => {
 
     return await axios.post(`${root}/app`, dataAppointment, config);
 } 
+
+export const CancelAppByUser = async (params, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  console.log(params);
+  console.log(token);
+
+  return await axios.delete(`${root}/cancelApp/${params}`, config);
+}
+
+export const CancelAppByAdmin = async (params, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  console.log(params);
+  console.log(token);
+
+  return await axios.delete(`${root}/cancelAppAdm/${params}`, config);
+}

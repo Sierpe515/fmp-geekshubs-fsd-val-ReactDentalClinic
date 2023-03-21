@@ -6,3 +6,23 @@
     margin: 0.25em;
     padding: 0.5em;
 }
+
+.cancelAppButton {
+    background-color: rgb(253, 55, 55);
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    height: 2.5em;
+    width: 12em;
+    border-radius: 5px;
+    border: 1px solid darkred;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+}
+
+.cancelAppButton:hover {
+    transition: 1s;
+    background-color: darkred;
+}

@@ -20,6 +20,7 @@ export const Appointments = () => {
           bringAppointments(ReduxCredentials.credentials.token)
             .then((result) => {
               console.log("admin",result.data.userAppointment);
+              console.log(ReduxCredentials);
               setAppointments(result.data.userAppointment);
             })
             .catch((error) => console.log(error));

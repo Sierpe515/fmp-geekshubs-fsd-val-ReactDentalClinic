@@ -1,0 +1,22 @@
+
+.docContainer {
+    height: 84vh;
+    width: 100vw;
+}
+
+.doctorsBox {
+    display: flex;
+    justify-content: center;
+}
+
+.cardDoctor {
+    display: flex;
+    justify-content: center;
+}
+
+.docImg {
+    height: 15rem;
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+}

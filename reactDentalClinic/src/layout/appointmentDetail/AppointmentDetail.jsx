@@ -5,15 +5,37 @@ import Col from 'react-bootstrap/Col';
 import { useSelector } from 'react-redux';
 import { appointmentDetailData } from '../appointmentSlice';
 import './appointmentDetail.css'
+import { CancelAppByAdmin } from "../../services/apiCalls";
+import { useNavigate } from "react-router-dom";
+import { userData } from "../userSlice";
  
 export const AppointmentDetail = () => {
 
     //conexion a RDX en modo lectura
     const detailRedux = useSelector(appointmentDetailData);
+    const credentialsRdx = useSelector(userData);
+    const navigate = useNavigate();
+
+    let token = (credentialsRdx.credentials.token);
+    let params = (detailRedux.choosenAppointment.id)
 
     useEffect(()=>{
-        console.log(detailRedux.choosenAppointment,"patata")
+        console.log(detailRedux.choosenAppointment.id,"patata")
+        console.log(credentialsRdx.credentials.token);
     },[])
+
+    const cancelAppointmentByAdmin = () => {
+        CancelAppByAdmin(params, token)
+        .then(
+            userCancelApp => {
+                console.log("Cita borrada");
+
+                setTimeout(() => {
+                    navigate("/appointments");
+                  }, 500);
+            }
+        )
+    }
 
 
      return (
@@ -70,6 +92,9 @@ export const AppointmentDetail = () => {
                         </div>
                     </Row>
                 </Col>
+            </Row>
+            <Row className='justify-content-center'>
+            <div className="cancelAppButton" name="button" onClick={()=> cancelAppointmentByAdmin()}>Cancel Appointment</div>
             </Row>
         </Container>
      )
