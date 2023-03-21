@@ -18,10 +18,10 @@ import period from '../../image/period.png';
 import other from '../../image/other.png'
 import Calendar from 'react-calendar';
 import './NewAppointment.css'
+import dayjs from 'dayjs';
 
 export const NewAppointment = () => {
     const [day, setDay] = useState(new Date());
-    const locale = 'fr-CA'; 
     const [show, setShow] = useState(false);
     const target = useRef(null);
     const [hour, setHour] = useState({});
@@ -46,14 +46,14 @@ export const NewAppointment = () => {
 
     const bookAppointment = () => {
         let dataAppointment = [
-            hour, doctor, treatment
+            day, hour, doctor, treatment
         ]
         console.log(dataAppointment);
     }
 
     const chooseDay = (dia) => {
-        console.log(dia)
-        setDay(dia)
+        console.log(dayjs(dia).format('YYYY-MM-DD'));
+        setDay(dayjs(dia).format('YYYY-MM-DD'));
     }
 
   return (
@@ -72,16 +72,6 @@ export const NewAppointment = () => {
                         <Calendar 
                             className="calendar" 
                             onChange={chooseDay} 
-                            value={day}
-                            formatLongDate={
-                                (date) => new Intl.DateTimeFormat(
-                                  locale, 
-                                  {
-                                    year: "numeric", 
-                                    month: "2-digit", 
-                                    day: "2-digit"
-                                  }).format(date)
-                                }
                         />
                     </div>
                 </Col>

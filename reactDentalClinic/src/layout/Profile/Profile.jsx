@@ -8,6 +8,7 @@ import { userData } from "../userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { addChoosen } from '../detailSlice';
 import { useNavigate } from 'react-router-dom';
+import dayjs from 'dayjs';
 // import { profile } from "console";
 
 export const Profile = () => {
@@ -54,6 +55,8 @@ export const Profile = () => {
     //         },500)
     // };
 
+    // let bDate = (dayjs({users.birth_date}).format("DD MM YYYY"))
+
   return (
     <Container
       fluid
@@ -67,7 +70,7 @@ export const Profile = () => {
             {users.email && <p><strong>Email:</strong> {users.email}</p>}
             {users.nif && <p><strong>NIF:</strong> {users.nif}</p>}
             {users.direction && <p><strong>Dirección:</strong> {users.direction}</p>}
-            {users.birth_date && <p><strong>Fecha de Nacimiento:</strong> {users.birth_date}</p>}
+            {users.birth_date && <p><strong>Fecha de Nacimiento:</strong> {dayjs(users.birth_date).format("DD MMMM YYYY")}</p>}
             {users.phone && <p><strong>Teléfono:</strong> {users.phone}</p>}
           </div>
         </Col>
