@@ -35,7 +35,7 @@ export const UserDetail = () => {
 
                 setTimeout(() => {
                     navigate("/usersList");
-                  }, 3000);
+                  }, 500);
             }
         )
         .catch(error => {

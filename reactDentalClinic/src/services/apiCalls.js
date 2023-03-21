@@ -86,7 +86,6 @@ export const updateProfile = async (dataUserUpdate, token) => {
   };
 
   console.log(token);
-  //Token is undefined
 
   return await axios.put(`${root}/updateProfile`, dataUserUpdate, config);
 }
@@ -109,3 +108,15 @@ export const deleteUserByAdmin = async (params, token) => {
 
   return await axios.delete(`${root}/deleteUser/${params}`, config);
 }
+
+export const createAppointment = async (dataAppointment, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  console.log(dataAppointment)
+
+    return await axios.post(`${root}/app`, dataAppointment, config);
+} 

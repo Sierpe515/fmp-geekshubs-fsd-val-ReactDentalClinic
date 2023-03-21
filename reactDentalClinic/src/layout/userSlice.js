@@ -12,10 +12,10 @@ export const userSlice = createSlice({
           ...action.payload
         }
       },
-      logout: (state, action) => {
+      clearRedux: (state) => {
         return {
           ...state,
-          ...action.payload
+          credentials: {}
         }
       },
       profile: (state, action) => {
@@ -23,12 +23,12 @@ export const userSlice = createSlice({
           ...state,
           ...action.payload
         }
-      }, 
+      },
     }
     
 });
 
-export const { login, logout } = userSlice.actions;
+export const { login, clearRedux } = userSlice.actions;
 
 export const userData = (state) => state.user;
 

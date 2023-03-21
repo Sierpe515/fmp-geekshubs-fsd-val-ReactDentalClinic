@@ -19,14 +19,22 @@ import other from '../../image/other.png'
 import Calendar from 'react-calendar';
 import './NewAppointment.css'
 import dayjs from 'dayjs';
+import { useSelector } from "react-redux";
+import { userData } from '../../layout/userSlice';
+import { createAppointment } from '../../services/apiCalls';
 
 export const NewAppointment = () => {
+
+    const ReduxCredentials = useSelector(userData);
+
     const [day, setDay] = useState(new Date());
     const [show, setShow] = useState(false);
     const target = useRef(null);
     const [hour, setHour] = useState({});
     const [doctor, setDoctor] = useState({});
     const [treatment, setTreatment] = useState({});
+
+    let token = ReduxCredentials.credentials.token;
 
 
     const chooseHour = (hora) => {
@@ -44,16 +52,28 @@ export const NewAppointment = () => {
         setTreatment(tratamiento)
     }
 
-    const bookAppointment = () => {
-        let dataAppointment = [
-            day, hour, doctor, treatment
-        ]
-        console.log(dataAppointment);
-    }
-
     const chooseDay = (dia) => {
         console.log(dayjs(dia).format('YYYY-MM-DD'));
         setDay(dayjs(dia).format('YYYY-MM-DD'));
+    }
+
+    const bookAppointment = () => {
+        let dataAppointment = {
+            date : day, 
+            hour: hour, 
+            employee_id: doctor, 
+            service_id: treatment
+    }
+        console.log(dataAppointment);
+
+        createAppointment(dataAppointment, token)
+        .then(
+            action => {
+                console.log(action)
+                //aqui dentro ya navegas a otra página...
+            }
+
+        ).catch
     }
 
   return (
@@ -65,7 +85,9 @@ export const NewAppointment = () => {
                     </div>
                 </Col>
             </Row>
-            <Row className="d-flex justify-content-center">
+            {ReduxCredentials.credentials.token ? (
+                <>
+                <Row className="d-flex justify-content-center">
                 <Col xxl={4} xl={5} sm={7} className="my-3">
                     <div className='logRegContainer'>
                         <h1 className='text-center'>Calendar</h1>
@@ -103,14 +125,14 @@ export const NewAppointment = () => {
                 <div onClick={()=> chooseHour('20:30')} className='d-flex justify-content-center align-items-center hourContainer'>20:30</div>
             </Row>
             <Row className="rowSpace justify-content-center">
-                <div onClick={()=> chooseDoctor('Zoiberg')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon' src={ doc1 } alt="" /></div>
-                <div onClick={()=> chooseDoctor('Strange')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon' src={ doc2 } alt="" /></div>
-                <div onClick={()=> chooseDoctor('Robotnik')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon2' src={ doc3 } alt="" /></div>
-                <div onClick={()=> chooseDoctor('Black Death')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon' src={ doc4 } alt="" /></div>
-                <div onClick={()=> chooseDoctor('Rick')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon' src={ doc5 } alt="" /></div>
+                <div onClick={()=> chooseDoctor('1')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon' src={ doc1 } alt="" /></div>
+                <div onClick={()=> chooseDoctor('2')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon' src={ doc2 } alt="" /></div>
+                <div onClick={()=> chooseDoctor('3')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon2' src={ doc3 } alt="" /></div>
+                <div onClick={()=> chooseDoctor('4')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon' src={ doc4 } alt="" /></div>
+                <div onClick={()=> chooseDoctor('5')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon' src={ doc5 } alt="" /></div>
             </Row>
             <Row className="rowSpace justify-content-center">
-                <div onClick={()=> chooseTreatment('Implantology')} className='d-flex justify-content-center align-items-center treatmentContainer' ref={target} onMouseEnter={() => setShow(!show)}><img className='treatmentIcon' src={ implant } alt="" /></div>
+                <div onClick={()=> chooseTreatment('1')} className='d-flex justify-content-center align-items-center treatmentContainer' ref={target} onMouseEnter={() => setShow(!show)}><img className='treatmentIcon' src={ implant } alt="" /></div>
                 <Overlay target={target.current} show={show} placement="bottom">
                     {(props) => (
                     <Tooltip id="overlay-example" {...props}>
@@ -118,15 +140,20 @@ export const NewAppointment = () => {
                     </Tooltip>
                     )}
                 </Overlay>
-                <div onClick={()=> chooseTreatment('Bruxism')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ bruxism } alt="" /></div>
-                <div onClick={()=> chooseTreatment('Orthodontics')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ orthod } alt="" /></div>
-                <div onClick={()=> chooseTreatment('Whitening')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ whitening } alt="" /></div>
-                <div onClick={()=> chooseTreatment('Periodontics')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ period } alt="" /></div>
-                <div onClick={()=> chooseTreatment('Others')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ other } alt="" /></div>
+                <div onClick={()=> chooseTreatment('2')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ bruxism } alt="" /></div>
+                <div onClick={()=> chooseTreatment('3')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ orthod } alt="" /></div>
+                <div onClick={()=> chooseTreatment('4')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ whitening } alt="" /></div>
+                <div onClick={()=> chooseTreatment('5')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ period } alt="" /></div>
+                <div onClick={()=> chooseTreatment('6')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ other } alt="" /></div>
             </Row>
             <Row className='justify-content-center'>
             <div className="appointmentButton" name="button" onClick={()=> bookAppointment()}>Book Appointment</div>
             </Row>
+            </>
+            ) : (
+                "LOGIN OR REGISTER"
+            )}
+            
         </Container>
   )
 }

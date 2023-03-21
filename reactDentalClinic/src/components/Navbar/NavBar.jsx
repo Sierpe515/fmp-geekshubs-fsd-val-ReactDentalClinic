@@ -9,7 +9,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Logo1 from '../../image/logo1.png'
 import './NavBar.css'
 import { useDispatch, useSelector } from "react-redux";
-import { userData, logout } from '../../layout/userSlice';
+import { userData, clearRedux } from '../../layout/userSlice';
 import { useNavigate } from "react-router-dom";
 
 
@@ -26,8 +26,10 @@ export const NavBar = () => {
 
   const logOut = () => {
     // dispatch(logout(dataCredentialsRdx = ""));
-    localStorage.clear();
-    window.location.href = '/';
+    dispatch(clearRedux());
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
   }
 
   return (

@@ -17,7 +17,7 @@ export const UsersList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (ReduxCredentials.credentials.userRole.includes('admin') && users.length === 0) {
+    if (ReduxCredentials?.credentials?.userRole?.includes('admin') && users.length === 0) {
       bringUsers(ReduxCredentials.credentials.token)
         .then((result) => {
           console.log(ReduxCredentials.credentials);
