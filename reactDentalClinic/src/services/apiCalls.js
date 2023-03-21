@@ -126,6 +126,18 @@ export const createAppointment = async (dataAppointment, token) => {
     return await axios.post(`${root}/app`, dataAppointment, config);
 } 
 
+export const createAppointmentAdm = async (dataAppointment, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+  console.log(dataAppointment)
+
+    return await axios.post(`${root}/appAdmin`, dataAppointment, config);
+} 
+
 export const CancelAppByUser = async (params, token) => {
 
   let config = {

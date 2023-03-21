@@ -35,6 +35,7 @@ export const AppointmentDetailUser = () => {
                   }, 500);
             }
         )
+        .catch((error) => console.log(error));
     }
 
      return (

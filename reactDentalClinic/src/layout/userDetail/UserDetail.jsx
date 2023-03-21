@@ -25,6 +25,12 @@ export const UserDetail = () => {
         console.log(credentialsRdx.credentials.token,"token")
     },[])
 
+    const goNewAppointmentAdm = () => {
+        setTimeout(() => {
+            navigate("/newAppointmentAdm");
+          }, 500);
+    }
+
     const deleteUser = () => {
 
         deleteUserByAdmin(params, token)
@@ -55,7 +61,10 @@ export const UserDetail = () => {
                 </Col>
             </Row>
             <Row className="justify-content-center">
-            <div className="deleteButton d-flex justify-content-center" name="button" onClick={()=> deleteUser()}>Delete User</div>
+                <div className="deleteButton d-flex justify-content-center" name="button" onClick={()=> goNewAppointmentAdm()}>New Appointment</div>
+            </Row>
+            <Row className="justify-content-center">
+                <div className="deleteButton d-flex justify-content-center" name="button" onClick={()=> deleteUser()}>Delete User</div>
             </Row>
         </Container>
      )

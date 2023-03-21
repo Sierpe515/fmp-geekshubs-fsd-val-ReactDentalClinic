@@ -1,4 +1,3 @@
-
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -21,12 +20,14 @@ import './NewAppointment.css'
 import dayjs from 'dayjs';
 import { useSelector } from "react-redux";
 import { userData } from '../../layout/userSlice';
-import { createAppointment } from '../../services/apiCalls';
+import { createAppointment, createAppointmentAdm } from '../../services/apiCalls';
+import { detailData } from '../detailSlice';
 import { useNavigate } from 'react-router-dom';
 
-export const NewAppointment = () => {
+export const NewAppointmentAdm = () => {
 
     const ReduxCredentials = useSelector(userData);
+    const detailRedux = useSelector(detailData);
     const navigate = useNavigate();
 
     const [day, setDay] = useState(new Date());
@@ -42,6 +43,7 @@ export const NewAppointment = () => {
     const chooseHour = (hora) => {
         console.log(hora)
         setHour(hora)
+        console.log(detailRedux.choosenObject.id);
     }
 
     const chooseDoctor = (doctorElegido) => {
@@ -59,8 +61,9 @@ export const NewAppointment = () => {
         setDay(dayjs(dia).format('YYYY-MM-DD'));
     }
 
-    const bookAppointment = () => {
+    const bookAppointmentAdm = () => {
         let dataAppointment = {
+            user_id: detailRedux.choosenObject.id,
             date : day, 
             hour: hour, 
             employee_id: doctor, 
@@ -68,13 +71,13 @@ export const NewAppointment = () => {
     }
         console.log(dataAppointment);
 
-        createAppointment(dataAppointment, token)
+        createAppointmentAdm(dataAppointment, token)
         .then(
             action => {
                 console.log(action)
 
                 setTimeout(() => {
-                    navigate("/appointmentsUser");
+                    navigate("/appointments");
                   }, 500);
             }
 
@@ -153,7 +156,7 @@ export const NewAppointment = () => {
                 <div onClick={()=> chooseTreatment('6')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ other } alt="" /></div>
             </Row>
             <Row className='justify-content-center'>
-            <div className="appointmentButton" name="button" onClick={()=> bookAppointment()}>Book Appointment</div>
+                <div className="appointmentButton" name="button" onClick={()=> bookAppointmentAdm()}>Book Appointment</div>
             </Row>
             </>
             ) : (

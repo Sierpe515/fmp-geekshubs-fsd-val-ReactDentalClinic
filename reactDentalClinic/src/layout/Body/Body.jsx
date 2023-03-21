@@ -19,6 +19,7 @@ import { UserDetailDoctor } from '../userDetail/userDetailDoctor';
 import { AppointmentDetailDoctor } from '../appointmentDetail/AppointmentDetailDoctor';
 import { AppointmentDetailUser } from '../appointmentDetail/AppointmentDetailUser';
 import { AppointmentsUser } from '../Appointments/AppointmentsUser';
+import { NewAppointmentAdm } from '../NewAppointment/NewAppointmentAdm';
 
 export const Body = () => {
     return (
@@ -29,6 +30,7 @@ export const Body = () => {
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/newAppointment' element={<NewAppointment/>}/>
+        <Route path='/newAppointmentAdm' element={<NewAppointmentAdm/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/updateProfile' element={<ProfileUpdate/>}/>
         <Route path='/appointments' element={<Appointments/>}/>
