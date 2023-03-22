@@ -31,7 +31,29 @@ export const NewAppointment = () => {
 
     const [day, setDay] = useState(new Date());
     const [show, setShow] = useState(false);
+    const [show1, setShow1] = useState(false);
+    const [show2, setShow2] = useState(false);
+    const [show3, setShow3] = useState(false);
+    const [show4, setShow4] = useState(false);
+    const [show5, setShow5] = useState(false);
+    const [show6, setShow6] = useState(false);
+    const [show7, setShow7] = useState(false);
+    const [show8, setShow8] = useState(false);
+    const [show9, setShow9] = useState(false);
+    const [show10, setShow10] = useState(false);
+
     const target = useRef(null);
+    const target1 = useRef(null);
+    const target2 = useRef(null);
+    const target3 = useRef(null);
+    const target4 = useRef(null);
+    const target5 = useRef(null);
+    const target6 = useRef(null);
+    const target7 = useRef(null);
+    const target8 = useRef(null);
+    const target9 = useRef(null);
+    const target10 = useRef(null);
+    
     const [hour, setHour] = useState({});
     const [doctor, setDoctor] = useState({});
     const [treatment, setTreatment] = useState({});
@@ -80,6 +102,18 @@ export const NewAppointment = () => {
 
         )
         .catch((error) => console.log(error));
+    }
+
+    const navLogin = () => {
+        setTimeout(() => {
+            navigate("/login");
+          }, 500);
+    }
+
+    const navRegister = () => {
+        setTimeout(() => {
+            navigate("/register");
+          }, 500);
     }
 
   return (
@@ -131,33 +165,109 @@ export const NewAppointment = () => {
                 <div onClick={()=> chooseHour('20:30')} className='d-flex justify-content-center align-items-center hourContainer'>20:30</div>
             </Row>
             <Row className="rowSpace justify-content-center">
-                <div onClick={()=> chooseDoctor('1')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon' src={ doc1 } alt="" /></div>
-                <div onClick={()=> chooseDoctor('2')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon' src={ doc2 } alt="" /></div>
-                <div onClick={()=> chooseDoctor('3')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon2' src={ doc3 } alt="" /></div>
-                <div onClick={()=> chooseDoctor('4')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon' src={ doc4 } alt="" /></div>
-                <div onClick={()=> chooseDoctor('5')} className='d-flex justify-content-center align-items-center doctorContainer'><img className='doctorIcon' src={ doc5 } alt="" /></div>
+                <div onClick={()=> chooseDoctor('1')} className='d-flex justify-content-center align-items-center doctorContainer' ref={target6} onMouseEnter={() => setShow6(!show6)}><img className='doctorIcon' src={ doc1 } alt="" />
+                    <Overlay target={target6.current} show={show6} placement="bottom">
+                        {(props) => (
+                        <Tooltip id="over1" {...props}>
+                            Zoiberg
+                        </Tooltip>
+                        )}
+                    </Overlay></div>
+                <div onClick={()=> chooseDoctor('2')} className='d-flex justify-content-center align-items-center doctorContainer' ref={target7} onMouseEnter={() => setShow7(!show7)}><img className='doctorIcon' src={ doc2 } alt="" />
+                    <Overlay target={target7.current} show={show7} placement="bottom">
+                        {(props) => (
+                        <Tooltip id="over1" {...props}>
+                            Strange
+                        </Tooltip>
+                        )}
+                    </Overlay></div>
+                <div onClick={()=> chooseDoctor('3')} className='d-flex justify-content-center align-items-center doctorContainer' ref={target8} onMouseEnter={() => setShow8(!show8)}><img className='doctorIcon2' src={ doc3 } alt="" />
+                    <Overlay target={target8.current} show={show8} placement="bottom">
+                        {(props) => (
+                        <Tooltip id="over1" {...props}>
+                            Robotnik
+                        </Tooltip>
+                        )}
+                    </Overlay></div>
+                <div onClick={()=> chooseDoctor('4')} className='d-flex justify-content-center align-items-center doctorContainer' ref={target9} onMouseEnter={() => setShow9(!show9)}><img className='doctorIcon' src={ doc4 } alt="" />
+                    <Overlay target={target9.current} show={show9} placement="bottom">
+                        {(props) => (
+                        <Tooltip id="over1" {...props}>
+                            Black Death
+                        </Tooltip>
+                        )}
+                    </Overlay></div>
+                <div onClick={()=> chooseDoctor('5')} className='d-flex justify-content-center align-items-center doctorContainer' ref={target10} onMouseEnter={() => setShow10(!show10)}><img className='doctorIcon' src={ doc5 } alt="" />
+                    <Overlay target={target10.current} show={show10} placement="bottom">
+                        {(props) => (
+                        <Tooltip id="over1" {...props}>
+                            Rick
+                        </Tooltip>
+                        )}
+                    </Overlay></div>
             </Row>
             <Row className="rowSpace justify-content-center">
                 <div onClick={()=> chooseTreatment('1')} className='d-flex justify-content-center align-items-center treatmentContainer' ref={target} onMouseEnter={() => setShow(!show)}><img className='treatmentIcon' src={ implant } alt="" /></div>
-                <Overlay target={target.current} show={show} placement="bottom">
-                    {(props) => (
-                    <Tooltip id="overlay-example" {...props}>
-                        Implantology
-                    </Tooltip>
-                    )}
-                </Overlay>
-                <div onClick={()=> chooseTreatment('2')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ bruxism } alt="" /></div>
-                <div onClick={()=> chooseTreatment('3')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ orthod } alt="" /></div>
-                <div onClick={()=> chooseTreatment('4')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ whitening } alt="" /></div>
-                <div onClick={()=> chooseTreatment('5')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ period } alt="" /></div>
-                <div onClick={()=> chooseTreatment('6')} className='d-flex justify-content-center align-items-center treatmentContainer'><img className='treatmentIcon' src={ other } alt="" /></div>
+                    <Overlay target={target.current} show={show} placement="bottom">
+                        {(props) => (
+                        <Tooltip id="over1" {...props}>
+                            Implantology
+                        </Tooltip>
+                        )}
+                    </Overlay>
+                <div onClick={()=> chooseTreatment('2')} className='d-flex justify-content-center align-items-center treatmentContainer' ref={target1} onMouseEnter={() => setShow1(!show1)}><img className='treatmentIcon' src={ bruxism } alt="" /></div>
+                    <Overlay target={target1.current} show={show1} placement="bottom">
+                        {(props) => (
+                        <Tooltip id="over2" {...props}>
+                            Bruxism
+                        </Tooltip>
+                        )}
+                    </Overlay>
+                <div onClick={()=> chooseTreatment('3')} className='d-flex justify-content-center align-items-center treatmentContainer' ref={target2} onMouseEnter={() => setShow2(!show2)}><img className='treatmentIcon' src={ orthod } alt="" /></div>
+                    <Overlay target={target2.current} show={show2} placement="bottom">
+                        {(props) => (
+                        <Tooltip id="over3" {...props}>
+                            Orthodontics
+                        </Tooltip>
+                        )}
+                    </Overlay>
+                <div onClick={()=> chooseTreatment('4')} className='d-flex justify-content-center align-items-center treatmentContainer' ref={target3} onMouseEnter={() => setShow3(!show3)}><img className='treatmentIcon' src={ whitening } alt="" /></div>
+                    <Overlay target={target3.current} show={show3} placement="bottom">
+                        {(props) => (
+                        <Tooltip id="over4" {...props}>
+                            Whitening
+                        </Tooltip>
+                        )}
+                    </Overlay>
+                <div onClick={()=> chooseTreatment('5')} className='d-flex justify-content-center align-items-center treatmentContainer' ref={target4} onMouseEnter={() => setShow4(!show4)}><img className='treatmentIcon' src={ period } alt="" /></div>
+                <Overlay target={target4.current} show={show4} placement="bottom">
+                        {(props) => (
+                        <Tooltip id="over5" {...props}>
+                            Periodontics
+                        </Tooltip>
+                        )}
+                    </Overlay>
+                <div onClick={()=> chooseTreatment('6')} className='d-flex justify-content-center align-items-center treatmentContainer' ref={target5} onMouseEnter={() => setShow5(!show5)}><img className='treatmentIcon' src={ other } alt="" /></div>
+                <Overlay target={target5.current} show={show5} placement="bottom">
+                        {(props) => (
+                        <Tooltip id="over6" {...props}>
+                            Others
+                        </Tooltip>
+                        )}
+                    </Overlay>
             </Row>
             <Row className='justify-content-center'>
             <div className="appointmentButton" name="button" onClick={()=> bookAppointment()}>Book Appointment</div>
             </Row>
             </>
             ) : (
-                "LOGIN OR REGISTER"
+                <Row className="d-flex justify-content-center">
+                    <Col xxl={5} xl={5} sm={7} className="logRegContainer my-3 d-flex flex-column align-items-center justify-content-center">
+                        <h1>Please, login or register</h1>
+                        <div className="appointmentButton" name="button" onClick={()=> navLogin()}>Login</div>
+                        <div className="appointmentButton" name="button" onClick={()=> navRegister()}>Register</div>
+                    </Col>
+                </Row>
             )}
             
         </Container>

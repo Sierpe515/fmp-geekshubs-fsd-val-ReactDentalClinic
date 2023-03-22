@@ -12,6 +12,10 @@
     display: none;
 }
 
+.welcomeBox {
+    color: rgb(66, 66, 250);
+}
+
 @media (min-width: 992px){
     .z3 {
         display: block;
