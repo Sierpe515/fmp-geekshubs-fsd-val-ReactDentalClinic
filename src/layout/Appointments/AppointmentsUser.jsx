@@ -19,8 +19,12 @@ export const AppointmentsUser = () => {
         if (appointments.length === 0) {
           bringAppointmentsUser(ReduxCredentials.credentials.token)
             .then((result) => {
-              console.log("user",result.data.userAppointment);
-              setAppointments(result.data.userAppointment);
+
+              if(result.data.userAppointment.length > 0){
+
+                setAppointments(result.data.userAppointment);
+                console.log("user",result);
+              }
             })
             .catch((error) => console.log(error));
         }
@@ -53,7 +57,7 @@ export const AppointmentsUser = () => {
                     })}
                   </div>
                 ) : (
-                  <div>LOADING</div>
+                  <div>NO RESULTS</div>
                 )}
               </div>
             </Col>

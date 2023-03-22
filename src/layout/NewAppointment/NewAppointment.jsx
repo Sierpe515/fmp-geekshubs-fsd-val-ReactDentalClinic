@@ -95,7 +95,7 @@ export const NewAppointment = () => {
                 <>
                 <Row className="d-flex justify-content-center">
                 <Col xxl={4} xl={5} sm={7} className="my-3">
-                    <div className='logRegContainer'>
+                    <div className='logRegContainer d-flex flex-column align-items-center justify-content-center'>
                         <h1 className='text-center'>Calendar</h1>
                         <Calendar 
                             className="calendar" 
