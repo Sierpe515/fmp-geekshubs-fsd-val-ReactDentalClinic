@@ -65,13 +65,13 @@ export const Profile = () => {
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
           <div className="logRegContainer d-flex flex-column justify-content-center text-center">
-            {users.name && <p><strong>Nombre:</strong> {users.name}</p>}
-            {users.surname && <p><strong>Apellido:</strong> {users.surname}</p>}
+            {users.name && <p><strong>Name:</strong> {users.name}</p>}
+            {users.surname && <p><strong>Surname:</strong> {users.surname}</p>}
             {users.email && <p><strong>Email:</strong> {users.email}</p>}
             {users.nif && <p><strong>NIF:</strong> {users.nif}</p>}
-            {users.direction && <p><strong>Dirección:</strong> {users.direction}</p>}
-            {users.birth_date && <p><strong>Fecha de Nacimiento:</strong> {dayjs(users.birth_date).format("DD MMMM YYYY")}</p>}
-            {users.phone && <p><strong>Teléfono:</strong> {users.phone}</p>}
+            {users.direction && <p><strong>Direction:</strong> {users.direction}</p>}
+            {users.birth_date && <p><strong>Birth Date:</strong> {dayjs(users.birth_date).format("DD MMMM YYYY")}</p>}
+            {users.phone && <p><strong>Phone:</strong> {users.phone}</p>}
           </div>
         </Col>
       </Row>

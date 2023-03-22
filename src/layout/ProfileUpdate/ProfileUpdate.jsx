@@ -11,6 +11,7 @@ import { updateProfile } from "../../services/apiCalls";
 import { ButtonSubmit } from "../../components/ButtonSubmit/ButtonSubmit";
 import { useSelector } from "react-redux";
 import { userData } from '../../layout/userSlice';
+import dayjs from 'dayjs';
 
 
 // HOOKS
@@ -24,25 +25,33 @@ export const ProfileUpdate = () => {
   const [dataUserUpdate, setDataUserUpdate] = useState({
     name: "",
     surname: "",
-    // nif: "",
-    // birth_date: "",
-    // direction: "",
+    nif: "",
+    birth_date: (dayjs("").format('YYYY-MM-DD')),
+    direction: "",
     email: "",
-    // phone: "",
+    phone: "",
     password: "",
   });
 
   const [dataUserUpdateValidation, setDataUserUpdateValidation] = useState({
     nameValidation: false,
     surnameValidation: false,
+    nifValidation: false,
+    birth_dateValidation: false,
+    directionValidation: false,
     emailValidation: false,
+    phoneValidation: false,
     passwordValidation: false
   })
 
   const [dataUserUpdateError, setDataUserUpdateError] = useState({
     nameError: "",
     surnameError: "",
+    nifError: "",
+    birth_dateError: "",
+    directionError: "",
     emailError: "",
+    phoneError: "",
     passwordError: ""
   });
 
@@ -102,6 +111,7 @@ export const ProfileUpdate = () => {
     error = checked.message;
 
     console.log("dataUserUpdate",dataUserUpdateValidation)
+    console.log(dataUserUpdate);
 
     setDataUserUpdateValidation((prevState) => ({
       ...prevState,
@@ -127,8 +137,14 @@ export const ProfileUpdate = () => {
 
   const UpdateUser = () => {
     updateProfile(dataUserUpdate, token)
-    //El segundo argumento no lo envía
-      .then(console.log("usuario actualizado")).catch(error => console.log(error))
+      .then(
+        action => {
+        console.log("registered user")
+        setTimeout(() => {
+          navigate("/register");
+        }, 500);
+    })
+      .catch(error => console.log(error))
   }
 
   
@@ -197,6 +213,86 @@ export const ProfileUpdate = () => {
                     blurFunction={(e) => {checkError2(e)}}
                   />
                   <Form.Text className="errorMessage">{dataUserUpdateError.emailError}</Form.Text>
+                </Form.Group>
+              </Row>
+
+              <Row className="mb-3">
+                <Form.Group as={Col} controlId="formGridNIF">
+                  <Form.Label>NIF</Form.Label>
+                  <InputBox
+                    className={
+                        dataUserUpdateError.nifError === ""
+                        ? "inputBasicDesign"
+                        : "inputBasicDesign inputErrorDesign"
+                    }
+                    type={"text"}
+                    name={"nif"}
+                    placeholder={"Enter your NIF"}
+                    required={false}
+                    changeFunction={(e) => {newDataUserUpdate(e); checkError(e)}}
+                    blurFunction={(e) => {checkError2(e)}}
+                  />
+                  <Form.Text className="errorMessage">{dataUserUpdateError.nifError}</Form.Text>
+                </Form.Group>
+              </Row>
+
+              <Row className="mb-3">
+                <Form.Group as={Col} controlId="formGridDirection">
+                  <Form.Label>Direction</Form.Label>
+                  <InputBox
+                    className={
+                        dataUserUpdateError.directionError === ""
+                        ? "inputBasicDesign"
+                        : "inputBasicDesign inputErrorDesign"
+                    }
+                    type={"text"}
+                    name={"direction"}
+                    placeholder={"Enter your Direction"}
+                    required={false}
+                    changeFunction={(e) => {newDataUserUpdate(e); checkError(e)}}
+                    blurFunction={(e) => {checkError2(e)}}
+                  />
+                  <Form.Text className="errorMessage">{dataUserUpdateError.directionError}</Form.Text>
+                </Form.Group>
+              </Row>
+
+              <Row className="mb-3">
+                <Form.Group as={Col} controlId="formGridDirection">
+                  <Form.Label>Birth Date</Form.Label>
+                  <InputBox
+                    className={
+                        dataUserUpdateError.birth_dateError === ""
+                        ? "inputBasicDesign"
+                        : "inputBasicDesign inputErrorDesign"
+                    }
+                    type={"date"}
+                    name={"birth_date"}
+                    placeholder={"Enter your Birth Date"}
+                    required={false}
+                    changeFunction={(e) => {newDataUserUpdate(e); checkError(e)}}
+                    blurFunction={(e) => {checkError2(e)}}
+                  />
+                  <Form.Text className="errorMessage">{dataUserUpdateError.birth_dateError}</Form.Text>
+                </Form.Group>
+              </Row>
+
+              <Row className="mb-3">
+                <Form.Group as={Col} controlId="formGridDirection">
+                  <Form.Label>Phone</Form.Label>
+                  <InputBox
+                    className={
+                        dataUserUpdateError.phoneError === ""
+                        ? "inputBasicDesign"
+                        : "inputBasicDesign inputErrorDesign"
+                    }
+                    type={"text"}
+                    name={"phone"}
+                    placeholder={"Enter your Phone"}
+                    required={false}
+                    changeFunction={(e) => {newDataUserUpdate(e); checkError(e)}}
+                    blurFunction={(e) => {checkError2(e)}}
+                  />
+                  <Form.Text className="errorMessage">{dataUserUpdateError.phoneError}</Form.Text>
                 </Form.Group>
               </Row>
 

@@ -5,7 +5,8 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useEffect, useState } from 'react';
 import { getAllTreatments } from '../../services/apiCalls';
-import '../Doctors/Doctors.css'
+import '../Doctors/Doctors.css';
+import './Treatments.css'
 
 export const Treatments = () => {
 
@@ -30,8 +31,8 @@ export const Treatments = () => {
                     {treatments.map((treatment) =>{
                     return (
                         <Col className="my-3 doctorsBox" key={treatment.id} lg={2} sm={4}>
-                            <Card className='cardDoctor' style={{ width: '16rem' }}>
-                                <Card.Img className='docImg' variant="top" src={treatment.image} />
+                            <Card className='cardDoctor' style={{ width: '14rem' }}>
+                                <Card.Img className='treatmentImg' variant="top" src={treatment.image} />
                                 <Card.Body>
                                     <Card.Title>{treatment.treatment}</Card.Title>
                                     <Card.Text>

@@ -45,7 +45,8 @@ export const AppointmentsUser = () => {
         >
           <Row className="d-flex justify-content-center">
             <Col xxl={4} xl={5} sm={7} className="my-3">
-              <div className="logRegContainer d-flex justify-content-center text-center">
+              <div className="logRegContainer d-flex flex-column justify-content-center text-center">
+              <h1 className="text-center">Appointments</h1>
                 {appointments.length > 0 ? (
                   <div>
                     {appointments.map((cita) => {
@@ -57,7 +58,14 @@ export const AppointmentsUser = () => {
                     })}
                   </div>
                 ) : (
-                  <div>NO RESULTS</div>
+                  <>
+                  <h3>No pending appointments</h3>
+                  <h4>Please, book an appointment if needed</h4>
+
+                  <Row className="d-flex justify-content-center">
+                    <ButtonNav route={"Book Appointment"} destiny={"/newAppointment"}/>
+                  </Row>
+                  </>
                 )}
               </div>
             </Col>
