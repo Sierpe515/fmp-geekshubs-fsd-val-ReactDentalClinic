@@ -80,7 +80,7 @@ export const validate = (name, data, required) => {
 
     case "birth_date":
     case "fecha de nacimiento":
-    case "birthdate"
+    case "birthdate":
       if (data === "") { 
         return {message: "Please, fill the field", validated: false};
       } else if (!/^\d{4}-\d{2}-\d{2}$/gi.test(data)) {
