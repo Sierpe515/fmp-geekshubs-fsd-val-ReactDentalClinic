@@ -38,14 +38,14 @@ export const bringUsersByDoctor = async (token) => {
   return await axios.get(`${root}/getProfilesDoc`, config);
 }
 
-export const bringAppointments = async (token) => {
+export const bringUpcomingAppointmentsAdmin = async (token) => {
   let config = {
     headers: { 
       'Authorization': 'Bearer '+ token,  
     }
   };
 
-  return await axios.get(`${root}/getAppAdm`, config);
+  return await axios.get(`${root}/getUpcomingAppAdm`, config);
 }
 
 export const bringAppointmentsUser = async (token) => {
@@ -58,14 +58,14 @@ export const bringAppointmentsUser = async (token) => {
   return await axios.get(`${root}/getApp`, config);
 }
 
-export const bringAppointmentsDoctor = async (token) => {
+export const bringUpcomingAppointmentsDoctor = async (token) => {
   let config = {
     headers: { 
       'Authorization': 'Bearer '+ token,  
     }
   };
 
-  return await axios.get(`${root}/getAppDoc`, config);
+  return await axios.get(`${root}/getUpcomingAppDoctor`, config);
 }
 
 export const getUserProfile = async (token) => {

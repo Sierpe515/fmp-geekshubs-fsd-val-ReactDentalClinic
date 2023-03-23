@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { ButtonNav } from '../../components/ButtonNav/ButtonNav';
-import { bringAppointments, bringAppointmentsDoctor } from "../../services/apiCalls";
+import { bringUpcomingAppointmentsAdmin, bringUpcomingAppointmentsDoctor } from "../../services/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { addAppointment } from '../appointmentSlice';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +17,7 @@ export const Appointments = () => {
 
     useEffect(() => {
         if (ReduxCredentials.credentials.userRole.includes('admin') && appointments.length === 0) {
-          bringAppointments(ReduxCredentials.credentials.token)
+          bringUpcomingAppointmentsAdmin(ReduxCredentials.credentials.token)
             .then((result) => {
               console.log("admin",result.data.userAppointment);
               console.log(ReduxCredentials);
@@ -25,7 +25,7 @@ export const Appointments = () => {
             })
             .catch((error) => console.log(error));
         } else if (ReduxCredentials.credentials.userRole.includes('doctor') && appointments.length === 0) {
-          bringAppointmentsDoctor(ReduxCredentials.credentials.token)
+          bringUpcomingAppointmentsDoctor(ReduxCredentials.credentials.token)
             .then((result) => {
               console.log("doctor",result.data.userAppointment);
               setAppointments(result.data.userAppointment);
@@ -73,7 +73,7 @@ export const Appointments = () => {
             </Col>
           </Row>
           <Row className="d-flex justify-content-center">
-            <ButtonNav route={"View Appointment"} destiny={"/appointments"} />
+            <ButtonNav route={"View previous appointments"} destiny={"/appointments"} />
           </Row>
         </Container>
       );
