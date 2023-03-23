@@ -77,8 +77,12 @@ export const NewAppointment = () => {
     }
 
     const chooseDay = (dia) => {
-        console.log(dayjs(dia).format('YYYY-MM-DD'));
-        setDay(dayjs(dia).format('YYYY-MM-DD'));
+        if (dayjs(dia).isAfter(dayjs())){
+        console.log(dayjs(dia).format('YYYY-MM-DD'))
+        setDay(dayjs(dia).format('YYYY-MM-DD'))
+        } else {
+            console.log("choose a upcoming day");
+        };
     }
 
     const bookAppointment = () => {
