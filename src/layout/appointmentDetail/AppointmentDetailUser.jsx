@@ -8,6 +8,7 @@ import './appointmentDetail.css'
 import { CancelAppByUser } from "../../services/apiCalls";
 import { userData } from "../userSlice";
 import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
  
 export const AppointmentDetailUser = () => {
 
@@ -75,9 +76,11 @@ export const AppointmentDetailUser = () => {
                     </Row>
                 </Col>
             </Row>
+            {dayjs(detailRedux?.choosenAppointment?.date).isAfter(dayjs()) ? (
             <Row className='justify-content-center'>
             <div className="cancelAppButton" name="button" onClick={()=> cancelAppointment()}>Cancel Appointment</div>
             </Row>
+            ) : ("")}
         </Container>
      )
 }

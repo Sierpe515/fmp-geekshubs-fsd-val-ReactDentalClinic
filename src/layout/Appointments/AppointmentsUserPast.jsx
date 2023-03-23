@@ -3,13 +3,13 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { ButtonNav } from '../../components/ButtonNav/ButtonNav';
-import { bringUpcomingAppointmentsUser } from "../../services/apiCalls";
+import { bringPastAppointmentsUser } from "../../services/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { addAppointmentUser } from '../appointmentSlice';
 import { useNavigate } from 'react-router-dom';
 import { userData } from "../userSlice";
 
-export const AppointmentsUser = () => {
+export const AppointmentsUserPast = () => {
     const [appointments, setAppointments] = useState([]);
     const ReduxCredentials = useSelector(userData);
     const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export const AppointmentsUser = () => {
 
     useEffect(() => {
         if (appointments.length === 0) {
-          bringUpcomingAppointmentsUser(ReduxCredentials.credentials.token)
+          bringPastAppointmentsUser(ReduxCredentials.credentials.token)
             .then((result) => {
 
               if(result.data.userAppointment.length > 0){
@@ -59,7 +59,7 @@ export const AppointmentsUser = () => {
                   </div>
                 ) : (
                   <>
-                  <h3>No pending appointments</h3>
+                  <h3>No previous appointments</h3>
                   <h4>Please, book an appointment if needed</h4>
 
                   <Row className="d-flex justify-content-center">
@@ -71,7 +71,7 @@ export const AppointmentsUser = () => {
             </Col>
           </Row>
           <Row className="d-flex justify-content-center">
-            <ButtonNav route={"View previous appointments"} destiny={"/appointmentsUserPast"} />
+            <ButtonNav route={"Return to appointments"} destiny={"/appointments"} />
           </Row>
         </Container>
       );

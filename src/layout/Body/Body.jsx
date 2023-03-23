@@ -20,6 +20,8 @@ import { AppointmentDetailDoctor } from '../appointmentDetail/AppointmentDetailD
 import { AppointmentDetailUser } from '../appointmentDetail/AppointmentDetailUser';
 import { AppointmentsUser } from '../Appointments/AppointmentsUser';
 import { NewAppointmentAdm } from '../NewAppointment/NewAppointmentAdm';
+import { AppointmentsPast } from '../Appointments/AppointmentsPast';
+import { AppointmentsUserPast } from '../Appointments/AppointmentsUserPast';
 
 export const Body = () => {
     return (
@@ -34,7 +36,9 @@ export const Body = () => {
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/updateProfile' element={<ProfileUpdate/>}/>
         <Route path='/appointments' element={<Appointments/>}/>
+        <Route path='/appointmentsPast' element={<AppointmentsPast/>}/>
         <Route path='/appointmentsUser' element={<AppointmentsUser/>}/>
+        <Route path='/appointmentsUserPast' element={<AppointmentsUserPast/>}/>
         <Route path='/appointmentDetail' element={<AppointmentDetail/>}/>
         <Route path='/appointmentDetailUser' element={<AppointmentDetailUser/>}/>
         <Route path='/appointmentDetailDoctor' element={<AppointmentDetailDoctor/>}/>
