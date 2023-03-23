@@ -70,9 +70,9 @@ export const AppointmentsUser = () => {
               </div>
             </Col>
           </Row>
-          <Row className="d-flex justify-content-center">
+          {/* <Row className="d-flex justify-content-center">
             <ButtonNav route={"View Appointment"} destiny={"/appointments"} />
-          </Row>
+          </Row> */}
         </Container>
       );
     };
