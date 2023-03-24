@@ -71,7 +71,7 @@ export const AppointmentsUserPast = () => {
             </Col>
           </Row>
           <Row className="d-flex justify-content-center">
-            <ButtonNav route={"Return to appointments"} destiny={"/appointments"} />
+            <ButtonNav route={"Return to appointments"} destiny={"/appointmentsUser"} />
           </Row>
         </Container>
       );
