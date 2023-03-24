@@ -18,14 +18,20 @@ export const logMe = async (body) => {
     return await axios.post(`${root}/login`, body);
 } 
 
-export const bringUsers = async (token) => {
+export const bringUsersByAdmin = async (searchUser, token) => {
     let config = {
       headers: { 
         'Authorization': 'Bearer '+ token,  
       }
     };
 
-    return await axios.get(`${root}/getProfilesAdm`, config);
+    let sUrl = `${root}/getProfilesAdm`;
+
+    if (searchUser) {
+      sUrl += `/${searchUser}`;
+    }
+
+    return await axios.get(sUrl, config);
 }
 
 export const bringUsersByDoctor = async (token) => {

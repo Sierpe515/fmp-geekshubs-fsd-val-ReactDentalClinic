@@ -5,3 +5,16 @@
     margin: 0.25em;
     border-radius: 5px;
 }
+
+.userListTitle {
+    margin-bottom: 0.5em;
+}
+
+.searchInput {
+    width: 14em;
+    margin-bottom: 2em;
+}
+
+.userBox {
+    width: 20em;
+}
