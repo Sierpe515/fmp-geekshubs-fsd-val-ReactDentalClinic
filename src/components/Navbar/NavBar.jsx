@@ -30,35 +30,35 @@ export const NavBar = () => {
     console.log(token);
   })
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    if(searchUser !== ""){
+  //   if(searchUser !== ""){
 
-      //Búsqueda con sistema DEBOUNCE
+  //     //Búsqueda con sistema DEBOUNCE
 
-      const bring = setTimeout(()=>{
+  //     const bring = setTimeout(()=>{
 
-        searchUsersAdmin(searchUser, token)
-        .then(
-          result => {
-            console.log(result);
-          }
-        )
-        .catch(error => console.log(error))
-      },500);
+  //       searchUsersAdmin(searchUser, token)
+  //       .then(
+  //         result => {
+  //           console.log(result);
+  //         }
+  //       )
+  //       .catch(error => console.log(error))
+  //     },500);
       
       
-      return () => clearTimeout(bring);
-    }
-  },[searchUser]);
+  //     return () => clearTimeout(bring);
+  //   }
+  // },[searchUser]);
 
-  const inputHandler = (e) => {
-    setSearchUser(e.target.value);
-  }
+  // const inputHandler = (e) => {
+  //   setSearchUser(e.target.value);
+  // }
 
-  const checkError = () => {
+  // const checkError = () => {
     
-  }
+  // }
 
   const logOut = () => {
     // dispatch(logout(dataCredentialsRdx = ""));
@@ -102,15 +102,6 @@ export const NavBar = () => {
             {dataCredentialsRdx.credentials.token ? (
               dataCredentialsRdx.credentials.userRole.includes('admin') ? (
                 <>
-                <InputBox
-                    className={"search"}
-                    type={"text"}
-                    name={"searchUser"}
-                    placeholder={"search..."}
-                    required={true}
-                    changeFunction={(e) => inputHandler(e)}
-                    blurFunction={(e) => checkError(e)}
-                  />
                 <NavDropdown title="Admin Area" id="navbarScrollingDropdown">
                   <NavDropdown.Item eventKey="7"><Link as={Link} to='/usersList'>
                     Users List</Link>
@@ -123,7 +114,7 @@ export const NavBar = () => {
               ):('')
             ) : ("")}
             {dataCredentialsRdx.credentials.token ? (
-              dataCredentialsRdx.credentials.userRole.includes('doctor') ? (
+              dataCredentialsRdx.credentials.userRole.includes('doctor') && !dataCredentialsRdx.credentials.userRole.includes('admin') ? (
                 <NavDropdown title="Doctor Area" id="navbarScrollingDropdown">
                   <NavDropdown.Item eventKey="8"><Link as={Link} to='/usersList'>
                     Users List</Link>

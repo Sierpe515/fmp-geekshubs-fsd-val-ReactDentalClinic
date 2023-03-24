@@ -3,6 +3,10 @@
     height: 6vh;
 }
 
+.navBar1{
+    align-items: center;
+}
+
 .logo1 {
     margin-right: 0.5em;
 }
