@@ -196,3 +196,14 @@ export const CancelAppByAdmin = async (params, token) => {
 
   return await axios.delete(`${root}/cancelAppAdm/${params}`, config);
 }
+
+export const searchUsersAdmin = async (searchUser, token) => {
+
+  let config = {
+    headers: { 
+      'Authorization': 'Bearer '+ token,  
+    }
+  };
+
+  return await axios.get(`${root}/searchAllUsersAdmin/${searchUser}`, config)
+}

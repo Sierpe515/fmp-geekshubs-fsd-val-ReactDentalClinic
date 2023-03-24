@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -11,6 +11,8 @@ import './NavBar.css'
 import { useDispatch, useSelector } from "react-redux";
 import { userData, clearRedux } from '../../layout/userSlice';
 import { useNavigate } from "react-router-dom";
+import { searchUsersAdmin } from "../../services/apiCalls";
+import { InputBox } from "../InputBox/InputBox";
 
 
 
@@ -20,9 +22,43 @@ export const NavBar = () => {
   const dispatch = useDispatch();
   const dataCredentialsRdx = useSelector(userData);
 
+  let token = (dataCredentialsRdx.credentials.token);
+
+  const [searchUser, setSearchUser] = useState("");
+
   useEffect(()=>{
-    console.log(dataCredentialsRdx);
+    console.log(token);
   })
+
+  useEffect(() => {
+
+    if(searchUser !== ""){
+
+      //Búsqueda con sistema DEBOUNCE
+
+      const bring = setTimeout(()=>{
+
+        searchUsersAdmin(searchUser, token)
+        .then(
+          result => {
+            console.log(result);
+          }
+        )
+        .catch(error => console.log(error))
+      },500);
+      
+      
+      return () => clearTimeout(bring);
+    }
+  },[searchUser]);
+
+  const inputHandler = (e) => {
+    setSearchUser(e.target.value);
+  }
+
+  const checkError = () => {
+    
+  }
 
   const logOut = () => {
     // dispatch(logout(dataCredentialsRdx = ""));
@@ -65,6 +101,16 @@ export const NavBar = () => {
             </NavDropdown>
             {dataCredentialsRdx.credentials.token ? (
               dataCredentialsRdx.credentials.userRole.includes('admin') ? (
+                <>
+                <InputBox
+                    className={"search"}
+                    type={"text"}
+                    name={"searchUser"}
+                    placeholder={"search..."}
+                    required={true}
+                    changeFunction={(e) => inputHandler(e)}
+                    blurFunction={(e) => checkError(e)}
+                  />
                 <NavDropdown title="Admin Area" id="navbarScrollingDropdown">
                   <NavDropdown.Item eventKey="7"><Link as={Link} to='/usersList'>
                     Users List</Link>
@@ -73,6 +119,7 @@ export const NavBar = () => {
                     Appointments</Link>
                   </NavDropdown.Item>
                 </NavDropdown>
+                </>
               ):('')
             ) : ("")}
             {dataCredentialsRdx.credentials.token ? (

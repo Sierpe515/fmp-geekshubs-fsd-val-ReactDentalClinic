@@ -29,7 +29,7 @@ export const NewAppointment = () => {
     const ReduxCredentials = useSelector(userData);
     const navigate = useNavigate();
 
-    const [day, setDay] = useState(new Date());
+    
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
     const [show2, setShow2] = useState(false);
@@ -54,6 +54,7 @@ export const NewAppointment = () => {
     const target9 = useRef(null);
     const target10 = useRef(null);
     
+    const [day, setDay] = useState(new Date());
     const [hour, setHour] = useState({});
     const [doctor, setDoctor] = useState({});
     const [treatment, setTreatment] = useState({});
