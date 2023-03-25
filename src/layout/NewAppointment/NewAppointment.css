@@ -32,6 +32,7 @@
     background-color: rgba(239, 239, 239, 0.589);
     border-radius: 50%;
     border: 1px solid blue;
+    cursor: pointer;
 }
 
 .doctorContainer:hover {
@@ -52,13 +53,12 @@
 }
 
 .treatmentContainer {
-    /* width: 5rem;
-    height: 5rem; */
     height: 3rem;
     width: 3rem;
     background-color: rgba(239, 239, 239, 0.589);
     border-radius: 15px;
     border: 1px solid blue;
+    cursor: pointer;
 }
 
 .treatmentContainer:hover {
@@ -100,8 +100,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  cursor: not-allowed;
   color: white;
+}
+
+.appointmentButtonDeac:hover {
+  background-color: lightgray;
+  cursor: not-allowed;
 }
 
 .appointmentButton {

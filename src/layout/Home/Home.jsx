@@ -16,7 +16,7 @@ export const Home = () => {
 
 
   return (
-    <Container fluid className="homeContainer d-flex flex-column">
+    <Container fluid className="homeContainerMin d-flex flex-column">
         <Row className="d-flex justify-content-center">
             <Col xxl={5} xl={5} sm={10} className="my-3">
                 <img src={ Z3 } alt="Z3" className='z3' />

@@ -9,11 +9,14 @@ import Z2 from "../../image/z2.png";
 import "./Register.css";
 import { RegisterMe } from "../../services/apiCalls";
 import { ButtonSubmit } from "../../components/ButtonSubmit/ButtonSubmit";
+import { useNavigate } from "react-router-dom";
 
 
 // HOOKS
 
 export const Register = () => {
+  const navigate = useNavigate();
+  
   const [dataUser, setDataUser] = useState({
     name: "",
     surname: "",
@@ -111,12 +114,17 @@ export const Register = () => {
 
   const Register = () => {
     RegisterMe(dataUser)
-      .then(console.log("usuario registrado")).catch(error => console.log(error))
+      .then(
+        result => {
+        setTimeout(() => {
+          navigate("/login");
+        }, 500)}
+      ).catch(error => console.log(error))
   }
 
   
   return (
-    <Container fluid className="homeContainer">
+    <Container fluid className="homeContainerMin">
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
           <img src={Z2} alt="Z2" className="z2" />

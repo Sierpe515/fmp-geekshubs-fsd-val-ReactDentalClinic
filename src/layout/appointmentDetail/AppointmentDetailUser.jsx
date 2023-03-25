@@ -40,7 +40,7 @@ export const AppointmentDetailUser = () => {
     }
 
      return (
-        <Container fluid className="d-flex flex-column justify-content-center">
+        <Container fluid className="homeContainerMin d-flex flex-column justify-content-center">
             <Row className="d-flex flex-column align-items-center justify-content-center">
                 <Col xxl={6} xl={5} sm={7} className="logRegContainer my-3 d-flex flex-column justify-content-between">
                     <h1 className="text-center">Appointment Detail Admin</h1>
@@ -78,7 +78,7 @@ export const AppointmentDetailUser = () => {
             </Row>
             {dayjs(detailRedux?.choosenAppointment?.date).isAfter(dayjs()) ? (
             <Row className='justify-content-center'>
-            <div className="cancelAppButton" name="button" onClick={()=> cancelAppointment()}>Cancel Appointment</div>
+                <div className="cancelAppButton" name="button" onClick={()=> cancelAppointment()}>Cancel Appointment</div>
             </Row>
             ) : ("")}
         </Container>

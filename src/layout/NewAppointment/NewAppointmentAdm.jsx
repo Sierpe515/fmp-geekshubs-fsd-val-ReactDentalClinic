@@ -1,3 +1,4 @@
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -20,7 +21,7 @@ import './NewAppointment.css'
 import dayjs from 'dayjs';
 import { useSelector } from "react-redux";
 import { userData } from '../../layout/userSlice';
-import { createAppointment, createAppointmentAdm } from '../../services/apiCalls';
+import { createAppointmentAdm } from '../../services/apiCalls';
 import { detailData } from '../detailSlice';
 import { useNavigate } from 'react-router-dom';
 
@@ -94,9 +95,7 @@ export const NewAppointmentAdm = () => {
                     </div>
                 </Col>
             </Row>
-            {ReduxCredentials.credentials.token ? (
-                <>
-                <Row className="d-flex justify-content-center">
+            <Row className="d-flex justify-content-center">
                 <Col xxl={4} xl={5} sm={7} className="my-3">
                     <div className='logRegContainer'>
                         <h1 className='text-center'>Calendar</h1>
@@ -158,10 +157,6 @@ export const NewAppointmentAdm = () => {
             <Row className='justify-content-center'>
                 <div className="appointmentButton" name="button" onClick={()=> bookAppointmentAdm()}>Book Appointment</div>
             </Row>
-            </>
-            ) : (
-                "LOGIN OR REGISTER"
-            )}
             
         </Container>
   )

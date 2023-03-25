@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useSelector } from 'react-redux';
 import { detailData } from '../detailSlice';
+import dayjs from 'dayjs';
  
 export const UserDetailDoctor = () => {
 
@@ -27,7 +28,7 @@ export const UserDetailDoctor = () => {
                         <p><strong>Email:</strong> {detailRedux?.choosenObject?.email}</p>
                         <p><strong>Direction:</strong> {detailRedux?.choosenObject?.direction}</p>
                         <p><strong>Phone:</strong> {detailRedux?.choosenObject?.phone}</p>
-                        <p><strong>Birth Date:</strong> {detailRedux?.choosenObject?.birth_date}</p>
+                        <p><strong>Birth Date:</strong> {dayjs(detailRedux.choosenObject.birth_date).format('YYYY-MMMM-DD')}</p>
                     </div>
                 </Col>
             </Row>

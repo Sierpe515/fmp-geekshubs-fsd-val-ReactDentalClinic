@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import { useSelector } from 'react-redux';
 import { appointmentDetailData } from '../appointmentSlice';
 import './appointmentDetail.css'
+import dayjs from "dayjs";
  
 export const AppointmentDetailDoctor = () => {
 
@@ -24,13 +25,13 @@ export const AppointmentDetailDoctor = () => {
                     <Row>
                         <h3>Appointment info</h3>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            {detailRedux?.choosenAppointment?.date}
+                            {dayjs(detailRedux?.choosenAppointment?.date).format('YYYY-MMMM-DD')}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
                             {detailRedux?.choosenAppointment?.hour}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            {detailRedux?.choosenAppointment?.createdAt}
+                            {dayjs(detailRedux?.choosenAppointment?.createdAt).format('YYYY-MMMM-DD')}
                         </div>
                     </Row>
                     <Row>

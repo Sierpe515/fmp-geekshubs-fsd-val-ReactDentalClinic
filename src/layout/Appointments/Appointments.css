@@ -1,0 +1,8 @@
+.userBox1 {
+    width: 35rem;
+    background-color: rgba(255, 255, 255, 0.507);
+    padding: 0.5em;
+    margin: 0.25em;
+    border-radius: 5px;
+    cursor: pointer;
+}

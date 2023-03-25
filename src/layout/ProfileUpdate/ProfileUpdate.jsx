@@ -257,7 +257,7 @@ export const ProfileUpdate = () => {
               </Row>
 
               <Row className="mb-3">
-                <Form.Group as={Col} controlId="formGridDirection">
+                <Form.Group as={Col} controlId="formGridBirthdate">
                   <Form.Label>Birth Date</Form.Label>
                   <InputBox
                     className={
@@ -277,7 +277,7 @@ export const ProfileUpdate = () => {
               </Row>
 
               <Row className="mb-3">
-                <Form.Group as={Col} controlId="formGridDirection">
+                <Form.Group as={Col} controlId="formGridPhone">
                   <Form.Label>Phone</Form.Label>
                   <InputBox
                     className={

@@ -12,6 +12,7 @@ import { login, userData } from "../userSlice";
 import { decodeToken, useJwt } from "react-jwt";
 import { useNavigate } from "react-router-dom";
 import { validate } from "../../helpers/useful";
+import ZGIF from '../../image/ZGIF.gif'
 
 export const Login = () => {
 
@@ -100,7 +101,7 @@ export const Login = () => {
   return (
     <Container
       fluid
-      className="homeContainer d-flex flex-column justify-content-between"
+      className="homeContainerMin d-flex flex-column justify-content-between"
     >
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
@@ -109,7 +110,9 @@ export const Login = () => {
             <h1 className="text-center">Login</h1>
             <Form>
               {welcome !== "" ? (
-                <div className="d-flex justify-content-center text-center">{welcome}</div>
+                <div className="welcomeBox1 d-flex flex-column align-items-center justify-content-center text-center"><h3>{welcome}</h3>
+                  <div><img className="welcomeGIF" src={ZGIF} alt="" /></div>
+                </div>
               ) : (
                 <>
               <Form.Group className="mb-3" controlId="formBasicEmail">

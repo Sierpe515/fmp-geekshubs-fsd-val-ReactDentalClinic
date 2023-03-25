@@ -1,3 +1,3 @@
-/* .homeContainer {
-    height: 84vh;
-} */
+.homeContainerMin {
+    min-height: 84vh;
+}

@@ -25,6 +25,19 @@
     display: none;
 }
 
+.welcomeBox1 {
+    height: 35vh;
+    color: rgb(253, 55, 55);
+}
+
+.welcomeGIF {
+    margin-top: 1em;
+    height: 12rem;
+    width: 20rem;
+    border-radius: 10px;
+    border: 1px solid blue;
+}
+
 @media (min-width: 992px){
     .z1 {
         display: block;

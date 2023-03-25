@@ -28,24 +28,27 @@ export const Treatments = () => {
             <Row >
                 <h1 className='text-center'>Treatments</h1>  
                 <div className='d-flex justify-content-center'>
+                <Col className="my-3 doctorsBox" key={treatments.id} lg={2} sm={4}>
                     {treatments.map((treatment) =>{
                     return (
-                        <Col className="my-3 doctorsBox" key={treatment.id} lg={2} sm={4}>
+                        
                             <Card className='cardDoctor' style={{ width: '14rem' }}>
                                 <Card.Img className='treatmentImg' variant="top" src={treatment.image} />
                                 <Card.Body>
                                     <Card.Title>{treatment.treatment}</Card.Title>
                                     <Card.Text>
-                                    {treatment.description}
+                                    <strong>Description: </strong>{treatment.description}
                                     </Card.Text>
                                 </Card.Body>
                                 <ListGroup className="list-group-flush">
-                                    <ListGroup.Item>{treatment.price}</ListGroup.Item>
+                                    <ListGroup.Item><strong>Approximate cost: </strong>{treatment.price}</ListGroup.Item>
                                 </ListGroup>
                             </Card>
-                        </Col>
+                        
                     );
-                })}</div>                  
+                })}
+                </Col>
+                </div>                  
             </Row>
         </Container>
   )

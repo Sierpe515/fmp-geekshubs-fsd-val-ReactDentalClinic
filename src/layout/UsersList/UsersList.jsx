@@ -57,7 +57,7 @@ export const UsersList = () => {
   return (
     <Container
       fluid
-      className="homeContainer d-flex flex-column justify-content-between"
+      className="homeContainerMin d-flex flex-column justify-content-between"
     >
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
@@ -87,7 +87,7 @@ export const UsersList = () => {
         </Col>
       </Row>
       <Row className="d-flex justify-content-center">
-        <ButtonNav route={"View Appointment"} destiny={"/appointments"} />
+        <ButtonNav route={"View appointment list"} destiny={"/appointments"} />
       </Row>
     </Container>
   );

@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAppointment } from '../appointmentSlice';
 import { useNavigate } from 'react-router-dom';
 import { userData } from "../userSlice";
+import dayjs from 'dayjs';
+import './Appointments.css'
 
 export const Appointments = () => {
     const [appointments, setAppointments] = useState([]);
@@ -51,18 +53,18 @@ export const Appointments = () => {
     return (
         <Container
           fluid
-          className="homeContainer d-flex flex-column justify-content-between"
+          className="homeContainerMin d-flex flex-column justify-content-between"
         >
           <Row className="d-flex justify-content-center">
-            <Col xxl={4} xl={5} sm={7} className="my-3">
+            <Col xxl={6} xl={5} sm={7} className="my-3">
               <div className="logRegContainer d-flex flex-column justify-content-center align-items-center text-center">
                 <h1>Appointments List</h1>
                 {appointments.length > 0 ? (
-                  <div>
+                  <div className="appList">
                     {appointments.map((cita) => {
                       return (
-                        <div className="userBox" onClick={() => selected(cita)} key={cita.id}>
-                          {cita.date}{cita.hour}
+                        <div className="userBox1" onClick={() => selected(cita)} key={cita.id}>
+                          <strong>{dayjs(cita.date).format('YYYY-MMMM-DD')}</strong> hour: {cita.hour} patient:<strong> {cita.User.name} {cita.User.surname}</strong>
                         </div>
                       );
                     })}

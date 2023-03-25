@@ -34,14 +34,20 @@ export const bringUsersByAdmin = async (searchUser, token) => {
     return await axios.get(sUrl, config);
 }
 
-export const bringUsersByDoctor = async (token) => {
+export const bringUsersByDoctor = async (searchUser, token) => {
   let config = {
     headers: { 
       'Authorization': 'Bearer '+ token,  
     }
-  };
+  }
 
-  return await axios.get(`${root}/getProfilesDoc`, config);
+    let sUrl = `${root}/getProfilesDoc`;
+
+    if (searchUser) {
+      sUrl += `/${searchUser}`;
+    }
+
+    return await axios.get(sUrl, config);;
 }
 
 export const bringUpcomingAppointmentsAdmin = async (token) => {

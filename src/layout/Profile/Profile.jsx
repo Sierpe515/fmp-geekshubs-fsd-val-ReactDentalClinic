@@ -6,10 +6,8 @@ import { ButtonNav } from '../../components/ButtonNav/ButtonNav';
 import { getUserProfile } from '../../services/apiCalls';
 import { userData } from "../userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { addChoosen } from '../detailSlice';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
-// import { profile } from "console";
 
 export const Profile = () => {
 
@@ -47,24 +45,16 @@ export const Profile = () => {
         }
     }, [users]);
 
-    // const selected = (persona) => {
-    //     dispatch(profile({ credentials: persona }))
-
-    //         setTimeout(()=>{
-    //             navigate("/userDetail");
-    //         },500)
-    // };
-
-    // let bDate = (dayjs({users.birth_date}).format("DD MM YYYY"))
-
   return (
     <Container
       fluid
-      className="homeContainer d-flex flex-column justify-content-between"
+      className="homeContainerMin d-flex flex-column justify-content-between"
     >
       <Row className="d-flex justify-content-center">
         <Col xxl={4} xl={5} sm={7} className="my-3">
           <div className="logRegContainer d-flex flex-column justify-content-center text-center">
+            <h1>Profile</h1>
+            <p></p>
             {users.name && <p><strong>Name:</strong> {users.name}</p>}
             {users.surname && <p><strong>Surname:</strong> {users.surname}</p>}
             {users.email && <p><strong>Email:</strong> {users.email}</p>}

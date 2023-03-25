@@ -1,6 +1,6 @@
 
 .NavBar{
-    height: 6vh;
+    height: 10vh;
 }
 
 .navBar1{
@@ -14,5 +14,23 @@
 @media (max-width: 386px){
     .navTitle {
         display: none;
+    }
+}
+
+@media (min-width: 576px){
+    .NavBar{
+        height: 9vh;
+    }
+}
+
+@media (min-width: 768px){
+    .NavBar{
+        height: 8vh;
+    }
+}
+
+@media (min-width: 992px){
+    .NavBar{
+        height: 6vh;
     }
 }

@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import role1 from "../../image/role1.png";
 import role2 from "../../image/role2.png";
 import role3 from "../../image/role3.png";
-
+import dayjs from 'dayjs';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 
@@ -99,7 +99,7 @@ export const UserDetail = () => {
 
 
      return (
-        <Container fluid className="homeContainer d-flex flex-column justify-content-between">
+        <Container fluid className="homeContainerMin d-flex flex-column justify-content-between">
             <Row className="d-flex justify-content-center">
                 <Col xxl={5} xl={5} sm={10} className="my-3">
                     <div className='logRegContainer d-flex flex-column justify-content-center text-center'>
@@ -110,7 +110,7 @@ export const UserDetail = () => {
                         <p><strong>Email:</strong> {detailRedux?.choosenObject?.email}</p>
                         <p><strong>Direction:</strong> {detailRedux?.choosenObject?.direction}</p>
                         <p><strong>Phone:</strong> {detailRedux?.choosenObject?.phone}</p>
-                        <p><strong>Birth Date:</strong> {detailRedux?.choosenObject?.birth_date}</p>
+                        <p><strong>Birth Date:</strong> {dayjs(detailRedux.choosenObject.birth_date).format('YYYY-MMMM-DD')}</p>
                         <p><strong>Password:</strong> {detailRedux?.choosenObject?.password}</p>
                     </div>
                 </Col>
