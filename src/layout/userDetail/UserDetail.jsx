@@ -28,7 +28,6 @@ export const UserDetail = () => {
     let token = (credentialsRdx.credentials.token);
 
     const [userRole, setUserRole] = useState("");
-    const [choosenRole, setChoosenRole] = useState(false)
 
     useEffect(()=>{
         console.log(detailRedux,"patata")
@@ -80,10 +79,6 @@ export const UserDetail = () => {
         console.log(Role);  
     }
 
-    const handleClick = event => {
-        setChoosenRole(current => !current);
-      };
-
     const popoverHoverFocus1 = (
         <Popover className="popoverRole" id="popover-trigger-hover-focus" title="Popover bottom">
           Admin
@@ -128,7 +123,7 @@ export const UserDetail = () => {
                         placement="bottom"
                         overlay={popoverHoverFocus1}
                     >                   
-                        <div onClick={()=> {chooseRole('1'), handleClick()}}
+                        <div onClick={()=> chooseRole('1')}
                             className={userRole === "1" ? ('roleDiv roleDivChoosen d-flex justify-content-center align-items-center') : ('roleDiv d-flex justify-content-center align-items-center')}>
                                 <img className='roleIcon' src={ role1 } alt="" /></div>
                     </OverlayTrigger>
@@ -137,7 +132,7 @@ export const UserDetail = () => {
                         placement="bottom"
                         overlay={popoverHoverFocus2}
                     >       
-                        <div onClick={()=> {chooseRole('2'), handleClick()}}
+                        <div onClick={()=> chooseRole('2')}
                             className={userRole === "2" ? ('roleDiv roleDivChoosen d-flex justify-content-center align-items-center') : ('roleDiv d-flex justify-content-center align-items-center')}>
                                 <img className='roleIcon' src={ role2 } alt="" /></div>
                     </OverlayTrigger>
@@ -146,7 +141,7 @@ export const UserDetail = () => {
                         placement="bottom"
                         overlay={popoverHoverFocus3}
                     >  
-                        <div onClick={()=> {chooseRole('3'), handleClick()}} 
+                        <div onClick={()=> chooseRole('3')} 
                         className={userRole === "3" ? ('roleDiv roleDivChoosen d-flex justify-content-center align-items-center') : ('roleDiv d-flex justify-content-center align-items-center')}>
                             <img className='roleIcon' src={ role3 } alt="" /></div>
                     </OverlayTrigger>
