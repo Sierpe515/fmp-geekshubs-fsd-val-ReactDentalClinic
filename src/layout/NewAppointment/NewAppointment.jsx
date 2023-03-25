@@ -23,41 +23,18 @@ import { useSelector } from "react-redux";
 import { userData } from '../../layout/userSlice';
 import { createAppointment } from '../../services/apiCalls';
 import { useNavigate } from 'react-router-dom';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 
 export const NewAppointment = () => {
 
     const ReduxCredentials = useSelector(userData);
     const navigate = useNavigate();
-
-    
-    const [show, setShow] = useState(false);
-    const [show1, setShow1] = useState(false);
-    const [show2, setShow2] = useState(false);
-    const [show3, setShow3] = useState(false);
-    const [show4, setShow4] = useState(false);
-    const [show5, setShow5] = useState(false);
-    const [show6, setShow6] = useState(false);
-    const [show7, setShow7] = useState(false);
-    const [show8, setShow8] = useState(false);
-    const [show9, setShow9] = useState(false);
-    const [show10, setShow10] = useState(false);
-
-    const target = useRef(null);
-    const target1 = useRef(null);
-    const target2 = useRef(null);
-    const target3 = useRef(null);
-    const target4 = useRef(null);
-    const target5 = useRef(null);
-    const target6 = useRef(null);
-    const target7 = useRef(null);
-    const target8 = useRef(null);
-    const target9 = useRef(null);
-    const target10 = useRef(null);
     
     const [day, setDay] = useState(new Date());
-    const [hour, setHour] = useState({});
-    const [doctor, setDoctor] = useState({});
-    const [treatment, setTreatment] = useState({});
+    const [hour, setHour] = useState("");
+    const [doctor, setDoctor] = useState("");
+    const [treatment, setTreatment] = useState("");
 
     let token = ReduxCredentials.credentials.token;
 
@@ -95,6 +72,17 @@ export const NewAppointment = () => {
     }
         console.log(dataAppointment);
 
+        if (day === ""){
+            console.log("Please, fill all fields")
+            return
+        } else if (hour === ""){
+            console.log("Please, fill all fields")
+            return
+        } else if (treatment === ""){
+            console.log("Please, fill all fields")
+            return
+        }
+
         createAppointment(dataAppointment, token)
         .then(
             action => {
@@ -121,6 +109,72 @@ export const NewAppointment = () => {
           }, 500);
     }
 
+    const popoverHoverFocus1 = (
+        <Popover className="popoverRole1" id="popover-trigger-hover-focus" title="Popover bottom">
+          Zoiberg
+        </Popover>
+    );
+
+    const popoverHoverFocus2 = (
+        <Popover className="popoverRole1" id="popover-trigger-hover-focus" title="Popover bottom">
+          Dr. Strange
+        </Popover>
+    );
+
+    const popoverHoverFocus3 = (
+        <Popover className="popoverRole1" id="popover-trigger-hover-focus" title="Popover bottom">
+          Robotnik
+        </Popover>
+    );
+
+    const popoverHoverFocus4 = (
+        <Popover className="popoverRole1" id="popover-trigger-hover-focus" title="Popover bottom">
+          Black Death
+        </Popover>
+    );
+
+    const popoverHoverFocus5 = (
+        <Popover className="popoverRole1" id="popover-trigger-hover-focus" title="Popover bottom">
+          Rick Sanchez
+        </Popover>
+    );
+    
+    const popoverHoverFocus6 = (
+        <Popover className="popoverRole1" id="popover-trigger-hover-focus" title="Popover bottom">
+          Implantology
+        </Popover>
+    );
+    
+    const popoverHoverFocus7 = (
+        <Popover className="popoverRole1" id="popover-trigger-hover-focus" title="Popover bottom">
+          Bruxism
+        </Popover>
+    );
+    
+    const popoverHoverFocus8 = (
+        <Popover className="popoverRole1" id="popover-trigger-hover-focus" title="Popover bottom">
+          Orthodontics
+        </Popover>
+    );
+    
+    const popoverHoverFocus9 = (
+        <Popover className="popoverRole1" id="popover-trigger-hover-focus" title="Popover bottom">
+          Whitening
+        </Popover>
+    );
+    
+    const popoverHoverFocus10 = (
+        <Popover className="popoverRole1" id="popover-trigger-hover-focus" title="Popover bottom">
+          Periodontics
+        </Popover>
+    );
+    
+    const popoverHoverFocus11 = (
+        <Popover className="popoverRole1" id="popover-trigger-hover-focus" title="Popover bottom">
+          Others
+        </Popover>
+    );
+
   return (
     <Container fluid className="home2Container d-flex flex-column justify-content-between">
             <Row className="d-flex justify-content-center">
@@ -142,129 +196,118 @@ export const NewAppointment = () => {
                         />
                     </div>
                 </Col>
-            </Row>
-            <Row className="justify-content-center hourGrid">
-                <div onClick={()=> chooseHour('09:00')} className='d-flex justify-content-center align-items-center hourContainer'>09:00</div>
-                <div onClick={()=> chooseHour('09:30')} className='d-flex justify-content-center align-items-center hourContainer'>09:30</div>
-                <div onClick={()=> chooseHour('10:00')} className='d-flex justify-content-center align-items-center hourContainer'>10:00</div>
-                <div onClick={()=> chooseHour('10:30')} className='d-flex justify-content-center align-items-center hourContainer'>10:30</div>
-                <div onClick={()=> chooseHour('11:00')} className='d-flex justify-content-center align-items-center hourContainer'>11:00</div>
-                <div onClick={()=> chooseHour('11:30')} className='d-flex justify-content-center align-items-center hourContainer'>11:30</div>
-                <div onClick={()=> chooseHour('12:00')} className='d-flex justify-content-center align-items-center hourContainer'>12:00</div>
-                <div onClick={()=> chooseHour('12:30')} className='d-flex justify-content-center align-items-center hourContainer'>12:30</div>
-                <div onClick={()=> chooseHour('13:00')} className='d-flex justify-content-center align-items-center hourContainer'>13:00</div>
-                <div onClick={()=> chooseHour('13:30')} className='d-flex justify-content-center align-items-center hourContainer'>13:30</div>
-                <div onClick={()=> chooseHour('14:00')} className='d-flex justify-content-center align-items-center hourContainer'>14:00</div>
-                <div onClick={()=> chooseHour('14:30')} className='d-flex justify-content-center align-items-center hourContainer'>14:30</div>
-                <div onClick={()=> chooseHour('15:00')} className='d-flex justify-content-center align-items-center hourContainer'>15:00</div>
-                <div onClick={()=> chooseHour('15:30')} className='d-flex justify-content-center align-items-center hourContainer'>15:30</div>
-                <div onClick={()=> chooseHour('16:00')} className='d-flex justify-content-center align-items-center hourContainer'>16:00</div>
-                <div onClick={()=> chooseHour('16:30')} className='d-flex justify-content-center align-items-center hourContainer'>16:30</div>
-                <div onClick={()=> chooseHour('17:00')} className='d-flex justify-content-center align-items-center hourContainer'>17:00</div>
-                <div onClick={()=> chooseHour('17:30')} className='d-flex justify-content-center align-items-center hourContainer'>17:30</div>
-                <div onClick={()=> chooseHour('18:00')} className='d-flex justify-content-center align-items-center hourContainer'>18:00</div>
-                <div onClick={()=> chooseHour('18:30')} className='d-flex justify-content-center align-items-center hourContainer'>18:30</div>
-                <div onClick={()=> chooseHour('19:00')} className='d-flex justify-content-center align-items-center hourContainer'>19:00</div>
-                <div onClick={()=> chooseHour('19:30')} className='d-flex justify-content-center align-items-center hourContainer'>19:30</div>
-                <div onClick={()=> chooseHour('20:00')} className='d-flex justify-content-center align-items-center hourContainer'>20:00</div>
-                <div onClick={()=> chooseHour('20:30')} className='d-flex justify-content-center align-items-center hourContainer'>20:30</div>
-            </Row>
-            <Row className="rowSpace justify-content-center">
-                <div onClick={()=> chooseDoctor('1')} className='d-flex justify-content-center align-items-center doctorContainer' ref={target6} onMouseEnter={() => setShow6(!show6)}><img className='doctorIcon' src={ doc1 } alt="" />
-                    <Overlay target={target6.current} show={show6} placement="bottom">
-                        {(props) => (
-                        <Tooltip id="over1" {...props}>
-                            Zoiberg
-                        </Tooltip>
-                        )}
-                    </Overlay></div>
-                <div onClick={()=> chooseDoctor('2')} className='d-flex justify-content-center align-items-center doctorContainer' ref={target7} onMouseEnter={() => setShow7(!show7)}><img className='doctorIcon' src={ doc2 } alt="" />
-                    <Overlay target={target7.current} show={show7} placement="bottom">
-                        {(props) => (
-                        <Tooltip id="over1" {...props}>
-                            Strange
-                        </Tooltip>
-                        )}
-                    </Overlay></div>
-                <div onClick={()=> chooseDoctor('3')} className='d-flex justify-content-center align-items-center doctorContainer' ref={target8} onMouseEnter={() => setShow8(!show8)}><img className='doctorIcon2' src={ doc3 } alt="" />
-                    <Overlay target={target8.current} show={show8} placement="bottom">
-                        {(props) => (
-                        <Tooltip id="over1" {...props}>
-                            Robotnik
-                        </Tooltip>
-                        )}
-                    </Overlay></div>
-                <div onClick={()=> chooseDoctor('4')} className='d-flex justify-content-center align-items-center doctorContainer' ref={target9} onMouseEnter={() => setShow9(!show9)}><img className='doctorIcon' src={ doc4 } alt="" />
-                    <Overlay target={target9.current} show={show9} placement="bottom">
-                        {(props) => (
-                        <Tooltip id="over1" {...props}>
-                            Black Death
-                        </Tooltip>
-                        )}
-                    </Overlay></div>
-                <div onClick={()=> chooseDoctor('5')} className='d-flex justify-content-center align-items-center doctorContainer' ref={target10} onMouseEnter={() => setShow10(!show10)}><img className='doctorIcon' src={ doc5 } alt="" />
-                    <Overlay target={target10.current} show={show10} placement="bottom">
-                        {(props) => (
-                        <Tooltip id="over1" {...props}>
-                            Rick
-                        </Tooltip>
-                        )}
-                    </Overlay></div>
-            </Row>
-            <Row className="rowSpace justify-content-center">
-                <div onClick={()=> chooseTreatment('1')} className='d-flex justify-content-center align-items-center treatmentContainer' ref={target} onMouseEnter={() => setShow(!show)}><img className='treatmentIcon' src={ implant } alt="" /></div>
-                    <Overlay target={target.current} show={show} placement="bottom">
-                        {(props) => (
-                        <Tooltip id="over1" {...props}>
-                            Implantology
-                        </Tooltip>
-                        )}
-                    </Overlay>
-                <div onClick={()=> chooseTreatment('2')} className='d-flex justify-content-center align-items-center treatmentContainer' ref={target1} onMouseEnter={() => setShow1(!show1)}><img className='treatmentIcon' src={ bruxism } alt="" /></div>
-                    <Overlay target={target1.current} show={show1} placement="bottom">
-                        {(props) => (
-                        <Tooltip id="over2" {...props}>
-                            Bruxism
-                        </Tooltip>
-                        )}
-                    </Overlay>
-                <div onClick={()=> chooseTreatment('3')} className='d-flex justify-content-center align-items-center treatmentContainer' ref={target2} onMouseEnter={() => setShow2(!show2)}><img className='treatmentIcon' src={ orthod } alt="" /></div>
-                    <Overlay target={target2.current} show={show2} placement="bottom">
-                        {(props) => (
-                        <Tooltip id="over3" {...props}>
-                            Orthodontics
-                        </Tooltip>
-                        )}
-                    </Overlay>
-                <div onClick={()=> chooseTreatment('4')} className='d-flex justify-content-center align-items-center treatmentContainer' ref={target3} onMouseEnter={() => setShow3(!show3)}><img className='treatmentIcon' src={ whitening } alt="" /></div>
-                    <Overlay target={target3.current} show={show3} placement="bottom">
-                        {(props) => (
-                        <Tooltip id="over4" {...props}>
-                            Whitening
-                        </Tooltip>
-                        )}
-                    </Overlay>
-                <div onClick={()=> chooseTreatment('5')} className='d-flex justify-content-center align-items-center treatmentContainer' ref={target4} onMouseEnter={() => setShow4(!show4)}><img className='treatmentIcon' src={ period } alt="" /></div>
-                <Overlay target={target4.current} show={show4} placement="bottom">
-                        {(props) => (
-                        <Tooltip id="over5" {...props}>
-                            Periodontics
-                        </Tooltip>
-                        )}
-                    </Overlay>
-                <div onClick={()=> chooseTreatment('6')} className='d-flex justify-content-center align-items-center treatmentContainer' ref={target5} onMouseEnter={() => setShow5(!show5)}><img className='treatmentIcon' src={ other } alt="" /></div>
-                <Overlay target={target5.current} show={show5} placement="bottom">
-                        {(props) => (
-                        <Tooltip id="over6" {...props}>
-                            Others
-                        </Tooltip>
-                        )}
-                    </Overlay>
-            </Row>
-            <Row className='justify-content-center'>
-            <div className="appointmentButton" name="button" onClick={()=> bookAppointment()}>Book Appointment</div>
-            </Row>
-            </>
+                </Row>
+                <Row className="justify-content-center hourGrid">
+                    <div onClick={()=> chooseHour("09:00")} className={hour === "09:00" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>09:00</div>
+                    <div onClick={()=> chooseHour("09:30")} className={hour === "09:30" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>09:30</div>
+                    <div onClick={()=> chooseHour("10:00")} className={hour === "10:00" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>10:00</div>
+                    <div onClick={()=> chooseHour("10:30")} className={hour === "10:30" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>10:30</div>
+                    <div onClick={()=> chooseHour("11:00")} className={hour === "11:00" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>11:00</div>
+                    <div onClick={()=> chooseHour("11:30")} className={hour === "11:30" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>11:30</div>
+                    <div onClick={()=> chooseHour("12:00")} className={hour === "12:00" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>12:00</div>
+                    <div onClick={()=> chooseHour("12:30")} className={hour === "12:30" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>12:30</div>
+                    <div onClick={()=> chooseHour("13:00")} className={hour === "13:00" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>13:00</div>
+                    <div onClick={()=> chooseHour("13:30")} className={hour === "13:30" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>13:30</div>
+                    <div onClick={()=> chooseHour("14:00")} className={hour === "14:00" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>14:00</div>
+                    <div onClick={()=> chooseHour("14:30")} className={hour === "14:30" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>14:30</div>
+                    <div onClick={()=> chooseHour("15:00")} className={hour === "15:00" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>15:00</div>
+                    <div onClick={()=> chooseHour("15:30")} className={hour === "15:30" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>15:30</div>
+                    <div onClick={()=> chooseHour("16:00")} className={hour === "16:00" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>16:00</div>
+                    <div onClick={()=> chooseHour("16:30")} className={hour === "16:30" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>16:30</div>
+                    <div onClick={()=> chooseHour("17:00")} className={hour === "17:00" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>17:00</div>
+                    <div onClick={()=> chooseHour("17:30")} className={hour === "17:30" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>17:30</div>
+                    <div onClick={()=> chooseHour("18:00")} className={hour === "18:00" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>18:00</div>
+                    <div onClick={()=> chooseHour("18:30")} className={hour === "18:30" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>18:30</div>
+                    <div onClick={()=> chooseHour("19:00")} className={hour === "19:00" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>19:00</div>
+                    <div onClick={()=> chooseHour("19:30")} className={hour === "19:30" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>19:30</div>
+                    <div onClick={()=> chooseHour("20:00")} className={hour === "20:00" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>20:00</div>
+                    <div onClick={()=> chooseHour("20:30")} className={hour === "20:30" ? ('hourContainer selected d-flex justify-content-center align-items-center') : ('d-flex justify-content-center align-items-center hourContainer')}>20:30</div>
+                </Row>
+                <Row className="rowSpace justify-content-center">
+                <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus1}
+                    >         
+                    <div onClick={()=> chooseDoctor("1")} className={doctor === "1" ? ('d-flex justify-content-center align-items-center doctorContainer selected') : ('d-flex justify-content-center align-items-center doctorContainer')} ><img className='doctorIcon' src={ doc1 } alt="" /></div>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus2}
+                    >         
+                    <div onClick={()=> chooseDoctor('2')} className={doctor === "2" ? ('d-flex justify-content-center align-items-center doctorContainer selected') : ('d-flex justify-content-center align-items-center doctorContainer')} ><img className='doctorIcon' src={ doc2 } alt="" /></div>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus3}
+                    >         
+                    <div onClick={()=> chooseDoctor('3')} className={doctor === "3" ? ('d-flex justify-content-center align-items-center doctorContainer selected') : ('d-flex justify-content-center align-items-center doctorContainer')} ><img className='doctorIcon2' src={ doc3 } alt="" /></div>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus4}
+                    >         
+                    <div onClick={()=> chooseDoctor('4')} className={doctor === "4" ? ('d-flex justify-content-center align-items-center doctorContainer selected') : ('d-flex justify-content-center align-items-center doctorContainer')} ><img className='doctorIcon' src={ doc4 } alt="" /></div>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus5}
+                    >         
+                    <div onClick={()=> chooseDoctor('5')} className={doctor === "5" ? ('d-flex justify-content-center align-items-center doctorContainer selected') : ('d-flex justify-content-center align-items-center doctorContainer')} ><img className='doctorIcon' src={ doc5 } alt="" /></div>
+                    </OverlayTrigger>
+                </Row>
+                <Row className="rowSpace justify-content-center">
+                <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus6}
+                    > 
+                    <div onClick={()=> chooseTreatment('1')} className={treatment === "1" ? ('d-flex justify-content-center align-items-center treatmentContainer selected') : ('d-flex justify-content-center align-items-center treatmentContainer')} ><img className='treatmentIcon' src={ implant } alt="" /></div>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus7}
+                    > 
+                    <div onClick={()=> chooseTreatment('2')} className={treatment === "2" ? ('d-flex justify-content-center align-items-center treatmentContainer selected') : ('d-flex justify-content-center align-items-center treatmentContainer')} ><img className='treatmentIcon' src={ bruxism } alt="" /></div>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus8}
+                    > 
+                    <div onClick={()=> chooseTreatment('3')} className={treatment === "3" ? ('d-flex justify-content-center align-items-center treatmentContainer selected') : ('d-flex justify-content-center align-items-center treatmentContainer')} ><img className='treatmentIcon' src={ orthod } alt="" /></div>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus9}
+                    > 
+                    <div onClick={()=> chooseTreatment('4')} className={treatment === "4" ? ('d-flex justify-content-center align-items-center treatmentContainer selected') : ('d-flex justify-content-center align-items-center treatmentContainer')} ><img className='treatmentIcon' src={ whitening } alt="" /></div>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus10}
+                    > 
+                    <div onClick={()=> chooseTreatment('5')} className={treatment === "5" ? ('d-flex justify-content-center align-items-center treatmentContainer selected') : ('d-flex justify-content-center align-items-center treatmentContainer')} ><img className='treatmentIcon' src={ period } alt="" /></div>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus11}
+                    > 
+                    <div onClick={()=> chooseTreatment('6')} className={treatment === "6" ? ('d-flex justify-content-center align-items-center treatmentContainer selected') : ('d-flex justify-content-center align-items-center treatmentContainer')} ><img className='treatmentIcon' src={ other } alt="" /></div>
+                    </OverlayTrigger>
+                </Row>
+                <Row className='justify-content-center'>
+                    <div className="appointmentButton" name="button" onClick={()=> bookAppointment()}>Book Appointment</div>
+                </Row>
+                </>
             ) : (
                 <Row className="d-flex justify-content-center">
                     <Col xxl={5} xl={5} sm={7} className="logRegContainer my-3 d-flex flex-column align-items-center justify-content-center">

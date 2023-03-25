@@ -15,6 +15,7 @@
     margin: 0.5em;
     margin-left: 1em;
     margin-right: 1em;
+    cursor: pointer;
 }
 
 .hourContainer:hover {
@@ -60,6 +61,10 @@
     height: 5em;
 }
 
+.selected {
+  background-color: rgb(253, 55, 55);
+}
+
 .appointmentButton {
     background-color: rgb(253, 55, 55);
     margin-top: 1.5em;
@@ -80,6 +85,9 @@
     background-color: darkred;
 }
 
+
+/* CALENDAR */
+
 .calendar {
     display: flex;
     flex-direction: column;
@@ -91,18 +99,20 @@
     width: 400px;
     max-width: 100%;
     background-color: rgba(239, 239, 239, 0.589);
-    color: blue;
+    color: #d10202;
     border-radius: 8px;
     box-shadow: 0 12px 24px rgba(0, 8, 126, 0.349);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     line-height: 1.125em;
+    font-size: 18px;
+    text-align: center;
   }
    
   .react-calendar__navigation button {
-    color: blue;
+    color: #d10202;
     min-width: 44px;
     background: none;
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 8px;
     border-radius: 6px;
   }
@@ -158,8 +168,8 @@
    
   .react-calendar__tile--active:enabled:hover,
   .react-calendar__tile--active:enabled:focus {
-    background: blue;
-    color: rgba(29, 118, 252, 0.589);
+    background: #fd4343;
+    color: white;
   }
    
   .react-calendar--selectRange .react-calendar__tile--hover {
@@ -168,24 +178,25 @@
    
   .react-calendar__tile--range {
     background: rgba(29, 118, 252, 0.589);
-    color: blue;
+    color: #fd4343;
     border-radius: 0;
   }
    
   .react-calendar__tile--rangeStart {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
-    background: blue;
+    background: #fd4343;
     color: rgba(29, 118, 252, 0.589);
   }
    
   .react-calendar__tile--rangeEnd {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
-    background: blue;
+    background: #fd4343;
     color: white;
+    transform: scale(1.1);
   }
