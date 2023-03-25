@@ -221,7 +221,7 @@ export const NewAppointment = () => {
                     <Offcanvas.Body className='offcanvasBtn'><div className="appointmentButton" name="button" onClick={()=> bookAppointment()}>Book Appointment</div></Offcanvas.Body>
                 </Offcanvas>
                 <Row className="d-flex justify-content-center">
-                    <Col xxl={4} xl={6} sm={7} className="my-3">
+                    <Col xxl={5} xl={6} sm={7} className="my-3">
                         <div className='logRegContainer d-flex flex-column align-items-center justify-content-center'>
                             <h1 className='text-center'>Pick a date and time</h1>
                             <Calendar 
