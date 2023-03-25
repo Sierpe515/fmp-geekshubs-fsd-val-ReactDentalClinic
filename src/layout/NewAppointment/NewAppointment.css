@@ -1,5 +1,7 @@
 
 .hourGrid {
+    margin-top: 1em;
+    margin-bottom: 1em;
     display: grid;
     grid-template-columns: repeat(3, auto);
 }
@@ -7,14 +9,14 @@
 .hourContainer {
     display: grid;
     grid-template-columns: repeat(3, auto);
-    width: 14em;
-    height: 2.5em;
+    width: 5.5rem;
+    height: 1.5rem;
     background-color: rgba(239, 239, 239, 0.589);
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid blue;
-    margin: 0.5em;
-    margin-left: 1em;
-    margin-right: 1em;
+    margin: 0.25em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
     cursor: pointer;
 }
 
@@ -23,10 +25,13 @@
 }
 
 .doctorContainer {
-    width: 10em;
-    height: 10em;
+    /* width: 6rem;
+    height: 6rem; */
+    height: 3.5rem;
+    width: 3.5rem;
     background-color: rgba(239, 239, 239, 0.589);
     border-radius: 50%;
+    border: 1px solid blue;
 }
 
 .doctorContainer:hover {
@@ -34,23 +39,26 @@
 }
 
 .doctorIcon {
-    width: 9em;
+    width: 3rem;
 }
 
 .doctorIcon2 {
-    width: 13em;
+    width: 4.5rem;
 }
 
 .rowSpace {
-    gap: 2em;
-    margin: 1em;
+    gap: 0.5rem;
+    margin: 1rem;
 }
 
 .treatmentContainer {
-    width: 6em;
-    height: 6em;
+    /* width: 5rem;
+    height: 5rem; */
+    height: 3rem;
+    width: 3rem;
     background-color: rgba(239, 239, 239, 0.589);
     border-radius: 15px;
+    border: 1px solid blue;
 }
 
 .treatmentContainer:hover {
@@ -58,7 +66,7 @@
 }
 
 .treatmentIcon {
-    height: 5em;
+    height: 2rem;
 }
 
 .selected {
@@ -120,114 +128,215 @@
 /* CALENDAR */
 
 .calendar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .react-calendar {
-    width: 400px;
-    max-width: 100%;
-    background-color: rgba(239, 239, 239, 0.589);
-    color: #d10202;
-    border-radius: 8px;
-    box-shadow: 0 12px 24px rgba(0, 8, 126, 0.349);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    line-height: 1.125em;
-    font-size: 18px;
-    text-align: center;
+  width: 400px;
+  max-width: 100%;
+  background-color: rgba(239, 239, 239, 0.589);
+  color: #d10202;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(0, 8, 126, 0.349);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  line-height: 1.125em;
+  font-size: 18px;
+  text-align: center;
+}
+ 
+.react-calendar__navigation button {
+  color: #d10202;
+  min-width: 44px;
+  background: none;
+  font-size: 18px;
+  margin-top: 8px;
+  border-radius: 6px;
+}
+ 
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: #6a79ff;
+}
+.react-calendar__navigation button[disabled] {
+  background-color: #fd4343;
+}
+abbr[title] {
+  text-decoration: none;
+}
+ 
+/* .react-calendar__month-view__days__day--weekend {
+  color: #d10000;
+ } */
+ 
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background: #6a79ff;
+  color: blue;
+  border-radius: 6px;
+}
+ 
+.react-calendar__tile--now {
+  background: #1357d433;
+  border-radius: 6px;
+  font-weight: bold;
+  color: blue;
+}
+ 
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #1357d433;
+  border-radius: 6px;
+  font-weight: bold;
+  color: blue;
+}
+ 
+.react-calendar__tile--hasActive:enabled:hover,
+.react-calendar__tile--hasActive:enabled:focus {
+  background: rgba(29, 118, 252, 0.589);
+}
+ 
+.react-calendar__tile--active {
+  background: blue;
+  border-radius: 6px;
+  font-weight: bold;
+  color: rgba(29, 118, 252, 0.589);
+}
+ 
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #fd4343;
+  color: white;
+}
+ 
+.react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: rgba(29, 118, 252, 0.589);
+}
+ 
+.react-calendar__tile--range {
+  background: rgba(29, 118, 252, 0.589);
+  color: #fd4343;
+  border-radius: 0;
+}
+ 
+.react-calendar__tile--rangeStart {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  background: #fd4343;
+  color: rgba(29, 118, 252, 0.589);
+}
+ 
+.react-calendar__tile--rangeEnd {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background: #fd4343;
+  color: white;
+  transform: scale(1.1);
+}
+
+@media (min-width: 576px){
+  .hourContainer {
+    width: 7rem;
   }
-   
-  .react-calendar__navigation button {
-    color: #d10202;
-    min-width: 44px;
-    background: none;
-    font-size: 18px;
-    margin-top: 8px;
-    border-radius: 6px;
+  .doctorContainer {
+    height: 4.5rem;
+    width: 4.5rem;
   }
-   
-  .react-calendar__navigation button:enabled:hover,
-  .react-calendar__navigation button:enabled:focus {
-    background-color: #6a79ff;
+
+  .doctorIcon {
+    height: 3.5rem;
+    width: 3.5rem;
   }
-  .react-calendar__navigation button[disabled] {
-    background-color: #fd4343;
+
+  .doctorIcon2 {
+    height: 5.5rem;
+    width: 5.5rem;
   }
-  abbr[title] {
-    text-decoration: none;
+
+  .treatmentContainer {
+    height: 3.5rem;
+    width: 3.5rem;
   }
-   
-  /* .react-calendar__month-view__days__day--weekend {
-    color: #d10000;
-   } */
-   
-  .react-calendar__tile:enabled:hover,
-  .react-calendar__tile:enabled:focus {
-    background: #6a79ff;
-    color: blue;
-    border-radius: 6px;
+}
+
+@media (min-width: 992px){
+  .rowSpace {
+    gap: 1rem;
+    margin: 1rem;
   }
-   
-  .react-calendar__tile--now {
-    background: #1357d433;
-    border-radius: 6px;
-    font-weight: bold;
-    color: blue;
+
+  .hourContainer {
+    height: 2rem;
+    width: 9rem;
+    margin: 0.5em;
+    margin-left: 1em;
+    margin-right: 1em;
   }
-   
-  .react-calendar__tile--now:enabled:hover,
-  .react-calendar__tile--now:enabled:focus {
-    background: #1357d433;
-    border-radius: 6px;
-    font-weight: bold;
-    color: blue;
+  .doctorContainer {
+    height: 5.5rem;
+    width: 5.5rem;
   }
-   
-  .react-calendar__tile--hasActive:enabled:hover,
-  .react-calendar__tile--hasActive:enabled:focus {
-    background: rgba(29, 118, 252, 0.589);
+
+  .doctorIcon {
+    height: 4.5rem;
+    width: 4.5rem;
   }
-   
-  .react-calendar__tile--active {
-    background: blue;
-    border-radius: 6px;
-    font-weight: bold;
-    color: rgba(29, 118, 252, 0.589);
+
+  .doctorIcon2 {
+    height: 6.5rem;
+    width: 6.5rem;
   }
-   
-  .react-calendar__tile--active:enabled:hover,
-  .react-calendar__tile--active:enabled:focus {
-    background: #fd4343;
-    color: white;
+
+  .treatmentContainer {
+    height: 4.5rem;
+    width: 4.5rem;
   }
-   
-  .react-calendar--selectRange .react-calendar__tile--hover {
-    background-color: rgba(29, 118, 252, 0.589);
+
+  .treatmentIcon {
+    height: 3rem;
   }
-   
-  .react-calendar__tile--range {
-    background: rgba(29, 118, 252, 0.589);
-    color: #fd4343;
-    border-radius: 0;
+}
+
+@media (min-width: 1200px){
+  .rowSpace {
+    gap: 1rem;
+    margin: 1rem;
   }
-   
-  .react-calendar__tile--rangeStart {
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-    background: #fd4343;
-    color: rgba(29, 118, 252, 0.589);
+
+  .hourContainer {
+    height: 2rem;
+    width: 10rem;
+    margin: 0.5em;
+    margin-left: 1em;
+    margin-right: 1em;
   }
-   
-  .react-calendar__tile--rangeEnd {
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-    background: #fd4343;
-    color: white;
-    transform: scale(1.1);
+  .doctorContainer {
+    height: 6rem;
+    width: 6rem;
   }
+
+  .doctorIcon {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .doctorIcon2 {
+    height: 7rem;
+    width: 7rem;
+  }
+
+  .treatmentContainer {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .treatmentIcon {
+    height: 3.5rem;
+  }
+}

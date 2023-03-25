@@ -1,19 +1,22 @@
 .footer {
     background-color: rgba(4, 104, 253, 0.336);
     height: 10vh;
+    width: 100vw;
+}
+
+.footerBox2 {
+    width: 100vw;
 }
 
 .footerBox1 {
     width: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-left: 1em;
 }
 
 .logoGif {
     border-radius: 5px;
     border: 1px solid rgb(253, 55, 55);
-    height: 4em;
+    height: 3em;
 }
 
 .clinicName {
@@ -32,19 +35,115 @@
 }
 
 .footerBox3 {
-    width: 20%;
+    width: 40%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
 }
 
 .icons {
     color: white;
-    margin-right: 2em;
+    margin-right: 1em;
+    height: 2em;
 }
 
 .icons:hover {
     transform: scale(1.1);
     color: rgba(4, 104, 253, 0.336);
     cursor: pointer;
+}
+
+@media (max-width: 386px){
+
+    .clinicName {
+        display: none;
+    }
+
+    .footerBox2 {
+        display: none;
+    }
+}
+
+@media (max-width: 576px){
+
+    .clinicName {
+        display: none;
+    }
+
+    .footerBox2 {
+        display: none;
+    }
+}
+
+@media (min-width: 576px){
+
+    .clinicName {
+        display: none;
+    }
+
+    .footerBox2 {
+        font-size: x-small;
+    }
+
+    .footerBox3 {
+        width: 30%;
+    }
+
+}
+
+@media (min-width: 768px){
+
+    .clinicName {
+        display: none;
+    }
+
+    .footerBox2 {
+        font-size: small;
+    }
+
+    .footerBox3 {
+        width: 20%;
+    }
+
+}
+
+@media (min-width: 992px){
+
+    .clinicName {
+        display: none;
+    }
+
+    .footerBox2 {
+        font-size: medium;
+    }
+
+    .footerBox3 {
+        width: 20%;
+        justify-content: center;
+    }
+
+}
+
+@media (min-width: 992px){
+
+    .footerBox1 {
+        display: flex;
+        width: 30%;
+    }
+
+    .clinicName {
+        display: block;
+    }
+
+    .footerBox2 {
+        font-size: medium;
+        width: 40%;
+    }
+
+    .footerBox3 {
+        width: 30%;
+        justify-content: center;
+        gap: 1em
+    }
+
 }

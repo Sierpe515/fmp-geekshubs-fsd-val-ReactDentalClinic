@@ -1,6 +1,6 @@
 .home1Container {
     margin-top: 3em;
-    height: 22em;
+    height: 12em;
     background-image: url('../../image/futurama-spaceship.gif');
     background-size: cover;
     padding: 1em;
@@ -16,7 +16,33 @@
     color: rgb(66, 66, 250);
 }
 
+.welcomeContainer {
+    margin: 1em;
+}
+
+.welcomeBox {
+    background-color: rgba(203, 232, 255, 0.589);
+    border: 1px solid blue;
+    border-radius: 10px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+}
+
+.appointmentBtn {
+    margin-top: 1em;
+}
+
+@media (min-width: 576px){
+    .home1Container {
+        height: 18em;
+    }
+}
+
 @media (min-width: 992px){
+    .home1Container {
+        height: 22em;
+    }
     .z3 {
         display: block;
         position: absolute;
