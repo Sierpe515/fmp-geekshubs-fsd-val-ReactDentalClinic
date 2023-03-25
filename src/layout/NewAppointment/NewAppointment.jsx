@@ -3,8 +3,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import React, { useState, useRef } from 'react';
-import Overlay from 'react-bootstrap/Overlay';
-import Tooltip from 'react-bootstrap/Tooltip';
 import doc1 from '../../image/doc1.png';
 import doc2 from '../../image/doc2.png';
 import doc3 from '../../image/doc3.png';
@@ -25,6 +23,9 @@ import { createAppointment } from '../../services/apiCalls';
 import { useNavigate } from 'react-router-dom';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import Button from 'react-bootstrap/Button';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import { useEffect } from 'react';
 
 export const NewAppointment = () => {
 
@@ -35,6 +36,8 @@ export const NewAppointment = () => {
     const [hour, setHour] = useState("");
     const [doctor, setDoctor] = useState("");
     const [treatment, setTreatment] = useState("");
+
+    const [bookAct, setBookAct] = useState(false);
 
     let token = ReduxCredentials.credentials.token;
 
@@ -109,6 +112,24 @@ export const NewAppointment = () => {
           }, 500);
     }
 
+    useEffect(() => {
+        if (day === ""){
+            setBookAct(false)
+            return
+        } else if (hour === ""){
+            setBookAct(false)
+            return
+        } else if (doctor === ""){
+            setBookAct(false)
+            return
+        } else if (treatment === ""){
+            setBookAct(false)
+            return
+        }
+
+        setBookAct(true)
+    })
+
     const popoverHoverFocus1 = (
         <Popover className="popoverRole1" id="popover-trigger-hover-focus" title="Popover bottom">
           Zoiberg
@@ -175,6 +196,10 @@ export const NewAppointment = () => {
         </Popover>
     );
 
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
   return (
     <Container fluid className="home2Container d-flex flex-column justify-content-between">
             <Row className="d-flex justify-content-center">
@@ -185,7 +210,16 @@ export const NewAppointment = () => {
                 </Col>
             </Row>
             {ReduxCredentials.credentials.token ? (
-                <>
+                <>                
+                <Offcanvas show={show} onHide={handleClose} className="offcanvasBox">
+                    <div className='offcanvasBody'>
+                    <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Appointment Confirmation</Offcanvas.Title>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body>Are you sure to book this appointment?</Offcanvas.Body>
+                    </div>
+                    <Offcanvas.Body className='offcanvasBtn'><div className="appointmentButton" name="button" onClick={()=> bookAppointment()}>Book Appointment</div></Offcanvas.Body>
+                </Offcanvas>
                 <Row className="d-flex justify-content-center">
                 <Col xxl={4} xl={5} sm={7} className="my-3">
                     <div className='logRegContainer d-flex flex-column align-items-center justify-content-center'>
@@ -305,7 +339,10 @@ export const NewAppointment = () => {
                     </OverlayTrigger>
                 </Row>
                 <Row className='justify-content-center'>
-                    <div className="appointmentButton" name="button" onClick={()=> bookAppointment()}>Book Appointment</div>
+                    <Button className={bookAct ? 'appointmentButton' : 'appointmentButtonDeac'} variant="primary" onClick={bookAct ? () => {handleShow()} : () => {}}>
+                        Book an appointment
+                    </Button>
+                    {/* <div className="appointmentButton" name="button" onClick={()=> bookAppointment()}>Book Appointment</div> */}
                 </Row>
                 </>
             ) : (
