@@ -52,7 +52,7 @@ export const AppointmentsUserPast = () => {
                     {appointments.map((cita) => {
                       return (
                         <div className="userBox" onClick={() => selected(cita)} key={cita.id}>
-                          {cita.date}{cita.hour}
+                          <strong>{dayjs(cita.date).format('YYYY-MMMM-DD')}</strong> hour: {cita.hour}
                         </div>
                       );
                     })}

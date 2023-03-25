@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAppointment } from '../appointmentSlice';
 import { useNavigate } from 'react-router-dom';
 import { userData } from "../userSlice";
+import dayjs from "dayjs";
 
 export const AppointmentsPast = () => {
     const [appointments, setAppointments] = useState([]);
@@ -62,7 +63,7 @@ export const AppointmentsPast = () => {
                     {appointments.map((cita) => {
                       return (
                         <div className="userBox" onClick={() => selected(cita)} key={cita.id}>
-                          {cita.date}{cita.hour}
+                          <strong>{dayjs(cita.date).format('YYYY-MMMM-DD')}</strong> hour: {cita.hour} patient:<strong> {cita.User.name} {cita.User.surname}</strong>
                         </div>
                       );
                     })}
