@@ -6,9 +6,16 @@ import Col from 'react-bootstrap/Col';
 import { useSelector } from 'react-redux';
 import { detailData } from '../detailSlice';
 import './UserDetail.css'
-import { deleteUserByAdmin } from "../../services/apiCalls";
+import { addRoleByAdmin, deleteUserByAdmin } from "../../services/apiCalls";
 import { userData } from "../userSlice";
 import { useNavigate } from "react-router-dom";
+import role1 from "../../image/role1.png";
+import role2 from "../../image/role2.png";
+import role3 from "../../image/role3.png";
+
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
+
  
 export const UserDetail = () => {
 
@@ -19,6 +26,9 @@ export const UserDetail = () => {
 
     let params = (detailRedux.choosenObject.id);
     let token = (credentialsRdx.credentials.token);
+
+    const [userRole, setUserRole] = useState("");
+    const [choosenRole, setChoosenRole] = useState(false)
 
     useEffect(()=>{
         console.log(detailRedux,"patata")
@@ -49,6 +59,49 @@ export const UserDetail = () => {
         })
     }
 
+    const addUserRole = () => {
+        if(userRole === ""){
+            console.log("Please, choose a role")
+            return;
+        }
+        let body = {
+            user_id: detailRedux.choosenObject.id,
+            role_id: userRole
+        }
+        addRoleByAdmin(body, token)
+        .then(
+            console.log(userRole)
+        )
+        .catch((error) => console.log(error));
+    }
+
+    const chooseRole = (Role) => {
+        setUserRole(Role)
+        console.log(Role);  
+    }
+
+    const handleClick = event => {
+        setChoosenRole(current => !current);
+      };
+
+    const popoverHoverFocus1 = (
+        <Popover className="popoverRole" id="popover-trigger-hover-focus" title="Popover bottom">
+          Admin
+        </Popover>
+    );
+
+    const popoverHoverFocus2 = (
+      <Popover className="popoverRole" id="popover-trigger-hover-focus" title="Popover bottom">
+        Doctor
+      </Popover>
+    );
+    
+    const popoverHoverFocus3 = (
+      <Popover className="popoverRole" id="popover-trigger-hover-focus" title="Popover bottom">
+        Patient
+      </Popover>
+    );
+
 
      return (
         <Container fluid className="homeContainer d-flex flex-column justify-content-between">
@@ -66,6 +119,42 @@ export const UserDetail = () => {
                         <p><strong>Password:</strong> {detailRedux?.choosenObject?.password}</p>
                     </div>
                 </Col>
+            </Row>
+            <Row className="justify-content-center flex-column align-items-center">
+                <div className="addRoleContainer">
+                <Col className="d-flex justify-content-center">
+                    <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus1}
+                    >                   
+                        <div onClick={()=> {chooseRole('1'), handleClick()}}
+                            className={userRole === "1" ? ('roleDiv roleDivChoosen d-flex justify-content-center align-items-center') : ('roleDiv d-flex justify-content-center align-items-center')}>
+                                <img className='roleIcon' src={ role1 } alt="" /></div>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus2}
+                    >       
+                        <div onClick={()=> {chooseRole('2'), handleClick()}}
+                            className={userRole === "2" ? ('roleDiv roleDivChoosen d-flex justify-content-center align-items-center') : ('roleDiv d-flex justify-content-center align-items-center')}>
+                                <img className='roleIcon' src={ role2 } alt="" /></div>
+                    </OverlayTrigger>
+                    <OverlayTrigger
+                        trigger={['hover', 'focus']}
+                        placement="bottom"
+                        overlay={popoverHoverFocus3}
+                    >  
+                        <div onClick={()=> {chooseRole('3'), handleClick()}} 
+                        className={userRole === "3" ? ('roleDiv roleDivChoosen d-flex justify-content-center align-items-center') : ('roleDiv d-flex justify-content-center align-items-center')}>
+                            <img className='roleIcon' src={ role3 } alt="" /></div>
+                    </OverlayTrigger>
+                </Col>
+                <Col className="d-flex justify-content-center">
+                    <div className="deleteButton" name="button" onClick={()=> addUserRole()}>Add role</div>
+                </Col>
+                </div>
             </Row>
             <Row className="justify-content-center">
                 <div className="deleteButton d-flex justify-content-center" name="button" onClick={()=> goNewAppointmentAdm()}>New Appointment</div>

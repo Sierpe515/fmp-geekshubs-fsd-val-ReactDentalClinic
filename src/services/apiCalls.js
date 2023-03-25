@@ -1,8 +1,8 @@
 
 import axios from 'axios';
 
-// const root = "http://localhost:3000"
-const root = "https://planetexpressdentalclinic.up.railway.app"
+const root = "http://localhost:3000"
+// const root = "https://planetexpressdentalclinic.up.railway.app"
 
 export const RegisterMe = async (body) => {
 
@@ -203,7 +203,18 @@ export const CancelAppByAdmin = async (params, token) => {
   return await axios.delete(`${root}/cancelAppAdm/${params}`, config);
 }
 
-export const searchUsersAdmin = async (searchUser, token) => {
+// export const searchUsersAdmin = async (searchUser, token) => {
+
+//   let config = {
+//     headers: { 
+//       'Authorization': 'Bearer '+ token,  
+//     }
+//   };
+
+//   return await axios.get(`${root}/searchAllUsersAdmin/${searchUser}`, config)
+// }
+
+export const addRoleByAdmin = async (body, token) => {
 
   let config = {
     headers: { 
@@ -211,5 +222,7 @@ export const searchUsersAdmin = async (searchUser, token) => {
     }
   };
 
-  return await axios.get(`${root}/searchAllUsersAdmin/${searchUser}`, config)
+  console.log(token);
+
+  return await axios.post(`${root}/user_roles`, body, config);
 }

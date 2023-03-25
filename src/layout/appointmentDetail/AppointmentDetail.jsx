@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import { useSelector } from 'react-redux';
 import { appointmentDetailData } from '../appointmentSlice';
 import './appointmentDetail.css'
-import { CancelAppByAdmin } from "../../services/apiCalls";
+import { addRoleByAdmin, CancelAppByAdmin } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { userData } from "../userSlice";
 import dayjs from 'dayjs';
@@ -18,7 +18,7 @@ export const AppointmentDetail = () => {
     const navigate = useNavigate();
 
     let token = (credentialsRdx.credentials.token);
-    let params = (detailRedux.choosenAppointment.id)
+    let params = (detailRedux.choosenAppointment.id);
 
     useEffect(()=>{
         console.log(detailRedux.choosenAppointment.id,"patata")
@@ -36,6 +36,7 @@ export const AppointmentDetail = () => {
                   }, 500);
             }
         )
+        .catch((error) => console.log(error));
     }
 
 
