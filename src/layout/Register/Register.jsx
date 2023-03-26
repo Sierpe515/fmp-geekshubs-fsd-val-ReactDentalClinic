@@ -88,8 +88,6 @@ export const Register = () => {
 
     error = checked.message;
 
-    console.log("dataUser",dataUserValidation)
-
     setDataUserValidation((prevState) => ({
       ...prevState,
       [e.target.name + "Validation"]: checked.validated,

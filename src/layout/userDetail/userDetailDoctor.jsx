@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
  
 export const UserDetailDoctor = () => {
 
-    //conexion a RDX en modo lectura
     const detailRedux = useSelector(detailData);
     const credentialsRdx = useSelector(userData);
     const navigate = useNavigate();

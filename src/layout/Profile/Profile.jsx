@@ -5,8 +5,7 @@ import Col from 'react-bootstrap/Col';
 import { ButtonNav } from '../../components/ButtonNav/ButtonNav';
 import { getUserProfile } from '../../services/apiCalls';
 import { userData } from "../userSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
 import dayjs from 'dayjs';
 import Z4 from '../../image/z4.png'
 import './Profile.css'
@@ -25,14 +24,11 @@ export const Profile = () => {
         
     );
     const ReduxCredentials = useSelector(userData);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (users.name === "") {
         getUserProfile(ReduxCredentials.credentials.token)
             .then((result) => {
-            console.log(result.data.user);
             setUsers({
                 name: result.data.user.name,
                 surname: result.data.user.surname,

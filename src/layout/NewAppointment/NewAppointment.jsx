@@ -46,23 +46,19 @@ export const NewAppointment = () => {
 
 
     const chooseHour = (hora) => {
-        console.log(hora)
         setHour(hora)
     }
 
     const chooseDoctor = (doctorElegido) => {
-        console.log(doctorElegido);
         setDoctor(doctorElegido)
     }
 
     const chooseTreatment = (tratamiento) => {
-        console.log(tratamiento);
         setTreatment(tratamiento)
     }
 
     const chooseDay = (dia) => {
         if (dayjs(dia).isAfter(dayjs())){
-        console.log(dayjs(dia).format('YYYY-MM-DD'))
         setDay(dayjs(dia).format('YYYY-MM-DD'))
         } else {
             handleShow1();
@@ -76,24 +72,18 @@ export const NewAppointment = () => {
             employee_id: doctor, 
             service_id: treatment
     }
-        console.log(dataAppointment);
 
         if (day === ""){
-            console.log("Please, fill all fields")
             return
         } else if (hour === ""){
-            console.log("Please, fill all fields")
             return
         } else if (treatment === ""){
-            console.log("Please, fill all fields")
             return
         }
 
         createAppointment(dataAppointment, token)
         .then(
             action => {
-                console.log(action)
-
                 setTimeout(() => {
                     navigate("/appointmentsUser");
                   }, 500);
@@ -213,7 +203,6 @@ export const NewAppointment = () => {
                 <Col xxl={4} xl={5} sm={10} className="my-3">
                     <div className='logRegContainer'>
                         <h1 className='text-center book1'>Book Appointment</h1>
-                        {/* <img className='book1' src={Book1} alt="" /> */}
                     </div>
                 </Col>
             </Row>
@@ -365,7 +354,6 @@ export const NewAppointment = () => {
                     <Button className={bookAct ? 'appointmentButton' : 'appointmentButtonDeac'} variant="primary" onClick={bookAct ? () => {handleShow()} : () => {}}>
                         Book an appointment
                     </Button>
-                    {/* <div className="appointmentButton" name="button" onClick={()=> bookAppointment()}>Book Appointment</div> */}
                 </Row>
                 </>
             ) : (

@@ -25,6 +25,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import Modal from 'react-bootstrap/Modal';
 import { useEffect } from 'react';
 import { detailData } from '../detailSlice';
 
@@ -51,26 +52,22 @@ export const NewAppointmentAdm = () => {
 
 
     const chooseHour = (hora) => {
-        console.log(hora)
         setHour(hora)
     }
 
     const chooseDoctor = (doctorElegido) => {
-        console.log(doctorElegido);
         setDoctor(doctorElegido)
     }
 
     const chooseTreatment = (tratamiento) => {
-        console.log(tratamiento);
         setTreatment(tratamiento)
     }
 
     const chooseDay = (dia) => {
         if (dayjs(dia).isAfter(dayjs())){
-        console.log(dayjs(dia).format('YYYY-MM-DD'))
         setDay(dayjs(dia).format('YYYY-MM-DD'))
         } else {
-            console.log("choose a upcoming day");
+            handleShow1();
         };
     }
 
@@ -82,24 +79,18 @@ export const NewAppointmentAdm = () => {
             employee_id: doctor, 
             service_id: treatment
     }
-        console.log(dataAppointment);
 
         if (day === ""){
-            console.log("Please, fill all fields")
             return
         } else if (hour === ""){
-            console.log("Please, fill all fields")
             return
         } else if (treatment === ""){
-            console.log("Please, fill all fields")
             return
         }
 
         createAppointmentAdm(dataAppointment, token)
         .then(
             action => {
-                console.log(action)
-
                 setTimeout(() => {
                     navigate("/appointments");
                 }, 500);
@@ -206,8 +197,11 @@ export const NewAppointmentAdm = () => {
     );
 
     const [show, setShow] = useState(false);
+    const [show1, setShow1] = useState(false);
     const handleClose = () => setShow(false);
+    const handleClose1 = () => setShow1(false);
     const handleShow = () => setShow(true);
+    const handleShow1 = () => setShow1(true);
 
   return (
     <Container fluid className="home2Container d-flex flex-column justify-content-between">
@@ -229,6 +223,17 @@ export const NewAppointmentAdm = () => {
                     </div>
                     <Offcanvas.Body className='offcanvasBtn'><div className="appointmentButton" name="button" onClick={()=> bookAppointmentAdm()}>Book Appointment</div></Offcanvas.Body>
                 </Offcanvas>
+                <Modal show={show1} onHide={handleClose1}>
+                    <Modal.Header closeButton>
+                    <Modal.Title>Invalid date</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Please, choose a upcoming date</Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose1}>
+                        Close
+                    </Button>
+                    </Modal.Footer>
+                </Modal>
                 <Row className="d-flex justify-content-center">
                     <Col xxl={5} xl={6} sm={7} className="my-3">
                         <div className='logRegContainer d-flex flex-column align-items-center justify-content-center'>
@@ -353,7 +358,6 @@ export const NewAppointmentAdm = () => {
                     <Button className={bookAct ? 'appointmentButton' : 'appointmentButtonDeac'} variant="primary" onClick={bookAct ? () => {handleShow()} : () => {}}>
                         Book an appointment
                     </Button>
-                    {/* <div className="appointmentButton" name="button" onClick={()=> bookAppointment()}>Book Appointment</div> */}
                 </Row>
                 </>
             ) : (

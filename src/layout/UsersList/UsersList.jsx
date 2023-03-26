@@ -33,15 +33,12 @@ export const UsersList = () => {
     if (ReduxCredentials?.credentials?.userRole?.includes('admin')) {
       bringUsersByAdmin(searchUser, ReduxCredentials.credentials.token)
         .then((result) => {
-          console.log(result);
           setUsers(result.data.user);
-          console.log(searchUser);
         })
         .catch((error) => console.log(error));
     } else if (ReduxCredentials.credentials.userRole.includes('doctor')) {
       bringUsersByDoctor(searchUser, ReduxCredentials.credentials.token)
         .then((result) => {
-          console.log("doc", searchUser);
           setUsers(result.data.user);
         })
         .catch((error) => console.log(error));

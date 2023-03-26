@@ -12,12 +12,15 @@ import { ButtonSubmit } from "../../components/ButtonSubmit/ButtonSubmit";
 import { useSelector } from "react-redux";
 import { userData } from '../../layout/userSlice';
 import dayjs from 'dayjs';
+import { useNavigate } from "react-router-dom";
+
 
 
 // HOOKS
 
 export const ProfileUpdate = () => {
 
+  const navigate = useNavigate();
   const dataCredentialsRdx = useSelector(userData);
 
   let token = dataCredentialsRdx.credentials.token;
@@ -68,11 +71,6 @@ export const ProfileUpdate = () => {
 
   //USEEFFECT
 
-
-  useEffect(()=>{
-    console.log(dataCredentialsRdx.credentials.token);
-  })
-
   useEffect(() => {
  
     for(let error in dataUserUpdateError){
@@ -110,9 +108,6 @@ export const ProfileUpdate = () => {
 
     error = checked.message;
 
-    console.log("dataUserUpdate",dataUserUpdateValidation)
-    console.log(dataUserUpdate);
-
     setDataUserUpdateValidation((prevState) => ({
       ...prevState,
       [e.target.name + "Validation"]: checked.validated,
@@ -139,9 +134,8 @@ export const ProfileUpdate = () => {
     updateProfile(dataUserUpdate, token)
       .then(
         action => {
-        console.log("registered user")
         setTimeout(() => {
-          navigate("/register");
+          navigate("/profile");
         }, 500);
     })
       .catch(error => console.log(error))
@@ -320,7 +314,6 @@ export const ProfileUpdate = () => {
                 onClick={
                   registerAct
                     ? () => {
-                        console.log(dataUserUpdate);
                         UpdateUser()
                       }
                     : () => {}

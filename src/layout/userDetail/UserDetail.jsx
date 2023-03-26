@@ -15,11 +15,12 @@ import role3 from "../../image/role3.png";
 import dayjs from 'dayjs';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
  
 export const UserDetail = () => {
 
-    //conexion a RDX en modo lectura
     const detailRedux = useSelector(detailData);
     const credentialsRdx = useSelector(userData);
     const navigate = useNavigate();
@@ -29,6 +30,9 @@ export const UserDetail = () => {
     const isAdmin = credentialsRdx.credentials.userRole.includes("admin");
 
     const [userRole, setUserRole] = useState("");
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     // useEffect(() => {
     //     {credentialsRdx.credentials.userRole ? isAdmin ? ('') : (navigate('/')) : (navigate('/'))}
@@ -43,11 +47,6 @@ export const UserDetail = () => {
         
       }, []);
 
-    useEffect(()=>{
-        console.log(detailRedux,"patata")
-        console.log(credentialsRdx.credentials.token,"token")
-    },[])
-
     const goNewAppointmentAdm = () => {
         setTimeout(() => {
             navigate("/newAppointmentAdm");
@@ -59,9 +58,6 @@ export const UserDetail = () => {
         deleteUserByAdmin(params, token)
         .then(
             userDeleteByAdmin => {
-                console.log(token)
-                console.log(params)
-
                 setTimeout(() => {
                     navigate("/usersList");
                   }, 500);
@@ -74,7 +70,7 @@ export const UserDetail = () => {
 
     const addUserRole = () => {
         if(userRole === ""){
-            console.log("Please, choose a role")
+            handleShow()
             return;
         }
         let body = {
@@ -89,8 +85,7 @@ export const UserDetail = () => {
     }
 
     const chooseRole = (Role) => {
-        setUserRole(Role)
-        console.log(Role);  
+        setUserRole(Role) 
     }
 
     const popoverHoverFocus1 = (
@@ -114,6 +109,17 @@ export const UserDetail = () => {
 
      return (
         <Container fluid className="homeContainerMin d-flex flex-column justify-content-between">
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title>Add role</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Please, choose a role before pressing the button</Modal.Body>
+                <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Close
+                </Button>
+                </Modal.Footer>
+            </Modal>
             <Row className="d-flex justify-content-center">
                 <Col xxl={5} xl={5} sm={10} className="my-3">
                     <div className='logRegContainer d-flex flex-column justify-content-center text-center'>
@@ -125,7 +131,7 @@ export const UserDetail = () => {
                         <p><strong>Direction:</strong> {detailRedux?.choosenObject?.direction}</p>
                         <p><strong>Phone:</strong> {detailRedux?.choosenObject?.phone}</p>
                         <p><strong>Birth Date:</strong> {dayjs(detailRedux.choosenObject.birth_date).format('YYYY-MMMM-DD')}</p>
-                        <p><strong>Password:</strong> {detailRedux?.choosenObject?.password}</p>
+                        {/* <p><strong>Password:</strong> {detailRedux?.choosenObject?.password}</p> */}
                     </div>
                 </Col>
             </Row>

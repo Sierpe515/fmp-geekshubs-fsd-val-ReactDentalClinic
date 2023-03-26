@@ -16,7 +16,6 @@ export const Treatments = () => {
         if (treatments.length === 0){
             getAllTreatments()
                 .then((result) => {
-                    console.log('result',result.data.treatment)
                     setTreatments(result.data.treatment)
                 })
                 .catch((error) => console.log(error));
