@@ -30,7 +30,7 @@ export const AboutUs = () => {
                     <div className='column2 d-flex justify-content-center flex-column align-items-center'>
                         <p>As well, dentists can access it as professionals, which allows them to see every programmed appointment detailed, plus a list of the registered users and their detailed personal data.</p>
                         <img className='logo2' src={Logo2} alt="" />
-                        <p>Our clinic ambience is mainly inspired in the legendary series “Futurama”, with doctor Zoiberg as the main inspiration. The rest of doctors shown in the application are well known doctors in pop culture. Even though, the application allows the dinamic creation of more doctors.
+                        <p>Our clinic ambience is mainly inspired in the legendary series “Futurama”, with doctor Zoiberg as the main inspiration. The rest of doctors shown in the application are well known doctors in pop culture. Even though, the application allows the dynamic creation of more doctors.
                         </p>
                         <p>Likewise, we offer a wide range of dental health services which can be selected at the moment of picking a date and can be looked up - as well as the doctors - in the services’ dropdown.
                         </p>
