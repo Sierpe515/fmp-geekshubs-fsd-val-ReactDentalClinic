@@ -13,6 +13,7 @@ import './Appointments.css'
 
 export const Appointments = () => {
     const [appointments, setAppointments] = useState([]);
+    const [searchDate, setSearchDate] = useState("");
     const ReduxCredentials = useSelector(userData);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ export const Appointments = () => {
 
   useEffect(() => {
     if (ReduxCredentials.credentials.userRole.includes('admin') && appointments.length === 0) {
-      bringUpcomingAppointmentsAdmin(ReduxCredentials.credentials.token)
+      bringUpcomingAppointmentsAdmin(searchDate, ReduxCredentials.credentials.token)
         .then((result) => {
           console.log("admin",result.data.userAppointment);
           console.log(ReduxCredentials);
@@ -30,14 +31,14 @@ export const Appointments = () => {
         })
         .catch((error) => console.log(error));
     } else if (ReduxCredentials.credentials.userRole.includes('doctor') && appointments.length === 0) {
-      bringUpcomingAppointmentsDoctor(ReduxCredentials.credentials.token)
+      bringUpcomingAppointmentsDoctor(searchDate, ReduxCredentials.credentials.token)
         .then((result) => {
-          console.log("doctor",ReduxCredentials.credentials.userRole);
+          console.log("doctor",searchDate);
           setAppointments(result.data.userAppointment);
         })
         .catch((error) => console.log(error));
     }
-  }, [appointments]);
+  }, [searchDate, ReduxCredentials, appointments]);
 
   useEffect(() => {
     {isAdmin || isDoctor ? ("") : (navigate('/'))}
@@ -66,6 +67,13 @@ export const Appointments = () => {
             <Col xxl={5} xl={6} lg={8} sm={10} className="my-3">
               <div className="logRegContainer d-flex flex-column justify-content-center align-items-center text-center">
                 <h1>Appointments List</h1>
+                <input
+                className="searchInput"
+                type="text"
+                value={searchDate}
+                onChange={(e) => setSearchDate(e.target.value)}
+                placeholder="Search appointment..."
+              />
                 {appointments.length > 0 ? (
                   <div className="appList">
                     {appointments.map((cita) => {

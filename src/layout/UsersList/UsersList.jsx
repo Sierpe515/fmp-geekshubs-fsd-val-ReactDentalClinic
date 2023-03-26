@@ -18,7 +18,7 @@ export const UsersList = () => {
   const navigate = useNavigate();
 
   const isAdmin = ReduxCredentials.credentials.userRole.includes("admin")
-    const isDoctor = ReduxCredentials.credentials.userRole.includes("doctor")
+  const isDoctor = ReduxCredentials.credentials.userRole.includes("doctor")
 
   useEffect(() => {
     {isAdmin || isDoctor ? ("") : (navigate('/'))}
@@ -41,7 +41,7 @@ export const UsersList = () => {
     } else if (ReduxCredentials.credentials.userRole.includes('doctor')) {
       bringUsersByDoctor(searchUser, ReduxCredentials.credentials.token)
         .then((result) => {
-          console.log(ReduxCredentials.credentials);
+          console.log("doc", searchUser);
           setUsers(result.data.user);
         })
         .catch((error) => console.log(error));

@@ -47,17 +47,23 @@ export const bringUsersByDoctor = async (searchUser, token) => {
       sUrl += `/${searchUser}`;
     }
 
-    return await axios.get(sUrl, config);;
+    return await axios.get(sUrl, config);
 }
 
-export const bringUpcomingAppointmentsAdmin = async (token) => {
+export const bringUpcomingAppointmentsAdmin = async (searchDate, token) => {
   let config = {
     headers: { 
       'Authorization': 'Bearer '+ token,  
     }
   };
 
-  return await axios.get(`${root}/getUpcomingAppAdm`, config);
+  let sUrl = `${root}/getUpcomingAppAdm`;
+
+    if (searchDate) {
+      sUrl += `/${searchDate}`;
+    }
+
+    return await axios.get(sUrl, config);
 }
 
 export const bringPastAppointmentsAdmin = async (token) => {
@@ -90,14 +96,20 @@ export const bringPastAppointmentsUser = async (token) => {
   return await axios.get(`${root}/getPastAppUser`, config);
 }
 
-export const bringUpcomingAppointmentsDoctor = async (token) => {
+export const bringUpcomingAppointmentsDoctor = async (searchDate, token) => {
   let config = {
     headers: { 
       'Authorization': 'Bearer '+ token,  
     }
   };
 
-  return await axios.get(`${root}/getUpcomingAppDoctor`, config);
+  let sUrl = `${root}/getUpcomingAppDoc`;
+
+    if (searchDate) {
+      sUrl += `/${searchDate}`;
+    }
+
+    return await axios.get(sUrl, config);
 }
 
 export const bringPastAppointmentsDoctor = async (token) => {
