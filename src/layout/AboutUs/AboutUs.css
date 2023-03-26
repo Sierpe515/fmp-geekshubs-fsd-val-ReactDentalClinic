@@ -1,0 +1,21 @@
+
+.column1 {
+    background-color: aqua;
+    height: 70vh;
+}
+
+.localImg {
+    height: 20em;
+    border-radius: 10px;
+    border: 1px solid red;
+}
+
+.column2 {
+    background-color: red;
+    height: 70vh;
+}
+
+.column3 {
+    background-color: yellow;
+    height: 70vh;
+}

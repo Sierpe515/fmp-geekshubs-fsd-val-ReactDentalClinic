@@ -128,7 +128,6 @@ export const NavBar = () => {
           </Nav>
           <Nav>
             {dataCredentialsRdx.credentials.token ? (
-              
               <DropdownButton
                 align="end"
                 title="User"
