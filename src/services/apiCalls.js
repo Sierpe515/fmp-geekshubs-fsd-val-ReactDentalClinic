@@ -1,8 +1,8 @@
 
 import axios from 'axios';
 
-const root = "http://localhost:3000"
-// const root = "https://planetexpressdentalclinic.up.railway.app"
+// const root = "http://localhost:3000"
+const root = "https://planetexpressdentalclinic.up.railway.app"
 
 export const RegisterMe = async (body) => {
 

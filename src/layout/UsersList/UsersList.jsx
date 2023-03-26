@@ -32,12 +32,12 @@ export const UsersList = () => {
     // }
 
     if (ReduxCredentials?.credentials?.userRole?.includes('admin')) {
-      bringUsersByAdmin(searchUser, ReduxCredentials.credentials.token)
+      bringUsersByAdmin(searchUser, ReduxCredentials?.credentials.token)
         .then((result) => {
           setUsers(result.data.user);
         })
         .catch((error) => console.log(error));
-    } else if (ReduxCredentials.credentials.userRole.includes('doctor')) {
+    } else if (ReduxCredentials.credentials.userRole?.includes('doctor')) {
       bringUsersByDoctor(searchUser, ReduxCredentials.credentials.token)
         .then((result) => {
           setUsers(result.data.user);
@@ -48,11 +48,11 @@ export const UsersList = () => {
   const selected = (persona) => {
     dispatch(addChoosen({ choosenObject: persona }))
 
-    if (ReduxCredentials.credentials.userRole.includes('admin')){
+    if (ReduxCredentials.credentials.userRole?.includes('admin')){
         setTimeout(()=>{
             navigate("/userDetail");
         },500)
-      } else if (ReduxCredentials.credentials.userRole.includes('doctor')){
+      } else if (ReduxCredentials.credentials.userRole?.includes('doctor')){
         setTimeout(()=>{
           navigate("/userDetailDoctor");
       },500)
