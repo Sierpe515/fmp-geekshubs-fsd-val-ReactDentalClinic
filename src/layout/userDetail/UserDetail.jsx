@@ -29,6 +29,12 @@ export const UserDetail = () => {
 
     const [userRole, setUserRole] = useState("");
 
+    useEffect(() => {
+        if (!credentialsRdx.credentials.userRole.includes("admin")){
+            navigate('/')
+        } 
+      }, []);
+
     useEffect(()=>{
         console.log(detailRedux,"patata")
         console.log(credentialsRdx.credentials.token,"token")

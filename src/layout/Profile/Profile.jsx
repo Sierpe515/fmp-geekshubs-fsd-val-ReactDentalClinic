@@ -8,6 +8,8 @@ import { userData } from "../userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
+import Z4 from '../../image/z4.png'
+import './Profile.css'
 
 export const Profile = () => {
 
@@ -54,6 +56,7 @@ export const Profile = () => {
         <Col xxl={4} xl={5} sm={7} className="my-3">
           <div className="logRegContainer d-flex flex-column justify-content-center text-center">
             <h1>Profile</h1>
+            <img className="z4" src={Z4} alt="" />
             <p></p>
             {users.name && <p><strong>Name:</strong> {users.name}</p>}
             {users.surname && <p><strong>Surname:</strong> {users.surname}</p>}

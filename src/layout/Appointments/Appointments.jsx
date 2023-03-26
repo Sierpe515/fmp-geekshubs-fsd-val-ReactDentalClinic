@@ -17,24 +17,31 @@ export const Appointments = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (ReduxCredentials.credentials.userRole.includes('admin') && appointments.length === 0) {
-          bringUpcomingAppointmentsAdmin(ReduxCredentials.credentials.token)
-            .then((result) => {
-              console.log("admin",result.data.userAppointment);
-              console.log(ReduxCredentials);
-              setAppointments(result.data.userAppointment);
-            })
-            .catch((error) => console.log(error));
-        } else if (ReduxCredentials.credentials.userRole.includes('doctor') && appointments.length === 0) {
-          bringUpcomingAppointmentsDoctor(ReduxCredentials.credentials.token)
-            .then((result) => {
-              console.log("doctor",result.data.userAppointment);
-              setAppointments(result.data.userAppointment);
-            })
-            .catch((error) => console.log(error));
-        }
-      }, [appointments]);
+    const isAdmin = ReduxCredentials.credentials.userRole.includes("admin")
+    const isDoctor = ReduxCredentials.credentials.userRole.includes("doctor")
+
+  useEffect(() => {
+    if (ReduxCredentials.credentials.userRole.includes('admin') && appointments.length === 0) {
+      bringUpcomingAppointmentsAdmin(ReduxCredentials.credentials.token)
+        .then((result) => {
+          console.log("admin",result.data.userAppointment);
+          console.log(ReduxCredentials);
+          setAppointments(result.data.userAppointment);
+        })
+        .catch((error) => console.log(error));
+    } else if (ReduxCredentials.credentials.userRole.includes('doctor') && appointments.length === 0) {
+      bringUpcomingAppointmentsDoctor(ReduxCredentials.credentials.token)
+        .then((result) => {
+          console.log("doctor",ReduxCredentials.credentials.userRole);
+          setAppointments(result.data.userAppointment);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [appointments]);
+
+  useEffect(() => {
+    {isAdmin || isDoctor ? ("") : (navigate('/'))}
+  }, []);
 
     const selected = (cita) => {
         dispatch(addAppointment({ choosenAppointment: cita }))
@@ -56,7 +63,7 @@ export const Appointments = () => {
           className="homeContainerMin d-flex flex-column justify-content-between"
         >
           <Row className="d-flex justify-content-center">
-            <Col xxl={6} xl={5} sm={7} className="my-3">
+            <Col xxl={5} xl={6} lg={8} sm={10} className="my-3">
               <div className="logRegContainer d-flex flex-column justify-content-center align-items-center text-center">
                 <h1>Appointments List</h1>
                 {appointments.length > 0 ? (

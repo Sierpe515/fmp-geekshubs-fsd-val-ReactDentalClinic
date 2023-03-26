@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAppointmentUser } from '../appointmentSlice';
 import { useNavigate } from 'react-router-dom';
 import { userData } from "../userSlice";
+import dayjs from "dayjs";
 
 export const AppointmentsUserPast = () => {
     const [appointments, setAppointments] = useState([]);
@@ -45,7 +46,7 @@ export const AppointmentsUserPast = () => {
         >
           <Row className="d-flex justify-content-center">
             <Col xxl={4} xl={5} sm={7} className="my-3">
-              <div className="logRegContainer d-flex flex-column justify-content-center text-center">
+              <div className="logRegContainer d-flex d-flex flex-column align-items-center justify-content-center text-center">
               <h1 className="text-center">Appointments</h1>
                 {appointments.length > 0 ? (
                   <div>

@@ -17,6 +17,13 @@ export const UsersList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const isAdmin = ReduxCredentials.credentials.userRole.includes("admin")
+    const isDoctor = ReduxCredentials.credentials.userRole.includes("doctor")
+
+  useEffect(() => {
+    {isAdmin || isDoctor ? ("") : (navigate('/'))}
+  }, []);
+
   useEffect(() => {
     // if (!ReduxCredentials?.credentials?.userRole?.includes('admin') || !ReduxCredentials?.credentials?.userRole?.includes('doctor')) {
     //   navigate("/home");

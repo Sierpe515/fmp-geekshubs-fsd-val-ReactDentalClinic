@@ -9,6 +9,9 @@ import { addAppointmentUser } from '../appointmentSlice';
 import { useNavigate } from 'react-router-dom';
 import { userData } from "../userSlice";
 import dayjs from "dayjs";
+import './Appointments.css'
+import Z5 from '../../image/z5.png'
+import Z6 from '../../image/z6.png'
 
 export const AppointmentsUser = () => {
     const [appointments, setAppointments] = useState([]);
@@ -47,6 +50,7 @@ export const AppointmentsUser = () => {
               <h1 className="text-center">Upcoming Appointments</h1>
                 {appointments.length > 0 ? (
                   <div className="d-flex flex-column align-items-center">
+                    <img className="z5" src={Z5} alt="" />
                     {appointments.map((cita) => {
                       return (
                         <div className="userBox" onClick={() => selected(cita)} key={cita.id}>
@@ -57,6 +61,7 @@ export const AppointmentsUser = () => {
                   </div>
                 ) : (
                   <>
+                  <img className="z6" src={Z6} alt="" />
                   <h3>No pending appointments</h3>
                   <h4>Please, book an appointment if needed</h4>
 

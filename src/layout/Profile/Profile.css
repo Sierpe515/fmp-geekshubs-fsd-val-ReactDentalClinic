@@ -1,0 +1,15 @@
+
+.z4 {
+    height: 30em;
+    width: 20em;
+    position: absolute;
+    left: -12em;
+    top: 7em;
+    display: none;
+}
+
+@media (min-width: 768px){
+    .z4 {
+        display: block;
+    }
+}

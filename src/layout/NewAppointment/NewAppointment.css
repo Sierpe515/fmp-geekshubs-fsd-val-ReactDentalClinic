@@ -1,4 +1,30 @@
 
+.book1 {
+  height: 5em;
+  background-image: url(../../image/book1.png);
+  background-size: cover;
+}
+
+.comic1 {
+  height: 30rem;
+  position: absolute;
+  top: 4em;
+  left: -15em;
+  transform: rotate(-20deg);
+  z-index: -1;
+  display: none;
+}
+
+.comic2 {
+  height: 30rem;
+  position: absolute;
+  right: -15em;
+  bottom: 5em;
+  transform: rotate(15deg);
+  z-index: -1;
+  display: none;
+}
+
 .hourGrid {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -271,6 +297,14 @@ abbr[title] {
 }
 
 @media (min-width: 992px){
+  .comic1 {
+    display: block;
+  }
+
+  .comic2 {
+    display: block;
+  }
+
   .rowSpace {
     gap: 1rem;
     margin: 1rem;
@@ -343,5 +377,16 @@ abbr[title] {
 
   .treatmentIcon {
     height: 3.5rem;
+  }
+}
+
+@media (min-width: 1400px){
+  .comic1 {
+    height: 35em;
+    left: -20em;
+  }
+
+  .comic2 {
+    height: 35em;
   }
 }

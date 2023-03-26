@@ -26,6 +26,9 @@ import Popover from 'react-bootstrap/Popover';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useEffect } from 'react';
+import Comic1 from '../../image/comic1.jpg'
+import Comic2 from '../../image/comic2.jpg'
+import Book1 from '../../image/book1.png'
 
 export const NewAppointment = () => {
 
@@ -205,7 +208,8 @@ export const NewAppointment = () => {
             <Row className="d-flex justify-content-center">
                 <Col xxl={4} xl={5} sm={10} className="my-3">
                     <div className='logRegContainer'>
-                        <h1 className='text-center'>Book Appointment</h1>
+                        <h1 className='text-center book1'>Book Appointment</h1>
+                        {/* <img className='book1' src={Book1} alt="" /> */}
                     </div>
                 </Col>
             </Row>
@@ -221,8 +225,10 @@ export const NewAppointment = () => {
                     <Offcanvas.Body className='offcanvasBtn'><div className="appointmentButton" name="button" onClick={()=> bookAppointment()}>Book Appointment</div></Offcanvas.Body>
                 </Offcanvas>
                 <Row className="d-flex justify-content-center">
-                    <Col xxl={5} xl={6} sm={7} className="my-3">
+                    <Col xxl={5} xl={6} sm={9} className="my-3">
                         <div className='logRegContainer d-flex flex-column align-items-center justify-content-center'>
+                            <img className='comic1' src={Comic1} alt="" />
+                            <img className='comic2' src={Comic2} alt="" />
                             <h1 className='text-center'>Pick a date and time</h1>
                             <Calendar 
                                 className="calendar" 

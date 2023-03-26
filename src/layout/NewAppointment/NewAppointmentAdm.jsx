@@ -43,6 +43,12 @@ export const NewAppointmentAdm = () => {
 
     let token = ReduxCredentials.credentials.token;
 
+    useEffect(() => {
+        if (!ReduxCredentials.credentials.userRole.includes("admin")){
+            navigate('/')
+        }
+    }, []);
+
 
     const chooseHour = (hora) => {
         console.log(hora)

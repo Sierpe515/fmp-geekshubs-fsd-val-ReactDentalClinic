@@ -16,6 +16,13 @@ export const AppointmentsPast = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const isAdmin = ReduxCredentials.credentials.userRole.includes("admin")
+    const isDoctor = ReduxCredentials.credentials.userRole.includes("doctor")
+
+    useEffect(() => {
+      {isAdmin || isDoctor ? ("") : (navigate('/'))}
+    }, []);
+
     useEffect(() => {
         if (ReduxCredentials.credentials.userRole.includes('admin') && appointments.length === 0) {
           bringPastAppointmentsAdmin(ReduxCredentials.credentials.token)
@@ -55,14 +62,14 @@ export const AppointmentsPast = () => {
           className="homeContainerMin d-flex flex-column justify-content-between"
         >
           <Row className="d-flex justify-content-center">
-            <Col xxl={4} xl={5} sm={7} className="my-3">
+            <Col xxl={6} xl={6} md={9} sm={12} className="my-3">
               <div className="logRegContainer d-flex flex-column align-items-center justify-content-center text-center">
                 <h1>Previous appointments</h1>
                 {appointments.length > 0 ? (
                   <div>
                     {appointments.map((cita) => {
                       return (
-                        <div className="userBox" onClick={() => selected(cita)} key={cita.id}>
+                        <div className="userBox1" onClick={() => selected(cita)} key={cita.id}>
                           <strong>{dayjs(cita.date).format('YYYY-MMMM-DD')}</strong> hour: {cita.hour} patient:<strong> {cita.User.name} {cita.User.surname}</strong>
                         </div>
                       );
