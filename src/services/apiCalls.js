@@ -6,14 +6,10 @@ const root = "http://localhost:3000"
 
 export const RegisterMe = async (body) => {
 
-  console.log(body)
-
     return await axios.post(`${root}/register`, body);
 } 
 
 export const logMe = async (body) => {
-
-  console.log(body)
 
     return await axios.post(`${root}/login`, body);
 } 
@@ -140,8 +136,6 @@ export const updateProfile = async (dataUserUpdate, token) => {
     }
   };
 
-  console.log(token);
-
   return await axios.put(`${root}/updateProfile`, dataUserUpdate, config);
 }
 
@@ -163,9 +157,6 @@ export const deleteUserByAdmin = async (params, token) => {
     }
   };
 
-  console.log(params);
-  console.log(token);
-
   return await axios.delete(`${root}/deleteUser/${params}`, config);
 }
 
@@ -176,7 +167,6 @@ export const createAppointment = async (dataAppointment, token) => {
       'Authorization': 'Bearer '+ token,  
     }
   };
-  console.log(dataAppointment)
 
     return await axios.post(`${root}/app`, dataAppointment, config);
 } 
@@ -188,7 +178,6 @@ export const createAppointmentAdm = async (dataAppointment, token) => {
       'Authorization': 'Bearer '+ token,  
     }
   };
-  console.log(dataAppointment)
 
     return await axios.post(`${root}/appAdmin`, dataAppointment, config);
 } 
@@ -201,9 +190,6 @@ export const CancelAppByUser = async (params, token) => {
     }
   };
 
-  console.log(params);
-  console.log(token);
-
   return await axios.delete(`${root}/cancelApp/${params}`, config);
 }
 
@@ -214,9 +200,6 @@ export const CancelAppByAdmin = async (params, token) => {
       'Authorization': 'Bearer '+ token,  
     }
   };
-
-  console.log(params);
-  console.log(token);
 
   return await axios.delete(`${root}/cancelAppAdm/${params}`, config);
 }
@@ -239,8 +222,6 @@ export const addRoleByAdmin = async (body, token) => {
       'Authorization': 'Bearer '+ token,  
     }
   };
-
-  console.log(token);
 
   return await axios.post(`${root}/user_roles`, body, config);
 }

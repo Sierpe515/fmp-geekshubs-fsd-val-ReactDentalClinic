@@ -22,13 +22,9 @@ export const NavBar = () => {
   const dispatch = useDispatch();
   const dataCredentialsRdx = useSelector(userData);
 
-  let token = (dataCredentialsRdx.credentials.token);
+  // let token = (dataCredentialsRdx.credentials.token);
 
-  const [searchUser, setSearchUser] = useState("");
-
-  useEffect(()=>{
-    console.log(token);
-  })
+  // const [searchUser, setSearchUser] = useState("");
 
   // useEffect(() => {
 
@@ -100,7 +96,7 @@ export const NavBar = () => {
               </NavDropdown.Item>
             </NavDropdown>
             {dataCredentialsRdx.credentials.token ? (
-              dataCredentialsRdx.credentials.userRole.includes('admin') ? (
+              dataCredentialsRdx.credentials.userRole?.includes('admin') ? (
                 <>
                 <NavDropdown title="Admin Area" id="navbarScrollingDropdown">
                   <NavDropdown.Item eventKey="7"><Link as={Link} to='/usersList'>
@@ -114,7 +110,7 @@ export const NavBar = () => {
               ):('')
             ) : ("")}
             {dataCredentialsRdx.credentials.token ? (
-              dataCredentialsRdx.credentials.userRole.includes('doctor') && !dataCredentialsRdx.credentials.userRole.includes('admin') ? (
+              dataCredentialsRdx.credentials.userRole?.includes('doctor') && !dataCredentialsRdx.credentials.userRole?.includes('admin') ? (
                 <NavDropdown title="Doctor Area" id="navbarScrollingDropdown">
                   <NavDropdown.Item eventKey="8"><Link as={Link} to='/usersList'>
                     Users List</Link>

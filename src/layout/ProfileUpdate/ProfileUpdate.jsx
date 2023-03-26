@@ -25,6 +25,12 @@ export const ProfileUpdate = () => {
 
   let token = dataCredentialsRdx.credentials.token;
 
+  useEffect(() => {
+    if (!dataCredentialsRdx.credentials.token){
+        navigate('/')
+    }
+  }, []);
+
   const [dataUserUpdate, setDataUserUpdate] = useState({
     name: "",
     surname: "",

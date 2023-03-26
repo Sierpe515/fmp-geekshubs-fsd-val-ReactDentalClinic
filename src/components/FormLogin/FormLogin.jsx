@@ -77,13 +77,11 @@ const credentialsValidate = (e) => {
       break;
 
     default:
-      console.log("uff....");
   }
 };
 
 const checkValue = (event)=>{
   event.preventDefault();
-  console.log(credentials)
 }
 
   return (

@@ -16,7 +16,6 @@ export const Doctors = () => {
         if (doctors.length === 0){
             getAllDoctors()
                 .then((result) => {
-                    console.log('result',result.data.user)
                     setDoctors(result.data.user)
                 })
                 .catch((error) => console.log(error));

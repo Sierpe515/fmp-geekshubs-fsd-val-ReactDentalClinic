@@ -15,7 +15,7 @@ export const UserDetailDoctor = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!credentialsRdx.credentials.userRole.includes("doctor")){
+        if (!credentialsRdx.credentials.userRole?.includes("doctor")){
             navigate('/')
         } 
       }, []);

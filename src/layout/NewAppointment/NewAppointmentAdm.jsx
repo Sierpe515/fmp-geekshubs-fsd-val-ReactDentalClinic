@@ -45,7 +45,7 @@ export const NewAppointmentAdm = () => {
     let token = ReduxCredentials.credentials.token;
 
     useEffect(() => {
-        if (!ReduxCredentials.credentials.userRole.includes("admin")){
+        if (ReduxCredentials.credentials && !ReduxCredentials.credentials.userRole?.includes("admin")){
             navigate('/')
         }
     }, []);

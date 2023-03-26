@@ -71,20 +71,15 @@ export const Login = () => {
             respuesta => {
               let decodificado = decodeToken(respuesta.data.token)
 
-              console.log(decodificado);
-
               let dateBackend = {
                 token: respuesta.data.token,
                 userName: decodificado.nameUser,
                 userRole: decodificado.roleId
               }
 
-              console.log("dateBackend: ",dateBackend.userRole);
               dispatch(login({credentials: dateBackend}));
 
                 setWelcome(`Welcome again ${dateBackend.userName}`);
-
-                console.log(welcome);
 
                 setTimeout(() => {
                   navigate("/");

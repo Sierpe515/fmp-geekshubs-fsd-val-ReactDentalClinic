@@ -18,22 +18,19 @@ export const Appointments = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const isAdmin = ReduxCredentials.credentials.userRole.includes("admin")
-    const isDoctor = ReduxCredentials.credentials.userRole.includes("doctor")
+    const isAdmin = ReduxCredentials.credentials.userRole?.includes("admin")
+    const isDoctor = ReduxCredentials.credentials.userRole?.includes("doctor")
 
   useEffect(() => {
-    if (ReduxCredentials.credentials.userRole.includes('admin') && appointments.length === 0) {
+    if (ReduxCredentials.credentials.userRole?.includes('admin') && appointments.length === 0) {
       bringUpcomingAppointmentsAdmin(searchDate, ReduxCredentials.credentials.token)
         .then((result) => {
-          console.log("admin",result.data.userAppointment);
-          console.log(ReduxCredentials);
           setAppointments(result.data.userAppointment);
         })
         .catch((error) => console.log(error));
-    } else if (ReduxCredentials.credentials.userRole.includes('doctor') && appointments.length === 0) {
+    } else if (ReduxCredentials.credentials.userRole?.includes('doctor') && appointments.length === 0) {
       bringUpcomingAppointmentsDoctor(searchDate, ReduxCredentials.credentials.token)
         .then((result) => {
-          console.log("doctor",searchDate);
           setAppointments(result.data.userAppointment);
         })
         .catch((error) => console.log(error));
@@ -47,11 +44,11 @@ export const Appointments = () => {
     const selected = (cita) => {
         dispatch(addAppointment({ choosenAppointment: cita }))
     
-        if (ReduxCredentials.credentials.userRole.includes('admin')){
+        if (ReduxCredentials.credentials.userRole?.includes('admin')){
             setTimeout(()=>{
                 navigate("/appointmentDetail");
             },500)
-          } else if (ReduxCredentials.credentials.userRole.includes('doctor')){
+          } else if (ReduxCredentials.credentials.userRole?.includes('doctor')){
             setTimeout(()=>{
               navigate("/appointmentDetailDoctor");
           },500)

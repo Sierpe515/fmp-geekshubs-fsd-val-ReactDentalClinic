@@ -9,8 +9,11 @@ import { useSelector } from "react-redux";
 import dayjs from 'dayjs';
 import Z4 from '../../image/z4.png'
 import './Profile.css'
+import { useNavigate } from "react-router-dom";
 
 export const Profile = () => {
+
+  const navigate = useNavigate();
 
     const [users, setUsers] = useState({
         name: "",
@@ -24,6 +27,12 @@ export const Profile = () => {
         
     );
     const ReduxCredentials = useSelector(userData);
+
+    useEffect(() => {
+      if (!ReduxCredentials.credentials.token){
+          navigate('/')
+      }
+    }, []);
 
     useEffect(() => {
         if (users.name === "") {

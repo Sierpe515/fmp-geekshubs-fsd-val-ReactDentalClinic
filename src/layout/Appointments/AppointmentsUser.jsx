@@ -20,6 +20,12 @@ export const AppointmentsUser = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+      if (!ReduxCredentials.credentials.token){
+          navigate('/')
+      }
+    }, []);
+
+    useEffect(() => {
         if (appointments.length === 0) {
           bringUpcomingAppointmentsUser(ReduxCredentials.credentials.token)
             .then((result) => {
@@ -27,7 +33,6 @@ export const AppointmentsUser = () => {
               if(result.data.userAppointment.length > 0){
 
                 setAppointments(result.data.userAppointment);
-                console.log("user",result);
               }
             })
             .catch((error) => console.log(error));
@@ -64,7 +69,6 @@ export const AppointmentsUser = () => {
                   <img className="z6" src={Z6} alt="" />
                   <h3>No pending appointments</h3>
                   <h4>Please, book an appointment if needed</h4>
-
                   <Row className="d-flex justify-content-center">
                     <ButtonNav route={"Book Appointment"} destiny={"/newAppointment"}/>
                   </Row>

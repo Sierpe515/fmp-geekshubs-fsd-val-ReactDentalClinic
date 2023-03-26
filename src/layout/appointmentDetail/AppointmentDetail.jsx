@@ -21,7 +21,7 @@ export const AppointmentDetail = () => {
     let params = (detailRedux.choosenAppointment.id);
 
     useEffect(() => {
-        if (!credentialsRdx.credentials.userRole.includes("admin")){
+        if (!credentialsRdx.credentials.userRole?.includes("admin")){
             navigate('/')
         } 
       }, []);
@@ -30,8 +30,6 @@ export const AppointmentDetail = () => {
         CancelAppByAdmin(params, token)
         .then(
             userCancelApp => {
-                console.log("Cita borrada");
-
                 setTimeout(() => {
                     navigate("/appointments");
                   }, 500);
@@ -61,37 +59,37 @@ export const AppointmentDetail = () => {
                     <Row>
                         <h3>Patient info</h3>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'> 
-                            <strong>Name:</strong> {detailRedux?.choosenAppointment?.User.name}
+                            <strong>Name:</strong> {detailRedux?.choosenAppointment?.User?.name}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            <strong>Surname:</strong> {detailRedux?.choosenAppointment?.User.surname}
+                            <strong>Surname:</strong> {detailRedux?.choosenAppointment?.User?.surname}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            <strong>Email:</strong> {detailRedux?.choosenAppointment?.User.email}
+                            <strong>Email:</strong> {detailRedux?.choosenAppointment?.User?.email}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            <strong>Phone:</strong> {detailRedux?.choosenAppointment?.User.phone}
+                            <strong>Phone:</strong> {detailRedux?.choosenAppointment?.User?.phone}
                         </div>
                     </Row>
                     <Row>
                         <h3>Doctor info</h3>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            <strong>Name:</strong> {detailRedux?.choosenAppointment?.Employee.User.name}
+                            <strong>Name:</strong> {detailRedux?.choosenAppointment?.Employee.User?.name}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            <strong>Surname:</strong> {detailRedux?.choosenAppointment?.Employee.User.surname}
+                            <strong>Surname:</strong> {detailRedux?.choosenAppointment?.Employee.User?.surname}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            <strong>Email:</strong> {detailRedux?.choosenAppointment?.Employee.User.email}
+                            <strong>Email:</strong> {detailRedux?.choosenAppointment?.Employee.User?.email}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            <strong>Phone:</strong> {detailRedux?.choosenAppointment?.Employee.User.phone}
+                            <strong>Phone:</strong> {detailRedux?.choosenAppointment?.Employee.User?.phone}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            <strong>Schedule:</strong> {detailRedux?.choosenAppointment?.Employee.schedule}
+                            <strong>Schedule:</strong> {detailRedux?.choosenAppointment?.Employee?.schedule}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            <strong>Specialty:</strong> {detailRedux?.choosenAppointment?.Employee?.Specialty.type}
+                            <strong>Specialty:</strong> {detailRedux?.choosenAppointment?.Employee?.Specialty?.type}
                         </div>
                     </Row>
                 </Col>

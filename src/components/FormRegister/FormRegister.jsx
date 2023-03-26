@@ -12,10 +12,10 @@ export const FormRegister = () => {
     email: "",
     password: ""
   });
+  
   const {name, surname, email, password} = valor;
 
   const newValue = ({target})=>{
-    console.log(valor);
     const {name, value}=target
     setValor({
         ...valor,
@@ -26,7 +26,6 @@ export const FormRegister = () => {
 
 const checkValue = (event)=>{
   event.preventDefault();
-  console.log(valor)
 }
 
   return (

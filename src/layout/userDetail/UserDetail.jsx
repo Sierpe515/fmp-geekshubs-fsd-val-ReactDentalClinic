@@ -27,7 +27,7 @@ export const UserDetail = () => {
 
     let params = (detailRedux.choosenObject.id);
     let token = (credentialsRdx.credentials.token);
-    const isAdmin = credentialsRdx.credentials.userRole.includes("admin");
+    const isAdmin = credentialsRdx.credentials.userRole?.includes("admin");
 
     const [userRole, setUserRole] = useState("");
     const [show, setShow] = useState(false);
@@ -40,7 +40,7 @@ export const UserDetail = () => {
     //   }, []);
     
       useEffect(() => {
-        {credentialsRdx.credentials.userRole.includes("admin") ? (""
+        {credentialsRdx.credentials.userRole?.includes("admin") ? (""
             // {!credentialsRdx.credentials.userRole.includes("admin") ? () : ()} 
             
         ) : (navigate('/'))}

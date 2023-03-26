@@ -22,7 +22,7 @@ export const AboutUs = () => {
                         <img className='localImg' src={Local} alt="" />
                         <p>Hello World!</p>
                         <p>We are Planet Express Dental Clinic, a small fictitious dental clinic which pretends to replicate a consult’s web application, that is able to manage clinic’s business model. </p>
-                        <p>Everything as a “React” and “Redux” learning project. It is the fifth Project from the GeeksHubs Academy’s Bootcamp, in which we are required to generate a front end that connects with our API, in charge of managing the business.</p>
+                        <p>Everything as a “React” and “Redux” learning project. It is the fifth Project from the GeeksHubs Academy’s Bootcamp, in which we are required to generate a frontend that connects with our API, in charge of managing the business.</p>
                         <p>Therefore, the necessary layouts for log in as users and to be able to register ourselves have been created in this web, as well as creating access to an exclusive zone for administrators and another one for doctors. Also, a layout to see an individual user’s profile, modify their data or see past and pending appointments. </p>
                     </div>
                 </Col>

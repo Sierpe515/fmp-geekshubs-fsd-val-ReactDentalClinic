@@ -12,25 +12,23 @@ import dayjs from "dayjs";
  
 export const AppointmentDetailUser = () => {
 
-    //conexion a RDX en modo lectura
     const detailRedux = useSelector(appointmentDetailData);
     const credentialsRdx = useSelector(userData);
     const navigate = useNavigate();
 
     let token = (credentialsRdx.credentials.token);
-    let params = (detailRedux.choosenAppointment.id)
-
-    useEffect(()=>{
-        console.log(detailRedux.choosenAppointment.id,"patata")
-        console.log(credentialsRdx);
-    },[])
+    let params = (detailRedux.choosenAppointment.id);
+    
+    useEffect(() => {
+        if (!credentialsRdx.credentials.token){
+            navigate('/')
+        }
+      }, []);
 
     const cancelAppointment = () => {
         CancelAppByUser(params, token)
         .then(
             userCancelApp => {
-                console.log("Cita borrada");
-
                 setTimeout(() => {
                     navigate("/appointmentsUser");
                   }, 500);

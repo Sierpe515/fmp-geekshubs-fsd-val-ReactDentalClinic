@@ -1,8 +1,6 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
 import './Footer.css'
 import logoGif from "../../image/planetgif.gif"
-import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (

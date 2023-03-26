@@ -30,7 +30,6 @@ export const validate = (name, data, required) => {
       const lowerCaseLetters = /[a-z]/g;
       const upperCaseLetters = /[A-Z]/g;
       const numbers = /[0-9]/g;
-      console.log(data);
 
     if (data === "" && required === true) {
           return { message: "Please, fill the field", validated: false };
@@ -89,6 +88,5 @@ export const validate = (name, data, required) => {
       return {message: "", validated: true};
 
     default:
-      console.log("Fielt not recognized");
   }
 };
