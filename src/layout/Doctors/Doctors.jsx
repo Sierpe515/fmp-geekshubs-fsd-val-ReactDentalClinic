@@ -23,7 +23,7 @@ export const Doctors = () => {
     }),[doctors];
 
   return (
-    <Container fluid className="docContainer d-flex flex-column justify-content-between">
+    <Container fluid className="homeContainerMin d-flex flex-column justify-content-between">
             <Row >
                 <h1 className='text-center'>Doctors</h1>  
                 <div className='d-flex justify-content-around'>

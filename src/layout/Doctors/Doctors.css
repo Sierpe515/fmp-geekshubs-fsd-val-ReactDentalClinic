@@ -1,8 +1,4 @@
 
-.docContainer {
-    width: 100vw;
-}
-
 .doctorsBox {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -51,9 +47,6 @@
 }
 
 @media (min-width: 1200px){
-    .docContainer {
-        height: 84vh;
-    }
 
     .doctorsBox {
         grid-template-columns: repeat(5, auto);
