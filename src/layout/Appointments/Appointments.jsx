@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Spinner from 'react-bootstrap/Spinner';
 import { ButtonNav } from '../../components/ButtonNav/ButtonNav';
 import { bringUpcomingAppointmentsAdmin, bringUpcomingAppointmentsDoctor } from "../../services/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
@@ -82,7 +83,7 @@ export const Appointments = () => {
                     })}
                   </div>
                 ) : (
-                  <div>LOADING</div>
+                  <div><Spinner animation="grow" variant="primary" /><h1>LOADING</h1></div>
                 )}
               </div>
             </Col>

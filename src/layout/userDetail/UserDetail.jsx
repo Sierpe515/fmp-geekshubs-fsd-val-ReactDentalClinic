@@ -31,8 +31,11 @@ export const UserDetail = () => {
 
     const [userRole, setUserRole] = useState("");
     const [show, setShow] = useState(false);
+    const [show1, setShow1] = useState(false);
     const handleClose = () => setShow(false);
+    const handleClose1 = () => setShow1(false);
     const handleShow = () => setShow(true);
+    const handleShow1 = () => setShow1(true);
 
     // useEffect(() => {
     //     {credentialsRdx.credentials.userRole ? isAdmin ? ('') : (navigate('/')) : (navigate('/'))}
@@ -64,7 +67,7 @@ export const UserDetail = () => {
             }
         )
         .catch(error => {
-          console.log(error)
+          handleShow1()
         })
     }
 
@@ -116,6 +119,19 @@ export const UserDetail = () => {
                 <Modal.Body>Please, choose a role before pressing the button</Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
+                    Close
+                </Button>
+                </Modal.Footer>
+            </Modal>
+            <Modal show={show1} onHide={handleClose1}>
+                <Modal.Header closeButton>
+                <Modal.Title>It can not be deleted</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>It's not posible delete an user with upcoming appointments
+                    <br /> Please, cancel first any booked appointment to delete user.
+                </Modal.Body>
+                <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose1}>
                     Close
                 </Button>
                 </Modal.Footer>
