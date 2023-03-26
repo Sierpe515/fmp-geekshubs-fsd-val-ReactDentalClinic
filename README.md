@@ -1,7 +1,9 @@
 # fmp-geekshubs-fsd-val-ReactDentalClinic
 
 # Welcome to dental clinic frontend app
-<p align="center"><img src="./img/headerpict.jpg"/></p> 
+
+![headerRM](https://user-images.githubusercontent.com/121863208/227807334-cb63a74c-1476-40ee-97b9-d2ca51f2faa7.JPG)
+
 
 <details>
   <summary>Index</summary>
@@ -22,6 +24,10 @@
 </details>
 
 ## About this project
+
+![Animation](https://user-images.githubusercontent.com/121863208/227807803-06f55b81-9ac2-438b-b4aa-be97036f52c4.gif)
+
+
 <p align="center">This is the fifth Full Stack Developer Bootcamp's project from GeeksHubs Academy. In this occasion we were asked to develop a frontend to connect our API, in charge of managing the business model of a dental clinic.  
 My objective with this project has been that the web has the important functions a clinic might ask for, having in mind the differences with a professional work.   
 However, a user can definitely register themselves and log in, book dates and visualise their profile, update it and check their records, where they can see their upcoming dates as well as their past ones.  
@@ -33,36 +39,15 @@ I believe that the result is a versatile web application in which can be done a 
 ## Stack
 <p>Technologies that has been used:</p>
 <div align="center">
-    <a href="https://expressjs.com/">
-        <img src= "https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB"/>
-    </a>
-    <a href="https://nextjs.org/">
-        <img src= "https://img.shields.io/badge/node.js-026E00?style=for-the-badge&logo=node.js&logoColor=white"/>
-    </a>
-    <a href="https://developer.mozilla.org/es/docs/Web/JavaScript">
-        <img src= "https://img.shields.io/badge/javascipt-EFD81D?style=for-the-badge&logo=javascript&logoColor=black"/>
-    </a>
-    <a href="https://jwt.io/">
-        <img src= "https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens"/>
-    </a>
-    <a href="https://www.postman.com/">
-        <img src= "https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white"/>
-    </a>
-    <a href="https://www.mysql.com/">
-        <img src= "https://img.shields.io/badge/mysql-3E6E93?style=for-the-badge&logo=mysql&logoColor=white"/>
-    </a>
-    <a href="https://www.github.com/">
-        <img src= "https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white"/>
-    </a>
-    <a href="https://git-scm.com/">
-        <img src= "https://img.shields.io/badge/git-F54D27?style=for-the-badge&logo=git&logoColor=white"/>
-    </a>
-    <a href="https://www.docker.com/">
-        <img src= "https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
-    </a>
-    <a href="https://www.sequelize.org/">
-        <img src= "https://img.shields.io/badge/sequelize-3C76C3?style=for-the-badge&logo=sequelize&logoColor=white"/>
-    </a>
+    ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+    ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+    ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+    ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+    ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+    ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+    ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+    ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+    ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 </div>
 
 
@@ -110,7 +95,14 @@ In this occasion, we found ourselves before a complete web application. It can b
 We are before the most ambitious project we have faced, not only for its complexity, but also for the quantity of hours invested in it. When trying to provide the web with almost every functionality I wish I could include, it is made up of numerous layouts or pages and every single one has a functionality, for show information brought from the backend or request another with real time callings, with the possibility of interfering sending new information, modifying or erasing it. 
 Thanks to Redux, the web components have the capability to communicate between themselves, sending information or picking it up from any part of the application, which facilitates working with it without excessive communication with the backend.  
 To be able to get the obtained result, the backend has been modified in numerous occasions, in order to be able to grant it various functionalities which were not initially foreseen but were necessary or relevant with the frontend inclusion. For example, with the inclusion of more endpoints or the modifying of models and migrations. 
-It is worth mentioning that the use of some React functions like hooks or useEffect which application is fundamental to the functioning of the whole page architecture. 
+It is worth mentioning that the use of some React functions like hooks or useEffect which application is fundamental to the functioning of the whole page architecture.
+
+![WhatsApp Image 2023-03-26 at 23 27 58](https://user-images.githubusercontent.com/121863208/227808055-f1560089-41d5-42bb-aa01-0b3823efd1fb.jpeg)
+![WhatsApp Image 2023-03-26 at 23 27 42](https://user-images.githubusercontent.com/121863208/227808056-9a848d7b-807a-48f7-adfc-a623b3da4b48.jpeg)
+![WhatsApp Image 2023-03-26 at 23 27 12](https://user-images.githubusercontent.com/121863208/227808061-4c67047a-767a-4c66-beaf-6679de93c295.jpeg)
+![WhatsApp Image 2023-03-26 at 23 26 43](https://user-images.githubusercontent.com/121863208/227808070-6bbb0146-1d57-414f-88c5-ab2f790dd0d9.jpeg)
+![WhatsApp Image 2023-03-26 at 23 26 14](https://user-images.githubusercontent.com/121863208/227808072-367882b7-ca60-4cc2-a9bd-bbfc36ff5c1c.jpeg)
+
 
 
 ## Project structure
