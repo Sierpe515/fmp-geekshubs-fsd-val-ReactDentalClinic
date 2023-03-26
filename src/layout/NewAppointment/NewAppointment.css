@@ -25,6 +25,12 @@
   display: none;
 }
 
+.z7 {
+  position: absolute;
+  bottom: 0em;
+  right: 0em;
+}
+
 .hourGrid {
     margin-top: 1em;
     margin-bottom: 1em;

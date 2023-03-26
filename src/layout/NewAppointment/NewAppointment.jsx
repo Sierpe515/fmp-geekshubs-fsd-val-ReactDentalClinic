@@ -2,7 +2,7 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import doc1 from '../../image/doc1.png';
 import doc2 from '../../image/doc2.png';
 import doc3 from '../../image/doc3.png';
@@ -25,10 +25,10 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { useEffect } from 'react';
+import Modal from 'react-bootstrap/Modal';
 import Comic1 from '../../image/comic1.jpg'
 import Comic2 from '../../image/comic2.jpg'
-import Book1 from '../../image/book1.png'
+import Z7 from '../../image/z7.gif'
 
 export const NewAppointment = () => {
 
@@ -65,7 +65,7 @@ export const NewAppointment = () => {
         console.log(dayjs(dia).format('YYYY-MM-DD'))
         setDay(dayjs(dia).format('YYYY-MM-DD'))
         } else {
-            console.log("choose a upcoming day");
+            handleShow1();
         };
     }
 
@@ -200,8 +200,12 @@ export const NewAppointment = () => {
     );
 
     const [show, setShow] = useState(false);
+    const [show1, setShow1] = useState(false);
     const handleClose = () => setShow(false);
+    const handleClose1 = () => setShow1(false);
     const handleShow = () => setShow(true);
+    const handleShow1 = () => setShow1(true);
+
 
   return (
     <Container fluid className="homeContainerMin d-flex flex-column justify-content-between">
@@ -224,6 +228,17 @@ export const NewAppointment = () => {
                     </div>
                     <Offcanvas.Body className='offcanvasBtn'><div className="appointmentButton" name="button" onClick={()=> bookAppointment()}>Book Appointment</div></Offcanvas.Body>
                 </Offcanvas>
+                <Modal show={show1} onHide={handleClose1}>
+                    <Modal.Header closeButton>
+                    <Modal.Title>Invalid date</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Please, choose a upcoming date</Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose1}>
+                        Close
+                    </Button>
+                    </Modal.Footer>
+                </Modal>
                 <Row className="d-flex justify-content-center">
                     <Col xxl={5} xl={6} sm={9} className="my-3">
                         <div className='logRegContainer d-flex flex-column align-items-center justify-content-center'>
@@ -359,6 +374,7 @@ export const NewAppointment = () => {
                         <h1>Please, login or register</h1>
                         <div className="appointmentButton" name="button" onClick={()=> navLogin()}>Login</div>
                         <div className="appointmentButton" name="button" onClick={()=> navRegister()}>Register</div>
+                        <img className='z7' src={Z7} alt="" />
                     </Col>
                 </Row>
             )}
