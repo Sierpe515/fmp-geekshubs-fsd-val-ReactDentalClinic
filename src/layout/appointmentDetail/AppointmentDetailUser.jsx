@@ -25,6 +25,42 @@ export const AppointmentDetailUser = () => {
         }
       }, []);
 
+    useEffect(() => {
+     console.log(detailRedux.choosenAppointment)
+    }, [])
+
+    const specialty = detailRedux.choosenAppointment.Employee.specialty_id
+
+    // const specialtyName = {
+    //     "1": "Implantology",
+    //     "2": "Bruxism",
+    //     "3": "Orthodontics",
+    //     "4": "Whitening",
+    //     "5": "Periodontics",
+    //     "6": "Others"
+    // }
+
+    switch (specialty){
+        case '1':
+            specialty = "Implantology"
+            break
+        case '2':
+            specialty = "Bruxism"
+            break
+        case '3':
+            specialty = "Orthodontics"
+            break
+        case '4':
+            specialty = "Whitening"
+            break
+        case '5':
+            specialty = "Periodontics"
+            break
+        case '6':
+            specialty = "Others"
+            break
+    }
+
     const cancelAppointment = () => {
         CancelAppByUser(params, token)
         .then(
@@ -45,13 +81,13 @@ export const AppointmentDetailUser = () => {
                     <Row>
                         <h3>Appointment info</h3>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            <strong>Appointment date:</strong> {detailRedux?.choosenAppointment?.date}
+                            <strong>Appointment date:</strong> {dayjs(detailRedux?.choosenAppointment?.date).format('YYYY-MMMM-DD')}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
                             <strong>Appointment hour:</strong> {detailRedux?.choosenAppointment?.hour}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            <strong>booking at:</strong> {detailRedux?.choosenAppointment?.createdAt}
+                            <strong>booking at:</strong> {dayjs(detailRedux?.choosenAppointment?.createdAt).format('YYYY-MMMM-DD')}
                         </div>
                     </Row>
                     <Row>
@@ -69,7 +105,7 @@ export const AppointmentDetailUser = () => {
                             <strong>Phone:</strong> {detailRedux?.choosenAppointment?.Employee.User.phone}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            <strong>Specialty:</strong> {detailRedux?.choosenAppointment?.Employee.specialty_id}
+                            <strong>Specialty:</strong> {specialty}
                         </div>
                     </Row>
                 </Col>

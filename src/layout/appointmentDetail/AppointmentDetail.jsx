@@ -26,6 +26,7 @@ export const AppointmentDetail = () => {
         } 
       }, []);
 
+
     const cancelAppointmentByAdmin = () => {
         CancelAppByAdmin(params, token)
         .then(
