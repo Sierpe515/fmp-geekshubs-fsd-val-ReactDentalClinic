@@ -29,8 +29,15 @@ import Modal from 'react-bootstrap/Modal';
 import Comic1 from '../../image/comic1.jpg'
 import Comic2 from '../../image/comic2.jpg'
 import Z7 from '../../image/z7.gif'
+// var isBetween = require('dayjs/plugin/isBetween')
+// dayjs.extend(isBetween)
+import isBetween from 'dayjs/plugin/isBetween'
+dayjs.extend(isBetween)
 
 export const NewAppointment = () => {
+
+    // var isBetween = require('dayjs/plugin/isBetween')
+    // dayjs.extend(isBetween)
 
     const ReduxCredentials = useSelector(userData);
     const navigate = useNavigate();
@@ -58,9 +65,16 @@ export const NewAppointment = () => {
     }
 
     const chooseDay = (dia) => {
-        if (dayjs(dia).isAfter(dayjs())){
-        setDay(dayjs(dia).format('YYYY-MM-DD'))
-        } else {
+        if (dayjs(dia).isBetween(dayjs(), dayjs('2024-01-01'))){
+            setDay(dayjs(dia).format('YYYY-MM-DD'))
+        } 
+        // if (dayjs(dia).isAfter(dayjs())){
+        //     setDay(dayjs(dia).format('YYYY-MM-DD'))
+        // } 
+        // else if (dayjs(dia).isBefore(dayjs('2024-01-01'))) {
+        //     setDay(dayjs(dia).format('YYYY-MM-DD'))
+        // } 
+        else {
             handleShow1();
         };
     }
@@ -221,7 +235,7 @@ export const NewAppointment = () => {
                     <Modal.Header closeButton>
                     <Modal.Title>Invalid date</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Please, choose a upcoming date</Modal.Body>
+                    <Modal.Body>Please, choose a date between today and 2024-01-01</Modal.Body>
                     <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose1}>
                         Close
