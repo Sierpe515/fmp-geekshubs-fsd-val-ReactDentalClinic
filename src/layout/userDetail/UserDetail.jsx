@@ -32,10 +32,13 @@ export const UserDetail = () => {
     const [userRole, setUserRole] = useState("");
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
+    const [show2, setShow2] = useState(false);
     const handleClose = () => setShow(false);
     const handleClose1 = () => setShow1(false);
+    const handleClose2 = () => setShow2(false);
     const handleShow = () => setShow(true);
     const handleShow1 = () => setShow1(true);
+    const handleShow2 = () => setShow2(true);
 
     // useEffect(() => {
     //     {credentialsRdx.credentials.userRole ? isAdmin ? ('') : (navigate('/')) : (navigate('/'))}
@@ -82,7 +85,7 @@ export const UserDetail = () => {
         }
         addRoleByAdmin(body, token)
         .then(
-            console.log(userRole)
+            handleShow2()
         )
         .catch((error) => console.log(error));
     }
@@ -132,6 +135,18 @@ export const UserDetail = () => {
                 </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose1}>
+                    Close
+                </Button>
+                </Modal.Footer>
+            </Modal>
+            <Modal show={show2} onHide={handleClose2}>
+                <Modal.Header closeButton>
+                <Modal.Title>Role assignment</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>User role added
+                </Modal.Body>
+                <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose2}>
                     Close
                 </Button>
                 </Modal.Footer>
