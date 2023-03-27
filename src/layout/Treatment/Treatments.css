@@ -4,3 +4,35 @@
     display: flex;
     justify-content: center;
 }
+
+@media (min-width: 576px){
+
+    .treatmentImg {
+        height: 14rem;
+        width: 14rem;
+    }
+}
+
+@media (min-width: 992px){
+
+    .treatmentImg {
+        height: 16rem;
+        width: 16rem;
+    }
+}
+
+@media (min-width: 1200px){
+
+    .treatmentImg {
+        height: 12rem;
+        width: 12rem;
+    }
+}
+
+@media (min-width: 1400px){
+
+    .treatmentImg {
+        height: 16rem;
+        width: 16rem;
+    }
+}

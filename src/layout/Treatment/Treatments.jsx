@@ -23,7 +23,7 @@ export const Treatments = () => {
     }),[treatments];
 
   return (
-    <Container fluid className="homeContainer d-flex flex-column justify-content-between">
+    <Container fluid className="homeContainerMin d-flex flex-column justify-content-between">
             <Row >
                 <h1 className='text-center'>Treatments</h1>  
                 <div className='d-flex justify-content-center'>
@@ -31,7 +31,7 @@ export const Treatments = () => {
                     {treatments.map((treatment) =>{
                     return (
                         
-                            <Card className='cardDoctor' style={{ width: '14rem' }}>
+                            <Card className='cardDoctor'>
                                 <Card.Img className='treatmentImg' variant="top" src={treatment.image} />
                                 <Card.Body>
                                     <Card.Title>{treatment.treatment}</Card.Title>
