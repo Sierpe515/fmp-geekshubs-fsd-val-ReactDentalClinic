@@ -42,7 +42,7 @@ export const Appointments = () => {
 
     console.log("3");
 
-  }, [searchDate, ReduxCredentials, appointments]);
+  }, [searchDate, ReduxCredentials]);
 
   useEffect(() => {
     {isAdmin || isDoctor ? ("") : (navigate('/'))}
@@ -77,15 +77,15 @@ export const Appointments = () => {
             <Col xxl={5} xl={6} lg={8} sm={10} className="my-3">
               <div className="logRegContainer d-flex flex-column justify-content-center align-items-center text-center">
                 <h1>Appointments List</h1>
-                {/* <input
+                <input
                 className="searchInput"
                 type="text"
                 value={searchDate}
                 onChange={(e) => searchHandler(e.target.value)}
                 // onChange={(e) => setSearchDate(e.target.value)}
                 placeholder="Search appointment..."
-                /> */}
-                {appointments.length > 0 ? (
+                />
+                {appointments?.length > 0 ? (
                   <div className="appList">
                     {appointments.map((cita) => {
                       return (
