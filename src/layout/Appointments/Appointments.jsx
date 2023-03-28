@@ -23,19 +23,25 @@ export const Appointments = () => {
     const isDoctor = ReduxCredentials.credentials.userRole?.includes("doctor")
 
   useEffect(() => {
-    if (ReduxCredentials.credentials.userRole?.includes('admin') && appointments.length === 0) {
+    console.log("useEffect");
+    if (ReduxCredentials.credentials.userRole?.includes('admin') && appointments?.length === 0) {
+      console.log("1");
       bringUpcomingAppointmentsAdmin(searchDate, ReduxCredentials.credentials.token)
         .then((result) => {
           setAppointments(result.data.userAppointment);
         })
         .catch((error) => console.log(error));
-    } else if (ReduxCredentials.credentials.userRole?.includes('doctor') && appointments.length === 0) {
+    } else if (ReduxCredentials.credentials.userRole?.includes('doctor') && appointments?.length === 0) {
+      console.log("2");
       bringUpcomingAppointmentsDoctor(searchDate, ReduxCredentials.credentials.token)
         .then((result) => {
           setAppointments(result.data.userAppointment);
         })
         .catch((error) => console.log(error));
     }
+
+    console.log("3");
+
   }, [searchDate, ReduxCredentials, appointments]);
 
   useEffect(() => {
@@ -56,6 +62,12 @@ export const Appointments = () => {
           }
     };
 
+    const searchHandler = (valor) => {
+      setSearchDate(valor)
+      setAppointments([])
+      console.log("hola");
+    }
+
     return (
         <Container
           fluid
@@ -65,13 +77,14 @@ export const Appointments = () => {
             <Col xxl={5} xl={6} lg={8} sm={10} className="my-3">
               <div className="logRegContainer d-flex flex-column justify-content-center align-items-center text-center">
                 <h1>Appointments List</h1>
-                <input
+                {/* <input
                 className="searchInput"
                 type="text"
                 value={searchDate}
-                onChange={(e) => setSearchDate(e.target.value)}
+                onChange={(e) => searchHandler(e.target.value)}
+                // onChange={(e) => setSearchDate(e.target.value)}
                 placeholder="Search appointment..."
-              />
+                /> */}
                 {appointments.length > 0 ? (
                   <div className="appList">
                     {appointments.map((cita) => {

@@ -31,35 +31,35 @@ export const AppointmentDetailUser = () => {
 
     const specialty = detailRedux.choosenAppointment.Employee.specialty_id
 
-    // const specialtyName = {
-    //     "1": "Implantology",
-    //     "2": "Bruxism",
-    //     "3": "Orthodontics",
-    //     "4": "Whitening",
-    //     "5": "Periodontics",
-    //     "6": "Others"
-    // }
-
-    switch (specialty){
-        case '1':
-            specialty = "Implantology"
-            break
-        case '2':
-            specialty = "Bruxism"
-            break
-        case '3':
-            specialty = "Orthodontics"
-            break
-        case '4':
-            specialty = "Whitening"
-            break
-        case '5':
-            specialty = "Periodontics"
-            break
-        case '6':
-            specialty = "Others"
-            break
+    const specialtyName = {
+        "1": "Implantology",
+        "2": "Bruxism",
+        "3": "Orthodontics",
+        "4": "Whitening",
+        "5": "Periodontics",
+        "6": "Others"
     }
+
+    // switch (specialty){
+    //     case '1':
+    //         specialty = "Implantology"
+    //         break
+    //     case '2':
+    //         specialty = "Bruxism"
+    //         break
+    //     case '3':
+    //         specialty = "Orthodontics"
+    //         break
+    //     case '4':
+    //         specialty = "Whitening"
+    //         break
+    //     case '5':
+    //         specialty = "Periodontics"
+    //         break
+    //     case '6':
+    //         specialty = "Others"
+    //         break
+    // }
 
     const cancelAppointment = () => {
         CancelAppByUser(params, token)
@@ -105,7 +105,7 @@ export const AppointmentDetailUser = () => {
                             <strong>Phone:</strong> {detailRedux?.choosenAppointment?.Employee.User.phone}
                         </div>
                         <div className='appDetailBox d-flex align-items-center justify-content-center text-center'>
-                            <strong>Specialty:</strong> {specialty}
+                            <strong>Specialty:</strong> {specialtyName[specialty]}
                         </div>
                     </Row>
                 </Col>
