@@ -68,13 +68,13 @@ export const UsersList = () => {
         <Col xxl={4} xl={5} sm={7} className="my-3">
           <div className="logRegContainer d-flex flex-column justify-content-center align-items-center text-center">
             <h1 className="userListTitle">User List</h1>
-              {/* <input
+              <input
                 className="searchInput"
                 type="text"
                 value={searchUser}
                 onChange={(e) => setSearchUser(e.target.value)}
                 placeholder="Search user..."
-              /> */}
+              />
             {users.length > 0 ? (
               <div>
                 {users.map((persona) => {
