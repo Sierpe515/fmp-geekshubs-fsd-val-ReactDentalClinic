@@ -57,6 +57,7 @@ export const bringUpcomingAppointmentsAdmin = async (searchDate, token) => {
 
     if (searchDate) {
       sUrl += `/${searchDate}`;
+      console.log("envio");
     }
 
     return await axios.get(sUrl, config);

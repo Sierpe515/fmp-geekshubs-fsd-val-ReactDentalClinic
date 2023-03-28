@@ -23,15 +23,14 @@ export const Appointments = () => {
     const isDoctor = ReduxCredentials.credentials.userRole?.includes("doctor")
 
   useEffect(() => {
-    console.log("useEffect");
-    if (ReduxCredentials.credentials.userRole?.includes('admin') && appointments?.length === 0) {
+    if (ReduxCredentials.credentials.userRole?.includes('admin')) {
       console.log("1");
       bringUpcomingAppointmentsAdmin(searchDate, ReduxCredentials.credentials.token)
         .then((result) => {
           setAppointments(result.data.userAppointment);
         })
         .catch((error) => console.log(error));
-    } else if (ReduxCredentials.credentials.userRole?.includes('doctor') && appointments?.length === 0) {
+    } else if (ReduxCredentials.credentials.userRole?.includes('doctor')) {
       console.log("2");
       bringUpcomingAppointmentsDoctor(searchDate, ReduxCredentials.credentials.token)
         .then((result) => {
@@ -65,8 +64,13 @@ export const Appointments = () => {
     const searchHandler = (valor) => {
       setSearchDate(valor)
       setAppointments([])
-      console.log("hola");
+      console.log(appointments);
     }
+
+    useEffect(() => {
+      console.log(appointments);
+      console.log(searchDate);
+    })
 
     return (
         <Container
