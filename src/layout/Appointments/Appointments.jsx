@@ -93,7 +93,7 @@ export const Appointments = () => {
                   <div className="appList">
                     {appointments.map((cita) => {
                       return (
-                        <div className="userBox1" onClick={() => selected(cita)} key={cita.id}>
+                        <div className={dayjs(cita.date).isBefore(dayjs()) ? "userBox2" : "userBox1"} onClick={() => selected(cita)} key={cita.id}>
                           <strong>{dayjs(cita.date).format('YYYY-MMMM-DD')}</strong> hour: {cita.hour} patient:<strong> {cita.User.name} {cita.User.surname}</strong>
                         </div>
                       );
